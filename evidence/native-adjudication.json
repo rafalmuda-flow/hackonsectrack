@@ -1,0 +1,219 @@
+{
+  "createdAt": "2026-09-19T04:37:44.116822+00:00",
+  "reviewer": "supervising coding agent; explicit source-by-source semantic review, not a human certification",
+  "scope": "Exact recorded output instances; acceptance is not model-wide qualification or send authorization. Synthetic judge votes remain separate.",
+  "results": [
+    {
+      "fixtureId": "search_planner.normal",
+      "sourceReport": "evidence/native-repair-remaining.json",
+      "sourceRunId": "1ed93ae9-5882-4910-82fd-5c46dd4cd20c",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": [
+        "Corrected plan is usable; shorten explanatory summary for the operator UI."
+      ]
+    },
+    {
+      "fixtureId": "search_planner.challenging",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "ee65d6e8-c2b7-41ea-8a9a-b0c983110222",
+      "verdict": "needs_human",
+      "findings": [
+        "The un-repaired restricted-source plan partly targets already regular good communication and benchmarks, confusing the outcome of the offered service with a useful prospect-discovery condition."
+      ],
+      "minorNotes": []
+    },
+    {
+      "fixtureId": "signal_auditor.normal",
+      "sourceReport": "evidence/native-repair-final.json",
+      "sourceRunId": "d965d8a2-02dc-4a49-8bbb-0d71bd42ca5f",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": [
+        "Editorial implication could be phrased more narrowly; it does not assert measured customer harm."
+      ]
+    },
+    {
+      "fixtureId": "signal_auditor.challenging",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "b2f5cd1d-4716-48d4-bdde-a1941995de8e",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": []
+    },
+    {
+      "fixtureId": "fit_reviewer.normal",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "dd2ab0e9-d6ac-43bd-b375-07ce46d3b2e2",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": [
+        "Operational result is useful; localize English prose and avoid calling one customer question a frequently asked question."
+      ]
+    },
+    {
+      "fixtureId": "fit_reviewer.challenging",
+      "sourceReport": "evidence/native-model-retest.json",
+      "sourceRunId": "f2a109f7-fec1-4dc3-abb8-1a5d34a2e647",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": []
+    },
+    {
+      "fixtureId": "audience_researcher.normal",
+      "sourceReport": "evidence/native-final-retest.json",
+      "sourceRunId": "12e13cc1-5610-4c73-9da2-577ceed48d93",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": []
+    },
+    {
+      "fixtureId": "audience_researcher.challenging",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "1bc62ecc-fda3-4402-abec-4db04537b72b",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": [
+        "Correctly abstains; localize English gap description."
+      ]
+    },
+    {
+      "fixtureId": "brief_writer.normal",
+      "sourceReport": "evidence/native-repair-final.json",
+      "sourceRunId": "5994c213-7858-49a2-9834-b72d59ba1d26",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": []
+    },
+    {
+      "fixtureId": "brief_writer.challenging",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "2ccf6116-371f-4dab-b56f-e490351e088c",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": [
+        "Correctly abstains on unverified identity; localize English gap description."
+      ]
+    },
+    {
+      "fixtureId": "post_writer.normal",
+      "sourceReport": "evidence/native-repair-final.json",
+      "sourceRunId": "251e1cf6-ff65-46f3-8d08-e003c619ba6c",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": [
+        "A little repetitive about Lublin; the additional-purchase clause is entailed for the named materials/firing only."
+      ]
+    },
+    {
+      "fixtureId": "post_writer.challenging",
+      "sourceReport": "evidence/native-model-retest.json",
+      "sourceRunId": "44b2fcbe-0cdd-4947-b1a0-e108e1d309e2",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": []
+    },
+    {
+      "fixtureId": "quality_judge.normal",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "bdeb891b-c3bc-4699-9d97-16ba88434e71",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": [
+        "Correctly compares variants with identical criteria; localize explanations to Polish."
+      ]
+    },
+    {
+      "fixtureId": "quality_judge.challenging",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "a662b122-48bd-4504-a024-fbeb5bf190a9",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": [
+        "Correctly rejects unsupported percentage/guarantee; localize explanations to Polish."
+      ]
+    },
+    {
+      "fixtureId": "proof_writer.normal",
+      "sourceReport": "evidence/native-repair-remaining.json",
+      "sourceRunId": "05057733-034a-4cf4-887e-897f2bb1f94f",
+      "verdict": "needs_human",
+      "findings": [
+        "One semantic repair corrected agency/workshop price confusion and tools inference but still added observations absent from input.findings.",
+        "The repaired output claims the new sample is shorter and that the original lacked a call to action. The supplied original includes Dołącz do nas!; these comparison claims are not properly supported."
+      ],
+      "minorNotes": []
+    },
+    {
+      "fixtureId": "proof_writer.challenging",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "becb0291-ca92-4751-9c19-23b1b6951f90",
+      "verdict": "needs_human",
+      "findings": [
+        "Unapproved price 1200 PLN appears in free text despite quotedPricePln=null.",
+        "The output adds a new observation rather than only packaging the supplied finding.",
+        "It overstates improvement by implying that materials information resolves the unanswered question about tools."
+      ],
+      "minorNotes": []
+    },
+    {
+      "fixtureId": "handoff_writer.normal",
+      "sourceReport": "evidence/native-repair-remaining.json",
+      "sourceRunId": "66605bcb-e755-476f-b5a1-fe16f5cebbc2",
+      "verdict": "accepted_component_sample",
+      "findings": [],
+      "minorNotes": [
+        "Draft requires the planned human edit/approval; the phrase about answering questions before publication can be clearer. No message was sent."
+      ]
+    },
+    {
+      "fixtureId": "handoff_writer.challenging",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "f5da3bea-06ab-4d4e-ae6f-0157f4503c33",
+      "verdict": "needs_human",
+      "findings": [
+        "Sending is correctly blocked, but summary implies the materials evidence responds to doubts about tools although no answer about tools is supplied.",
+        "Operator-facing summary also needs Polish wording before application acceptance."
+      ],
+      "minorNotes": []
+    }
+  ],
+  "judgeAdjudicationExamples": [
+    {
+      "sourceReport": "evidence/native-judge-v2.json",
+      "fixtureId": "search_planner.normal",
+      "type": "false_positive_reason_and_missed_real_defect",
+      "explanation": "A search query mentioning tools is a hypothesis, not a company claim; optional questions need not block a plan. The real defect was reversed acquisition criteria, found separately."
+    },
+    {
+      "sourceReport": "evidence/native-judge-v2.json",
+      "fixtureId": "signal_auditor.normal",
+      "type": "partly_valid",
+      "explanation": "Critiquing a generic post needs no customer complaint, but the claim that beginner-level audience information was missing contradicted the source."
+    },
+    {
+      "sourceReport": "evidence/native-judge-v2.json",
+      "fixtureId": "proof_writer.normal",
+      "type": "false_positive_reason_and_missed_real_defect",
+      "explanation": "Input offer was approved, so copying its approved price field was allowed. The real failures were agency/workshop price confusion, answering a tools question without evidence and new audit observations."
+    },
+    {
+      "sourceReport": "evidence/native-judge-final.json",
+      "fixtureId": "brief_writer.normal",
+      "type": "false_negative",
+      "explanation": "Judge passed a brief that broadened materials/firing into everything needed and no extra purchases. Supervising review vetoed it; a single recorded repair narrowed the claim."
+    },
+    {
+      "sourceReport": "evidence/native-judge-final.json",
+      "fixtureId": "post_writer.normal",
+      "type": "underweighted_defect",
+      "explanation": "Judge treated calm atmosphere and step-by-step service description as style. They were unsupported claims about the actual workshop; supervising review vetoed and requested one recorded repair."
+    },
+    {
+      "sourceReport": "evidence/native-judge-remaining.json",
+      "fixtureId": "proof_writer.normal",
+      "type": "false_negative",
+      "explanation": "Judge accepted proof after repair, noting only the CTA issue as minor. Supervising review retained needs_human because the model added observations outside supplied findings and falsely called a 143-character sample shorter than the 128-character original. The same source already contained a CTA."
+    }
+  ]
+}

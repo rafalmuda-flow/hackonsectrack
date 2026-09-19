@@ -1,0 +1,456 @@
+{
+  "createdAt": "2026-09-19T04:41:58.530Z",
+  "status": "ready_for_implementation_not_release",
+  "frameworkVersion": "0.8.0",
+  "upstreamCommit": "ab23d45ffc3aeca5e7d994eb57d5526c5b0a4712",
+  "latestContractBundleHash": "fa504365badfb5cdc7c3405d2829b23709ea12d85b2f91025ef98fd262970056",
+  "description": "Historical live native evaluations plus latest-output revalidation against current contracts. Targeted retries are not a fresh full-suite pass. Semantic adjudication by the supervising coding agent is separate from independent synthetic judge votes and is not claimed to be human certification.",
+  "canonicalFixtures": 18,
+  "canonicalFormalPassed": 18,
+  "semanticAcceptedSamples": 14,
+  "needsHumanSamples": 4,
+  "nativeRoleCoverage": 9,
+  "rolesWithAcceptedNormalSample": 8,
+  "rolesWithAcceptedNormalAndChallenging": 6,
+  "actualRoleRuns": 49,
+  "actualReviewerRuns": 28,
+  "estimatedCostUsd": 1.3116892,
+  "modelPolicy": {
+    "defaultProvider": "openrouter",
+    "defaultModel": "anthropic/claude-sonnet-5",
+    "cheapBaselineModel": "openai/gpt-4.1-mini",
+    "cheapFallbackAllowed": false,
+    "productionQualified": false,
+    "maximumSemanticRepairs": 1,
+    "onRemainingDefect": "needs_human",
+    "note": "Stronger model is not a substitute for domain validation, semantic review or release approval. Switching model/version requires fresh qualification."
+  },
+  "deterministicP11": {
+    "report": "evidence/native-p11-host-gate.json",
+    "passedTests": 3,
+    "totalTests": 3,
+    "nativeCalls": 0,
+    "independentOfNativeProofFailure": true
+  },
+  "reports": [
+    {
+      "file": "evidence/native-v1.json",
+      "total": 18,
+      "reportedPass": 12,
+      "model": "openai/gpt-4.1-mini",
+      "estimatedCostUsd": 0.0233812,
+      "type": "role_execution"
+    },
+    {
+      "file": "evidence/native-v2.json",
+      "total": 18,
+      "reportedPass": 15,
+      "model": "openai/gpt-4.1-mini",
+      "estimatedCostUsd": 0.023143999999999998,
+      "packHash": "b8df2d856af5aa1872289a4c3b7733ad96573160a1136a59c436a773357faf56",
+      "type": "role_execution"
+    },
+    {
+      "file": "evidence/native-model-retest.json",
+      "total": 3,
+      "reportedPass": 3,
+      "model": "anthropic/claude-sonnet-5",
+      "estimatedCostUsd": 0.078484,
+      "packHash": "b8df2d856af5aa1872289a4c3b7733ad96573160a1136a59c436a773357faf56",
+      "type": "role_execution"
+    },
+    {
+      "file": "evidence/native-final-retest.json",
+      "total": 4,
+      "reportedPass": 4,
+      "model": "anthropic/claude-sonnet-5",
+      "estimatedCostUsd": 0.095366,
+      "packHash": "420f22326739e57d7e98ff39e86dd7df3aaa128b9e23369e4949b936cc662418",
+      "type": "role_execution"
+    },
+    {
+      "file": "evidence/native-repair-final.json",
+      "total": 3,
+      "reportedPass": 3,
+      "model": "anthropic/claude-sonnet-5",
+      "estimatedCostUsd": 0.066252,
+      "packHash": "420f22326739e57d7e98ff39e86dd7df3aaa128b9e23369e4949b936cc662418",
+      "type": "single_semantic_repair"
+    },
+    {
+      "file": "evidence/native-judge-v2.json",
+      "total": 18,
+      "reportedPass": 7,
+      "model": "anthropic/claude-sonnet-5",
+      "estimatedCostUsd": 0.596256,
+      "packHash": "b8df2d856af5aa1872289a4c3b7733ad96573160a1136a59c436a773357faf56",
+      "type": "semantic_reviewer"
+    },
+    {
+      "file": "evidence/native-judge-final.json",
+      "total": 4,
+      "reportedPass": 4,
+      "model": "anthropic/claude-sonnet-5",
+      "estimatedCostUsd": 0.07233600000000001,
+      "packHash": "420f22326739e57d7e98ff39e86dd7df3aaa128b9e23369e4949b936cc662418",
+      "type": "semantic_reviewer"
+    },
+    {
+      "file": "evidence/native-judge-repair.json",
+      "total": 3,
+      "reportedPass": 3,
+      "model": "anthropic/claude-sonnet-5",
+      "estimatedCostUsd": 0.08152400000000001,
+      "packHash": "420f22326739e57d7e98ff39e86dd7df3aaa128b9e23369e4949b936cc662418",
+      "type": "semantic_reviewer"
+    },
+    {
+      "file": "evidence/native-repair-remaining.json",
+      "total": 3,
+      "reportedPass": 3,
+      "model": "anthropic/claude-sonnet-5",
+      "estimatedCostUsd": 0.142608,
+      "packHash": "fbabc8736fdd320dea5193436b6c5c217d02e223da24a9bd29ca4f16a21d69de",
+      "type": "role_execution"
+    },
+    {
+      "file": "evidence/native-judge-remaining.json",
+      "total": 3,
+      "reportedPass": 3,
+      "model": "anthropic/claude-sonnet-5",
+      "estimatedCostUsd": 0.132338,
+      "packHash": "82a02cbfdd0e763958c641c680499e9c3ac6a8d08056b285f581235502187fb1",
+      "type": "semantic_reviewer"
+    }
+  ],
+  "selectedResults": [
+    {
+      "inputHash": "2a6a3b6764eef6921f15bd31f4eb3149c79ae68877b05e6358859ac8be012271",
+      "fixtureId": "search_planner.normal",
+      "role": "search_planner",
+      "sourceReport": "evidence/native-repair-remaining.json",
+      "sourceRunId": "1ed93ae9-5882-4910-82fd-5c46dd4cd20c",
+      "model": "anthropic/claude-sonnet-5",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [
+        "Corrected plan is usable; shorten explanatory summary for the operator UI."
+      ],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "956022677c1967efa99718ecfaf4002f7cba77d1167288c1f5cacd4924894325",
+      "fixtureId": "search_planner.challenging",
+      "role": "search_planner",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "ee65d6e8-c2b7-41ea-8a9a-b0c983110222",
+      "model": "openai/gpt-4.1-mini",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "needs_human",
+      "manualReviewFindings": [
+        "The un-repaired restricted-source plan partly targets already regular good communication and benchmarks, confusing the outcome of the offered service with a useful prospect-discovery condition."
+      ],
+      "minorNotes": [],
+      "nextAction": "Do not advance domain state; operator review or implementation regression task."
+    },
+    {
+      "inputHash": "a7416dfb42016ed7a1aceafa8dad3ba415bed1f68af09fc87be3d3a0c8d6f7ae",
+      "fixtureId": "signal_auditor.normal",
+      "role": "signal_auditor",
+      "sourceReport": "evidence/native-repair-final.json",
+      "sourceRunId": "d965d8a2-02dc-4a49-8bbb-0d71bd42ca5f",
+      "model": "anthropic/claude-sonnet-5",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [
+        "Editorial implication could be phrased more narrowly; it does not assert measured customer harm."
+      ],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "c1ccfe6a41da645525001604d62b9949709e478d374639143eb8dbbc85139406",
+      "fixtureId": "signal_auditor.challenging",
+      "role": "signal_auditor",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "b2f5cd1d-4716-48d4-bdde-a1941995de8e",
+      "model": "openai/gpt-4.1-mini",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "422a703265f2d93de5a5faa3ba36a2979c35461d6fa3989b28361ee07cfa5bed",
+      "fixtureId": "fit_reviewer.normal",
+      "role": "fit_reviewer",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "dd2ab0e9-d6ac-43bd-b375-07ce46d3b2e2",
+      "model": "openai/gpt-4.1-mini",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [
+        "Operational result is useful; localize English prose and avoid calling one customer question a frequently asked question."
+      ],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "a6494216a97ffacc6a1d49ca0b48fcebf1eeefd239090c7f8d2e5334ea36e62e",
+      "fixtureId": "fit_reviewer.challenging",
+      "role": "fit_reviewer",
+      "sourceReport": "evidence/native-model-retest.json",
+      "sourceRunId": "f2a109f7-fec1-4dc3-abb8-1a5d34a2e647",
+      "model": "anthropic/claude-sonnet-5",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "5f0fcb94817962f717cd7635d900109b4ad4dd5c370b3753d02a7e12bd2de2e8",
+      "fixtureId": "audience_researcher.normal",
+      "role": "audience_researcher",
+      "sourceReport": "evidence/native-final-retest.json",
+      "sourceRunId": "12e13cc1-5610-4c73-9da2-577ceed48d93",
+      "model": "anthropic/claude-sonnet-5",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "5bb461cb97d2f2c9266d770490b9cc4307771c5aa52c3a6e3ab0fca6bdef244f",
+      "fixtureId": "audience_researcher.challenging",
+      "role": "audience_researcher",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "1bc62ecc-fda3-4402-abec-4db04537b72b",
+      "model": "openai/gpt-4.1-mini",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [
+        "Correctly abstains; localize English gap description."
+      ],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "78ae8767497f5fed40042f3074ef91ae46b039708b8f62100d1ba78623669efb",
+      "fixtureId": "brief_writer.normal",
+      "role": "brief_writer",
+      "sourceReport": "evidence/native-repair-final.json",
+      "sourceRunId": "5994c213-7858-49a2-9834-b72d59ba1d26",
+      "model": "anthropic/claude-sonnet-5",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "b7a78fa6cf563838a974f965e0c7b28741832a72e5d22c4d6c3bf099a9c4caf1",
+      "fixtureId": "brief_writer.challenging",
+      "role": "brief_writer",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "2ccf6116-371f-4dab-b56f-e490351e088c",
+      "model": "openai/gpt-4.1-mini",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [
+        "Correctly abstains on unverified identity; localize English gap description."
+      ],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "66e0f21550fa25157a924313cbecdff672d1298298ed161cea3dda84cd9e20f2",
+      "fixtureId": "post_writer.normal",
+      "role": "post_writer",
+      "sourceReport": "evidence/native-repair-final.json",
+      "sourceRunId": "251e1cf6-ff65-46f3-8d08-e003c619ba6c",
+      "model": "anthropic/claude-sonnet-5",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [
+        "A little repetitive about Lublin; the additional-purchase clause is entailed for the named materials/firing only."
+      ],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "fb03fd1ca66cda64e86261bfcdc01156fe9263a0cf8b872f51b1e1b22ab6aa16",
+      "fixtureId": "post_writer.challenging",
+      "role": "post_writer",
+      "sourceReport": "evidence/native-model-retest.json",
+      "sourceRunId": "44b2fcbe-0cdd-4947-b1a0-e108e1d309e2",
+      "model": "anthropic/claude-sonnet-5",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "cfc4092bdac8cdc6458131c9833464ea079d2a4446caff74cc6dae0a5392f2a9",
+      "fixtureId": "quality_judge.normal",
+      "role": "quality_judge",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "bdeb891b-c3bc-4699-9d97-16ba88434e71",
+      "model": "openai/gpt-4.1-mini",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [
+        "Correctly compares variants with identical criteria; localize explanations to Polish."
+      ],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "96c6c9965a77c908a5fcc128fbf0dbf8b2feb51e574ede457725315c34e23377",
+      "fixtureId": "quality_judge.challenging",
+      "role": "quality_judge",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "a662b122-48bd-4504-a024-fbeb5bf190a9",
+      "model": "openai/gpt-4.1-mini",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [
+        "Correctly rejects unsupported percentage/guarantee; localize explanations to Polish."
+      ],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "5c894176c34283727f2c0c91809e54777db3978432fc725409b354c5a8a71add",
+      "fixtureId": "proof_writer.normal",
+      "role": "proof_writer",
+      "sourceReport": "evidence/native-repair-remaining.json",
+      "sourceRunId": "05057733-034a-4cf4-887e-897f2bb1f94f",
+      "model": "anthropic/claude-sonnet-5",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "needs_human",
+      "manualReviewFindings": [
+        "One semantic repair corrected agency/workshop price confusion and tools inference but still added observations absent from input.findings.",
+        "The repaired output claims the new sample is shorter and that the original lacked a call to action. The supplied original includes Dołącz do nas!; these comparison claims are not properly supported."
+      ],
+      "minorNotes": [],
+      "nextAction": "Do not advance domain state; operator review or implementation regression task."
+    },
+    {
+      "inputHash": "3efc595466a73f1933aa03534d42ccc58118921592914870de4904439a04f91c",
+      "fixtureId": "proof_writer.challenging",
+      "role": "proof_writer",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "becb0291-ca92-4751-9c19-23b1b6951f90",
+      "model": "openai/gpt-4.1-mini",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "needs_human",
+      "manualReviewFindings": [
+        "Unapproved price 1200 PLN appears in free text despite quotedPricePln=null.",
+        "The output adds a new observation rather than only packaging the supplied finding.",
+        "It overstates improvement by implying that materials information resolves the unanswered question about tools."
+      ],
+      "minorNotes": [],
+      "nextAction": "Do not advance domain state; operator review or implementation regression task."
+    },
+    {
+      "inputHash": "5f61ea6a966834323bfe36d5f0f93411e1de511627db430e38f79d6534707559",
+      "fixtureId": "handoff_writer.normal",
+      "role": "handoff_writer",
+      "sourceReport": "evidence/native-repair-remaining.json",
+      "sourceRunId": "66605bcb-e755-476f-b5a1-fe16f5cebbc2",
+      "model": "anthropic/claude-sonnet-5",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "accepted_component_sample",
+      "manualReviewFindings": [],
+      "minorNotes": [
+        "Draft requires the planned human edit/approval; the phrase about answering questions before publication can be clearer. No message was sent."
+      ],
+      "nextAction": "Eligible for next internal step in this synthetic component case; no send/publication authorization."
+    },
+    {
+      "inputHash": "d8ddc63ee84575b7160475260d9a3c1ab3dcf65b81967029b0fd59330cfb4ec1",
+      "fixtureId": "handoff_writer.challenging",
+      "role": "handoff_writer",
+      "sourceReport": "evidence/native-v2.json",
+      "sourceRunId": "f5da3bea-06ab-4d4e-ae6f-0157f4503c33",
+      "model": "openai/gpt-4.1-mini",
+      "runtime": "native",
+      "nativeStatus": "ok",
+      "formalPass": true,
+      "contractErrors": [],
+      "semanticDisposition": "needs_human",
+      "manualReviewFindings": [
+        "Sending is correctly blocked, but summary implies the materials evidence responds to doubts about tools although no answer about tools is supplied.",
+        "Operator-facing summary also needs Polish wording before application acceptance."
+      ],
+      "minorNotes": [],
+      "nextAction": "Do not advance domain state; operator review or implementation regression task."
+    }
+  ],
+  "limitations": [
+    "Nine role definitions executed in real unmodified NativeAgentRunner with real provider and SQL persistence; no full application host or cross-step workflow test.",
+    "PGlite uses PostgreSQL protocol and real MikroORM but does not establish production PostgreSQL concurrency behavior.",
+    "Seeded agent registry and controlled RBAC scope; no negative auth/tenant tests.",
+    "Synthetic fixtures only; no real customer search, paid source connectors, publishing, messaging or demand validation.",
+    "Independent judge was fallible: both false positives and false negatives were observed; exact examples are documented in REPORT.md.",
+    "One repair demonstration used an evaluation-only native definition with the same role prompt/skills/schema plus a feedback envelope. The host retry adapter remains an implementation task.",
+    "Latest contract revalidation is offline, not a claim that historical model runs used the final contract hash.",
+    "Provider cost is a token estimate; billing is authoritative. No production deployment qualification is claimed."
+  ]
+}

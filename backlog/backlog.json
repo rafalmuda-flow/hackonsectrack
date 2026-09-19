@@ -1,0 +1,1657 @@
+{
+  "schemaVersion": "1.0.0",
+  "capacityHours": 34.5,
+  "reserveHours": 4,
+  "estimateBasis": "timeboxed developer work after prepared spec/agent contracts; external installs/provider latency excluded from effort but included in schedule risk",
+  "tasks": [
+    {
+      "id": "T01",
+      "title": "Uruchom przypięty host OM i bazę demonstracyjną",
+      "owner": "PLATFORM",
+      "estimateHours": 1.5,
+      "priority": "P0",
+      "wave": 1,
+      "dependsOn": [],
+      "files": [
+        "scripts/prepare-om.mjs",
+        "scripts/doctor.mjs",
+        "config/upstream.json",
+        ".env.example",
+        "infra/compose.yaml",
+        "package.json",
+        "package-lock.json",
+        "tests/acceptance/T01.test.ts",
+        "evidence/tasks/T01.md",
+        "evidence/tasks/T01.json",
+        "evidence/tasks/T01.review.json"
+      ],
+      "acceptance": [
+        "Given czysty checkout i wymagane lokalne narzędzia, When wykonam om:prepare i udokumentowany start, Then działa login i endpoint sesji OM.",
+        "Given brak PostgreSQL albo klucza modelu, When uruchomię doctor, Then dostaję konkretny brak; stan host_ready nie jest równy model_ready.",
+        "Given ponowny prepare, When host już istnieje, Then nie traci bazy ani konfiguracji użytkownika; aktualizacja overlay jest jawna."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T01.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T01.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US01",
+        "US16"
+      ],
+      "processIds": [
+        "P01"
+      ]
+    },
+    {
+      "id": "T02",
+      "title": "Zdefiniuj encje i jedną migrację acquisition",
+      "owner": "DATA",
+      "estimateHours": 1.5,
+      "priority": "P0",
+      "wave": 1,
+      "dependsOn": [],
+      "files": [
+        "modules/acquisition/data/entities.ts",
+        "modules/acquisition/data/validators.ts",
+        "modules/acquisition/migrations/",
+        "tests/acceptance/T02.test.ts",
+        "evidence/tasks/T02.md",
+        "evidence/tasks/T02.json",
+        "evidence/tasks/T02.review.json"
+      ],
+      "acceptance": [
+        "Given nowa baza, When migruję schema, Then każda tabela domenowa ma tenant_id, organization_id, UUID oraz wymagane indeksy.",
+        "Given dwa równoległe zapisy tej samej wersji przypadku, When oba próbują commit, Then jeden wygrywa, drugi otrzymuje conflict.",
+        "Given nowa wersja draftu, When zapisuję artefakt, Then wcześniejszy snapshot/draft/decision nie jest nadpisany."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T02.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T02.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US02",
+        "US03",
+        "US12"
+      ],
+      "processIds": [
+        "P01",
+        "P02",
+        "P04",
+        "P12",
+        "P14"
+      ]
+    },
+    {
+      "id": "T03",
+      "title": "Dodaj scope, repozytorium i ACL modułu",
+      "owner": "PLATFORM",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 2,
+      "dependsOn": [
+        "T01",
+        "T02"
+      ],
+      "files": [
+        "modules/acquisition/lib/scope.ts",
+        "modules/acquisition/lib/repository.ts",
+        "modules/acquisition/di.ts",
+        "modules/acquisition/acl.ts",
+        "modules/acquisition/commands/helpers.ts",
+        "tests/acceptance/T03.test.ts",
+        "evidence/tasks/T03.md",
+        "evidence/tasks/T03.json",
+        "evidence/tasks/T03.review.json"
+      ],
+      "acceptance": [
+        "Given użytkownik organizacji A, When odczytuje ID organizacji B, Then 404 bez treści, metadanych i linku eksportu.",
+        "Given brak wymaganej feature, When wykonuje mutację, Then 403 i zero zapisów.",
+        "Given body z obcym tenantId, When endpoint otrzymuje żądanie, Then scope pochodzi z auth, a sprzeczny body jest odrzucony."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T03.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T03.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US16"
+      ],
+      "processIds": [
+        "P01",
+        "P04",
+        "P12",
+        "P14"
+      ]
+    },
+    {
+      "id": "T04",
+      "title": "Zapisz kampanię i wersję oferty",
+      "owner": "PLATFORM",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 3,
+      "dependsOn": [
+        "T03"
+      ],
+      "files": [
+        "modules/acquisition/api/campaigns/route.ts",
+        "modules/acquisition/api/campaigns/[id]/activate/route.ts",
+        "modules/acquisition/commands/campaigns.ts",
+        "modules/acquisition/services/campaigns.ts",
+        "tests/acceptance/T04.test.ts",
+        "evidence/tasks/T04.md",
+        "evidence/tasks/T04.json",
+        "evidence/tasks/T04.review.json"
+      ],
+      "acceptance": [
+        "Given poprawna konfiguracja, When POST tworzy kampanię, Then zapisany rekord i odpowiedź activate zachowują tę samą wersję oferty, segment, limit i tryb.",
+        "Given robocza oferta proposal oraz rzeczywiste źródła, When uruchamiam research, Then mode=internal_demo i źródła zachowują sourceMode=live/import; status oferty nie zmienia ich na synthetic. Cena nie trafia do materiału handlowego.",
+        "Given istniejący run, When zmieni się konfiguracja kampanii, Then wejście starego runu nie zmienia się."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T04.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T04.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US01"
+      ],
+      "processIds": [
+        "P01"
+      ]
+    },
+    {
+      "id": "T05",
+      "title": "Importuj kandydatów z domen i źródeł",
+      "owner": "DATA",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 3,
+      "dependsOn": [
+        "T03"
+      ],
+      "files": [
+        "modules/acquisition/api/campaigns/[id]/candidates/route.ts",
+        "modules/acquisition/api/candidates/route.ts",
+        "modules/acquisition/api/candidates/[id]/route.ts",
+        "modules/acquisition/commands/candidates.ts",
+        "modules/acquisition/services/candidates.ts",
+        "tests/acceptance/T05.test.ts",
+        "evidence/tasks/T05.md",
+        "evidence/tasks/T05.json",
+        "evidence/tasks/T05.review.json"
+      ],
+      "acceptance": [
+        "Given ten sam canonical website i kampania, When importuję dwukrotnie, Then jeden case i oba dowody pochodzenia.",
+        "Given podobna nazwa ale inna domena, When importuję, Then dwa osobne case; brak automatycznego scalenia po nazwie.",
+        "Given seed z portfolio, When jest zapisany, Then relationshipStatus=unverified."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T05.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T05.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US02"
+      ],
+      "processIds": [
+        "P02"
+      ]
+    },
+    {
+      "id": "T06",
+      "title": "Importuj wersjonowany snapshot źródeł",
+      "owner": "DATA",
+      "estimateHours": 0.75,
+      "priority": "P0",
+      "wave": 4,
+      "dependsOn": [
+        "T05"
+      ],
+      "files": [
+        "modules/acquisition/api/candidates/[id]/evidence/route.ts",
+        "modules/acquisition/adapters/import.ts",
+        "modules/acquisition/services/snapshots.ts",
+        "tests/acceptance/T06.test.ts",
+        "evidence/tasks/T06.md",
+        "evidence/tasks/T06.json",
+        "evidence/tasks/T06.review.json"
+      ],
+      "acceptance": [
+        "Given identyczny snapshot, When importuję ponownie, Then hash pozostaje ten sam i nie powstaje drugi identyczny artefakt.",
+        "Given source=fixture, When snapshot zapisano, Then UI/API nie nazywa go live scrape.",
+        "Given niepełna historia, When importuję, Then newestFeedVerified=false pozostaje zachowane i coverage=partial."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T06.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T06.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US03"
+      ],
+      "processIds": [
+        "P04"
+      ]
+    },
+    {
+      "id": "T07",
+      "title": "Pobierz publiczną stronę jako źródło live",
+      "owner": "DATA",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 4,
+      "dependsOn": [
+        "T03"
+      ],
+      "files": [
+        "modules/acquisition/adapters/website.ts",
+        "modules/acquisition/adapters/firecrawl.ts",
+        "modules/acquisition/services/source-fetch.ts",
+        "tests/acceptance/T07.test.ts",
+        "evidence/tasks/T07.md",
+        "evidence/tasks/T07.json",
+        "evidence/tasks/T07.review.json"
+      ],
+      "acceptance": [
+        "Given publiczna dopuszczona strona, When fetch działa, Then zapisany tekst zawiera URL, czas i mode=live.",
+        "Given timeout albo 403, When collector kończy, Then source_unavailable; nie pusty sukces i nie wniosek o nieaktywności.",
+        "Given redirect na localhost/private network, When fetch próbuje śledzić adres, Then jest zablokowany również po redirect."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T07.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T07.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US03"
+      ],
+      "processIds": [
+        "P04"
+      ]
+    },
+    {
+      "id": "T08",
+      "title": "Potwierdź profil i policz odstępy publikacji",
+      "owner": "DATA",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 5,
+      "dependsOn": [
+        "T06",
+        "T07"
+      ],
+      "files": [
+        "modules/acquisition/api/candidates/[id]/identity/route.ts",
+        "modules/acquisition/services/identity.ts",
+        "modules/acquisition/services/cadence.ts",
+        "modules/acquisition/commands/identity.ts",
+        "tests/acceptance/T08.test.ts",
+        "evidence/tasks/T08.md",
+        "evidence/tasks/T08.json",
+        "evidence/tasks/T08.review.json"
+      ],
+      "acceptance": [
+        "Given strona firmy jawnie linkuje profil, When resolver analizuje źródło, Then yes z evidenceRef; podobna nazwa bez linku =>unknown.",
+        "Given co najmniej 6 postów w 90-dniowym oknie kończącym się datą najnowszego posta, newestFeedVerified=true i snapshot nie starszy niż 7 dni, When przerwa >= max(30 dni, 3 × mediana odstępów), Then wynik wskazuje długą przerwę wyłącznie w tym kanale.",
+        "Given feed partial lub sezonowa przerwa, When sprawdzam cadence, Then unknown lub expected_pause bez tezy o porzuceniu marketingu."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T08.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T08.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US04",
+        "US05"
+      ],
+      "processIds": [
+        "P03",
+        "P05"
+      ]
+    },
+    {
+      "id": "T09",
+      "title": "Zarejestruj agentów i skille native w hoście",
+      "owner": "AI",
+      "estimateHours": 0.75,
+      "priority": "P0",
+      "wave": 2,
+      "dependsOn": [
+        "T01"
+      ],
+      "files": [
+        "modules/acquisition/ai-agents.ts",
+        "modules/acquisition/ai-skills.ts",
+        "modules/acquisition/index.ts",
+        "scripts/register-acquisition.mjs",
+        "tests/acceptance/T09.test.ts",
+        "evidence/tasks/T09.md",
+        "evidence/tasks/T09.json",
+        "evidence/tasks/T09.review.json"
+      ],
+      "acceptance": [
+        "Given overlay i yarn generate, When pobieram rejestr, Then wszystkie 9 ID z procesu istnieją i każdy wymagany skill jest obecny.",
+        "Given brak skilla, When test sprawdza rejestr, Then fail zamiast cichego pominięcia.",
+        "Given agent badawczy, When odczytuję uprawnienia, Then brak narzędzi send,publish,spend i uniwersalnej mutacji bazy."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T09.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T09.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US06",
+        "US16"
+      ],
+      "processIds": [
+        "P02",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10",
+        "P11",
+        "P13"
+      ]
+    },
+    {
+      "id": "T10",
+      "title": "Przygotuj wejścia diagnozy i kwalifikacji",
+      "owner": "AI",
+      "estimateHours": 0.75,
+      "priority": "P0",
+      "wave": 3,
+      "dependsOn": [
+        "T09"
+      ],
+      "files": [
+        "modules/acquisition/services/agent-inputs/diagnosis.ts",
+        "modules/acquisition/services/agent-inputs/fit.ts",
+        "tests/acceptance/T10.test.ts",
+        "evidence/tasks/T10.md",
+        "evidence/tasks/T10.json",
+        "evidence/tasks/T10.review.json"
+      ],
+      "acceptance": [
+        "Given partial feed, When builder tworzy prompt, Then cadence unknown jest jawne; żadna instrukcja nie sugeruje wymuszenia problemu.",
+        "Given jedna wadliwa publikacja, When diagnoza jest oceniana, Then wniosek dotyczy tej publikacji, nie całej firmy.",
+        "Given brak budżetu i intencji, When fit jest zwrócony, Then oba unknown; serviceFit=no blokuje PoC."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T10.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T10.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US05",
+        "US06"
+      ],
+      "processIds": [
+        "P05",
+        "P06"
+      ]
+    },
+    {
+      "id": "T11",
+      "title": "Przygotuj wejścia mini-researchu i briefu",
+      "owner": "AI",
+      "estimateHours": 0.75,
+      "priority": "P0",
+      "wave": 3,
+      "dependsOn": [
+        "T09"
+      ],
+      "files": [
+        "modules/acquisition/services/agent-inputs/research.ts",
+        "modules/acquisition/services/agent-inputs/brief.ts",
+        "tests/acceptance/T11.test.ts",
+        "evidence/tasks/T11.md",
+        "evidence/tasks/T11.json",
+        "evidence/tasks/T11.review.json"
+      ],
+      "acceptance": [
+        "Given opinia o kategorii, When research opisuje potrzebę, Then oznacza category-level; nie przypisuje jej klientom konkretnej firmy.",
+        "Given temat wymaga nieznanej ceny, When brief powstaje, Then pomija cenę lub zwraca needs_evidence.",
+        "Given przerwa publikacji bez oryginalnego posta, When powstaje brief, Then sourcePostId jest pusty i tryb oceny absolute."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T11.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T11.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US07",
+        "US08"
+      ],
+      "processIds": [
+        "P07",
+        "P08"
+      ]
+    },
+    {
+      "id": "T12",
+      "title": "Odizoluj autora od niezależnej oceny",
+      "owner": "AI",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 3,
+      "dependsOn": [
+        "T09"
+      ],
+      "files": [
+        "modules/acquisition/services/agent-inputs/writer.ts",
+        "modules/acquisition/services/agent-inputs/judge.ts",
+        "modules/acquisition/services/quality-gate.ts",
+        "tests/acceptance/T12.test.ts",
+        "evidence/tasks/T12.md",
+        "evidence/tasks/T12.json",
+        "evidence/tasks/T12.review.json"
+      ],
+      "acceptance": [
+        "Given oryginał istnieje, When buduję input sędziego, Then etykiety A/B nie zdradzają autora, brak editor self-score.",
+        "Given autor wymyśla certyfikat, When judge i validator sprawdzają, Then hard fail i brak ready_for_review.",
+        "Given oryginał jest lepszy, When judge go wybierze, Then wynik original/tie pozostaje; claim poprawiliśmy jest zabroniony."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T12.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T12.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US09",
+        "US10"
+      ],
+      "processIds": [
+        "P09",
+        "P10"
+      ]
+    },
+    {
+      "id": "T13",
+      "title": "Wykonuj i zapisuj pojedynczy krok przez OM",
+      "owner": "PLATFORM",
+      "estimateHours": 1.0,
+      "priority": "P0",
+      "wave": 4,
+      "dependsOn": [
+        "T03",
+        "T09",
+        "T10",
+        "T11",
+        "T12"
+      ],
+      "files": [
+        "modules/acquisition/services/step-execution.ts",
+        "modules/acquisition/commands/artifacts.ts",
+        "modules/acquisition/services/artifact-validation.ts",
+        "tests/acceptance/T13.test.ts",
+        "evidence/tasks/T13.md",
+        "evidence/tasks/T13.json",
+        "evidence/tasks/T13.review.json"
+      ],
+      "acceptance": [
+        "Given poprawny wynik, When walidacja przechodzi, Then zapisuje się artifact i link do rzeczywistego AgentRun.",
+        "Given schema invalid lub nieistniejący evidenceRef, When agent skończy, Then brak zaakceptowanego artefaktu i jawny błąd output_validation_failed; native agent endpoint 422, własna malformed request 400.",
+        "Given scope case zmienił się lub expectedVersion nieaktualny, When zapisuję wynik, Then 409; wynik nie nadpisuje nowszego.",
+        "Given input nie ma wymaganych dowodów lub jest sprzeczny, When inspectAgentInput zwraca needs_input, Then zero wywołań modelu, zero zaakceptowanych artefaktów i konkretne reasons w interwencji człowieka."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T13.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T13.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US06",
+        "US11",
+        "US16"
+      ],
+      "processIds": [
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10",
+        "P11",
+        "P13"
+      ]
+    },
+    {
+      "id": "T14",
+      "title": "Zarejestruj proces i bramkę przeglądu w OM",
+      "owner": "PLATFORM",
+      "estimateHours": 1.5,
+      "priority": "P0",
+      "wave": 5,
+      "dependsOn": [
+        "T04",
+        "T05",
+        "T08",
+        "T13",
+        "T23"
+      ],
+      "files": [
+        "modules/acquisition/api/candidates/[id]/run/route.ts",
+        "modules/acquisition/api/candidates/[id]/resume/route.ts",
+        "modules/acquisition/services/process-definition.ts",
+        "modules/acquisition/commands/process.ts",
+        "modules/acquisition/events.ts",
+        "scripts/seed-process.mjs",
+        "tests/acceptance/T14.test.ts",
+        "evidence/tasks/T14.md",
+        "evidence/tasks/T14.json",
+        "evidence/tasks/T14.review.json"
+      ],
+      "acceptance": [
+        "Given graph, When workflowDefinitionDataSchema waliduje, Then każdy INVOKE_AGENT jest activityType w AUTOMATED i onResult jest obiektem.",
+        "Given start POST /api/agent_orchestrator/processes/:id/executions, When case ma input, Then zwraca execution/workflow ID i dochodzi do jawnego stop/review.",
+        "Given retry lub resume, When krok ma zapisany inputHash/output, Then brak duplikacji ukończonego artefaktu i nie ma drugiego własnego schedulera."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T14.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T14.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US11",
+        "US12"
+      ],
+      "processIds": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10",
+        "P11",
+        "P12",
+        "P13",
+        "P14"
+      ]
+    },
+    {
+      "id": "T15",
+      "title": "Zbuduj ekran kampanii i listy przypadków",
+      "owner": "UI",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 2,
+      "dependsOn": [
+        "T01"
+      ],
+      "files": [
+        "modules/acquisition/backend/acquisition/page.tsx",
+        "modules/acquisition/components/CampaignForm.tsx",
+        "modules/acquisition/components/CandidateTable.tsx",
+        "modules/acquisition/components/api.ts",
+        "modules/acquisition/i18n/pl.json",
+        "tests/acceptance/T15.test.ts",
+        "evidence/tasks/T15.md",
+        "evidence/tasks/T15.json",
+        "evidence/tasks/T15.review.json"
+      ],
+      "acceptance": [
+        "Given lista przypadków, When otwieram ekran, Then widzę firmę, źródło, aktualny stan, powód stop i akcję następnego kroku.",
+        "Given błąd API, When zapisuję formularz, Then wpisane dane zostają i komunikat mówi co poprawić.",
+        "Given synthetic fixture, When oglądam listę, Then widzę oznaczenie demo bez czytania tooltipa."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T15.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T15.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US01",
+        "US02"
+      ],
+      "processIds": [
+        "P01",
+        "P02",
+        "P15"
+      ]
+    },
+    {
+      "id": "T16",
+      "title": "Pokaż źródła, tożsamość i diagnozę sprawy",
+      "owner": "UI",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 4,
+      "dependsOn": [
+        "T15"
+      ],
+      "files": [
+        "modules/acquisition/backend/acquisition/[id]/page.tsx",
+        "modules/acquisition/components/EvidencePanel.tsx",
+        "modules/acquisition/components/DiagnosisPanel.tsx",
+        "tests/acceptance/T16.test.ts",
+        "evidence/tasks/T16.md",
+        "evidence/tasks/T16.json",
+        "evidence/tasks/T16.review.json"
+      ],
+      "acceptance": [
+        "Given diagnoza, When klikam evidenceRef, Then trafiam do właściwego źródła/fragmentu, nie tylko strony głównej.",
+        "Given partial feed, When czytam daty, Then tekst mówi ostatni zaobserwowany post, a nie ostatni opublikowany.",
+        "Given identity unknown, When chcę generować, Then widzę blokadę i możliwość potwierdzenia profilu z powodem."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T16.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T16.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US03",
+        "US04",
+        "US05",
+        "US07"
+      ],
+      "processIds": [
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07"
+      ]
+    },
+    {
+      "id": "T17",
+      "title": "Pokaż post, fakty i niezależną ocenę",
+      "owner": "UI",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 4,
+      "dependsOn": [
+        "T15"
+      ],
+      "files": [
+        "modules/acquisition/components/SamplePanel.tsx",
+        "modules/acquisition/components/QualityPanel.tsx",
+        "modules/acquisition/components/ProofPackPreview.tsx",
+        "tests/acceptance/T17.test.ts",
+        "evidence/tasks/T17.md",
+        "evidence/tasks/T17.json",
+        "evidence/tasks/T17.review.json"
+      ],
+      "acceptance": [
+        "Given draft accepted, When czytam body, Then brak JSON/debuga/technicznych cytowań; dowody są w panelu obok.",
+        "Given original wins lub tie, When otwieram ocenę, Then wynik jest równie widoczny jak accept.",
+        "Given brak oryginału, When oglądam próbkę, Then nie ma etykiety przed/po."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T17.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T17.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US08",
+        "US09",
+        "US10"
+      ],
+      "processIds": [
+        "P08",
+        "P09",
+        "P10",
+        "P11"
+      ]
+    },
+    {
+      "id": "T18",
+      "title": "Złóż wersjonowany pakiet wartości",
+      "owner": "DATA",
+      "estimateHours": 0.75,
+      "priority": "P0",
+      "wave": 5,
+      "dependsOn": [
+        "T03",
+        "T13"
+      ],
+      "files": [
+        "modules/acquisition/services/proof-pack.ts",
+        "modules/acquisition/services/agent-inputs/proof.ts",
+        "modules/acquisition/services/agent-inputs/handoff.ts",
+        "modules/acquisition/templates/proof-pack.ts",
+        "tests/acceptance/T18.test.ts",
+        "evidence/tasks/T18.md",
+        "evidence/tasks/T18.json",
+        "evidence/tasks/T18.review.json"
+      ],
+      "acceptance": [
+        "Given quality pass, approved offer i new_wins, When składam pakiet, Then zawiera max 3 obserwacje, źródła, dokładny post i zakres dalszej pracy; istniejący QualityReview jest pokazany osobno, bez nowego uzasadnienia LLM.",
+        "Given oferta proposal, When tworzę demo pack, Then cena nie jest prezentowana, zakres jest oznaczony jako propozycja, a stan handlowy pozostaje needs_offer.",
+        "Given zmiana draftu, When renderer tworzy nowy pack, Then nowy hash/version nie odziedzicza starej approval."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T18.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T18.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US11"
+      ],
+      "processIds": [
+        "P11",
+        "P13"
+      ]
+    },
+    {
+      "id": "T19",
+      "title": "Zapisz decyzję operatora dla konkretnej wersji",
+      "owner": "PLATFORM",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 6,
+      "dependsOn": [
+        "T03",
+        "T18"
+      ],
+      "files": [
+        "modules/acquisition/api/candidates/[id]/review/route.ts",
+        "modules/acquisition/commands/decisions.ts",
+        "modules/acquisition/services/decisions.ts",
+        "tests/acceptance/T19.test.ts",
+        "evidence/tasks/T19.md",
+        "evidence/tasks/T19.json",
+        "evidence/tasks/T19.review.json"
+      ],
+      "acceptance": [
+        "Given dwa kliknięcia tej samej decyzji/key, When oba docierają, Then jedna decyzja i ten samID.",
+        "Given stara wersja pakietu, When approve, Then 409 i aktualna wersja do przeglądu, bez cichego approve.",
+        "Given action=discard, When command kończy, Then ścieżka jest zakończona i zachowuje historię. revise/hold/discard wymagają powodu; revise dodatkowo wskazuje reviseFrom=P07|P08|P09|P11 i nie usuwa poprzedniego researchu."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T19.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T19.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US12"
+      ],
+      "processIds": [
+        "P12"
+      ]
+    },
+    {
+      "id": "T20",
+      "title": "Eksportuj pakiet i zapisz lokalne przekazanie",
+      "owner": "DATA",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 7,
+      "dependsOn": [
+        "T19"
+      ],
+      "files": [
+        "modules/acquisition/api/candidates/[id]/handoff/route.ts",
+        "modules/acquisition/api/candidates/[id]/packet/route.ts",
+        "modules/acquisition/commands/handoff.ts",
+        "modules/acquisition/services/handoff.ts",
+        "tests/acceptance/T20.test.ts",
+        "evidence/tasks/T20.md",
+        "evidence/tasks/T20.json",
+        "evidence/tasks/T20.review.json"
+      ],
+      "acceptance": [
+        "Given zatwierdzony pack, When handoff dwa razy z tym samym key, Then jeden receipt i identyczny export.",
+        "Given brak approval albo zmieniony artifact, When handoff/export external pack, Then 409 stale lub 400 invalid i brak udawanej dostawy.",
+        "Given brak klientowskiej odpowiedzi, When eksportuję, Then outcome jest sales_handoff, nie won ani interested."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T20.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T20.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US13"
+      ],
+      "processIds": [
+        "P13",
+        "P14"
+      ]
+    },
+    {
+      "id": "T21",
+      "title": "Dodaj panel decyzji i przekazania",
+      "owner": "UI",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 6,
+      "dependsOn": [
+        "T16",
+        "T17"
+      ],
+      "files": [
+        "modules/acquisition/backend/acquisition/[id]/review/page.tsx",
+        "modules/acquisition/components/ReviewActions.tsx",
+        "modules/acquisition/components/HandoffPanel.tsx",
+        "tests/acceptance/T21.test.ts",
+        "evidence/tasks/T21.md",
+        "evidence/tasks/T21.json",
+        "evidence/tasks/T21.review.json"
+      ],
+      "acceptance": [
+        "Given stale version 409, When klikam approve, Then formularz pokazuje konflikt i nowy podgląd zamiast zielonego sukcesu.",
+        "Given approved pack, When otwieram handoff, Then widzę wersję oraz informację zapis lokalny / nie wysłano.",
+        "Given brak uprawnienia, When czytam panel, Then akcja jest niedostępna; API nadal niezależnie egzekwuje ACL."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T21.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T21.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US12",
+        "US13"
+      ],
+      "processIds": [
+        "P12",
+        "P13",
+        "P14"
+      ]
+    },
+    {
+      "id": "T22",
+      "title": "Policz małe podsumowanie i zapisz outcome",
+      "owner": "DATA",
+      "estimateHours": 0.75,
+      "priority": "P0",
+      "wave": 7,
+      "dependsOn": [
+        "T18",
+        "T19"
+      ],
+      "files": [
+        "modules/acquisition/api/campaigns/[id]/summary/route.ts",
+        "modules/acquisition/services/summary.ts",
+        "modules/acquisition/services/outcome-validation.ts",
+        "tests/acceptance/T22.test.ts",
+        "evidence/tasks/T22.md",
+        "evidence/tasks/T22.json",
+        "evidence/tasks/T22.review.json"
+      ],
+      "acceptance": [
+        "Given brak kosztów providera, When summary liczy średnią, Then unavailable; nigdy 0.",
+        "Given brak zdarzeń sprzedażowych, When summary działa, Then not_measured zamiast 0% konwersji.",
+        "Given won bez orderRef lub ręcznego uzasadnienia, When waliduję import outcome, Then 400; no_response nie zamienia się wlost."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T22.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T22.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US14"
+      ],
+      "processIds": [
+        "P15"
+      ]
+    },
+    {
+      "id": "T23",
+      "title": "Dodaj limity kosztu, błędy i bezpieczne wznowienie",
+      "owner": "PLATFORM",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 5,
+      "dependsOn": [
+        "T13"
+      ],
+      "files": [
+        "modules/acquisition/services/budget.ts",
+        "modules/acquisition/services/retry-policy.ts",
+        "modules/acquisition/services/run-status.ts",
+        "tests/acceptance/T23.test.ts",
+        "evidence/tasks/T23.md",
+        "evidence/tasks/T23.json",
+        "evidence/tasks/T23.review.json"
+      ],
+      "acceptance": [
+        "Given wyczerpany limit, When ma nastąpić następny call, Then provider nie jest wywołany i stan=paused_budget.",
+        "Given timeout z nieznanym statusem providera, When retry, Then najpierw sprawdza providerRunId, nie zamawia ślepo drugi raz.",
+        "Given drugi quality failure, When revision limit został osiągnięty, Then manual review, bez nieskończonej pętli."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T23.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T23.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US15"
+      ],
+      "processIds": [
+        "P04",
+        "P06",
+        "P09",
+        "P10",
+        "P15"
+      ]
+    },
+    {
+      "id": "T24",
+      "title": "Uruchom izolowane evale agentów w pełnym OM",
+      "owner": "AI",
+      "estimateHours": 1,
+      "priority": "P0",
+      "wave": 6,
+      "dependsOn": [
+        "T13",
+        "T18",
+        "T23"
+      ],
+      "files": [
+        "scripts/eval-host.mjs",
+        "eval/host-cases/",
+        "evidence/native-host/",
+        "tests/acceptance/T24.test.ts",
+        "evidence/tasks/T24.md",
+        "evidence/tasks/T24.json",
+        "evidence/tasks/T24.review.json"
+      ],
+      "acceptance": [
+        "Given 9 ról, When eval-host kończy, Then każda ma real AgentRun w bazie i osobny wynik, brakująca rola = FAIL.",
+        "Given niepoparty fakt / niepełne źródła / prompt injection fixtures, When eval działa, Then stosowne blokady/unknown i źródła są sprawdzone asercjami.",
+        "Given provider niedostępny, When eval kończy, Then blocked/FAIL z kodem !=0; nie PASS na samym schemacie."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T24.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T24.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US16"
+      ],
+      "processIds": [
+        "P02",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10",
+        "P11",
+        "P13"
+      ]
+    },
+    {
+      "id": "T25",
+      "title": "Odbierz minimalny pion w aplikacji OM",
+      "owner": "PLATFORM",
+      "estimateHours": 1.0,
+      "priority": "P0",
+      "wave": 8,
+      "dependsOn": [
+        "T04",
+        "T05",
+        "T06",
+        "T07",
+        "T08",
+        "T14",
+        "T18",
+        "T19",
+        "T20",
+        "T21",
+        "T22",
+        "T23",
+        "T24"
+      ],
+      "files": [
+        "tests/acceptance/helpers/host.ts",
+        "tests/acceptance/helpers/browser.ts",
+        "evidence/demo/acceptance.md",
+        "tests/acceptance/T25.test.ts",
+        "evidence/tasks/T25.md",
+        "evidence/tasks/T25.json",
+        "evidence/tasks/T25.review.json"
+      ],
+      "acceptance": [
+        "Given nowa kampania, When przechodzę od seed do approved pack i local export, Then dane widoczne w UI zgadzają się z bazą i runIDs.",
+        "Given dobry oryginał albo partial feed, When uruchamiam case, Then proces może zatrzymać się prawidłowo zamiast produkować wymuszoną ofertę.",
+        "Given druga organizacja, When próbuje odczytu źródła/eksportu, Then nie otrzymuje cudzych danych."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T25.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T25.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US01",
+        "US03",
+        "US10",
+        "US12",
+        "US13",
+        "US15",
+        "US16"
+      ],
+      "processIds": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10",
+        "P11",
+        "P12",
+        "P13",
+        "P14",
+        "P15"
+      ]
+    },
+    {
+      "id": "T26",
+      "title": "Zamknij instrukcję demo i czytelność produktu",
+      "owner": "UI",
+      "estimateHours": 0.5,
+      "priority": "P0",
+      "wave": 9,
+      "dependsOn": [
+        "T25"
+      ],
+      "files": [
+        "docs/DEMO-RUNBOOK.md",
+        "evidence/demo/readability.md",
+        "tests/acceptance/T26.test.ts",
+        "evidence/tasks/T26.md",
+        "evidence/tasks/T26.json",
+        "evidence/tasks/T26.review.json"
+      ],
+      "acceptance": [
+        "Given świeży prezenter, When czyta runbook, Then uruchamia demo i wskazuje rezultat, koszt i rolę OM bez dodatkowego objaśnienia autora.",
+        "Given 60 sekund na proof pack, When niezależny reviewer czyta, Then wskazuje obserwację, zmianę i zakres dalszej usługi.",
+        "Given awaria providera, When pokazujemy replay, Then jawna etykieta zapisanego wykonania i pierwotny runId."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T26.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T26.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US11",
+        "US16"
+      ],
+      "processIds": [
+        "P01",
+        "P11",
+        "P12",
+        "P14",
+        "P15"
+      ]
+    },
+    {
+      "id": "T27",
+      "title": "Podłącz Apify dla jednego publicznego profilu",
+      "owner": "DATA",
+      "estimateHours": 2,
+      "priority": "P1",
+      "wave": 10,
+      "dependsOn": [
+        "T06",
+        "T07",
+        "T26"
+      ],
+      "files": [
+        "modules/acquisition/adapters/apify-posts.ts",
+        "config/providers/apify.json",
+        "tests/acceptance/T27.test.ts",
+        "evidence/tasks/T27.md",
+        "evidence/tasks/T27.json",
+        "evidence/tasks/T27.review.json"
+      ],
+      "acceptance": [
+        "Given dostępny publiczny profil, When Actor kończy, Then snapshot ma daty/URL i rozróżnia publishedAt/retrievedAt.",
+        "Given limit/pagination cap, When dane wracają, Then coverage=partial i newestFeedVerified tylko gdy dostawca to rzeczywiście umożliwia."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T27.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T27.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US17"
+      ],
+      "processIds": [
+        "P04"
+      ]
+    },
+    {
+      "id": "T28",
+      "title": "Dodaj Octolens jako źródło jawnej potrzeby",
+      "owner": "DATA",
+      "estimateHours": 1.5,
+      "priority": "P1",
+      "wave": 10,
+      "dependsOn": [
+        "T05",
+        "T07",
+        "T26"
+      ],
+      "files": [
+        "modules/acquisition/adapters/octolens.ts",
+        "config/providers/octolens.json",
+        "tests/acceptance/T28.test.ts",
+        "evidence/tasks/T28.md",
+        "evidence/tasks/T28.json",
+        "evidence/tasks/T28.review.json"
+      ],
+      "acceptance": [
+        "Given trafna wypowiedź szukam agencji, When importuję wzmiankę, Then seed zawiera cytat,URL,datę i potrzebę do sprawdzenia.",
+        "Given lista wzmianek autora, When zapisuję coverage, Then nie oznaczam jej pełnym feedem."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T28.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T28.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US18"
+      ],
+      "processIds": [
+        "P02",
+        "P04"
+      ]
+    },
+    {
+      "id": "T29",
+      "title": "Wyciągnij kandydatów z portfolio agencji",
+      "owner": "DATA",
+      "estimateHours": 2,
+      "priority": "P1",
+      "wave": 10,
+      "dependsOn": [
+        "T05",
+        "T07",
+        "T26"
+      ],
+      "files": [
+        "modules/acquisition/adapters/agency-portfolio.ts",
+        "config/providers/agency-discovery.json",
+        "tests/acceptance/T29.test.ts",
+        "evidence/tasks/T29.md",
+        "evidence/tasks/T29.json",
+        "evidence/tasks/T29.review.json"
+      ],
+      "acceptance": [
+        "Given case study z nazwą i linkiem, When parser działa, Then seed zachowuje obaURL i datę obserwacji.",
+        "Given Clutch clients segmenty lub logo bez pewnej nazwy, When ekstrakcja działa, Then nie wymyśla nazw/aktualnej współpracy."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T29.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T29.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US19"
+      ],
+      "processIds": [
+        "P02",
+        "P03"
+      ]
+    },
+    {
+      "id": "T30",
+      "title": "Dodaj obserwacje publicznych reklam",
+      "owner": "DATA",
+      "estimateHours": 1.5,
+      "priority": "P1",
+      "wave": 10,
+      "dependsOn": [
+        "T06",
+        "T07",
+        "T26"
+      ],
+      "files": [
+        "modules/acquisition/adapters/ad-library.ts",
+        "config/providers/ad-library.json",
+        "tests/acceptance/T30.test.ts",
+        "evidence/tasks/T30.md",
+        "evidence/tasks/T30.json",
+        "evidence/tasks/T30.review.json"
+      ],
+      "acceptance": [
+        "Given publiczna kreacja, When research ją używa, Then evidenceRef prowadzi do konkretnej reklamy.",
+        "Given ad count/days running, When powstaje wniosek, Then brak przypisanego budżetu,ROAS lub skuteczności."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T30.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T30.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US20"
+      ],
+      "processIds": [
+        "P04",
+        "P07"
+      ]
+    },
+    {
+      "id": "T31",
+      "title": "Uruchom monitoring zmian przez harmonogram OM",
+      "owner": "PLATFORM",
+      "estimateHours": 1.5,
+      "priority": "P1",
+      "wave": 10,
+      "dependsOn": [
+        "T14",
+        "T23",
+        "T26"
+      ],
+      "files": [
+        "modules/acquisition/workers/monitor.ts",
+        "modules/acquisition/services/monitor.ts",
+        "config/monitoring.json",
+        "tests/acceptance/T31.test.ts",
+        "evidence/tasks/T31.md",
+        "evidence/tasks/T31.json",
+        "evidence/tasks/T31.review.json"
+      ],
+      "acceptance": [
+        "Given niezmieniona strona, When poll kończy, Then unchanged nie tworzy nowej diagnozy porzucenia marketingu.",
+        "Given dwa ticks tego samego okna, When worker działa, Then idempotency blokuje drugie fetch job."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T31.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T31.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US21"
+      ],
+      "processIds": [
+        "P02",
+        "P04",
+        "P15"
+      ]
+    },
+    {
+      "id": "T32",
+      "title": "Podłącz rzeczywistego odbiorcę kontraktu handoff",
+      "owner": "PLATFORM",
+      "estimateHours": 2,
+      "priority": "P1",
+      "wave": 10,
+      "dependsOn": [
+        "T20",
+        "T26"
+      ],
+      "files": [
+        "modules/acquisition/adapters/fulfillment-intake.ts",
+        "config/handoff-target.json",
+        "tests/acceptance/T32.test.ts",
+        "evidence/tasks/T32.md",
+        "evidence/tasks/T32.json",
+        "evidence/tasks/T32.review.json"
+      ],
+      "acceptance": [
+        "Given receiver contract available, When handoff wysłany, Then odpowiedź zawiera właściwy external ID i schemaVersion.",
+        "Given timeout po commit receivera, When retry, Then ten sam key zwraca istniejący record zamiast duplikatu."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T32.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T32.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US22"
+      ],
+      "processIds": [
+        "P14"
+      ]
+    },
+    {
+      "id": "T33",
+      "title": "Opracuj i zweryfikuj bramkę realnego kontaktu",
+      "owner": "PLATFORM",
+      "estimateHours": 2,
+      "priority": "P1",
+      "wave": 10,
+      "dependsOn": [
+        "T20",
+        "T26"
+      ],
+      "files": [
+        "docs/OUTREACH-GATE.md",
+        "modules/acquisition/services/contact-eligibility.ts",
+        "config/contact-policy.example.json",
+        "tests/acceptance/T33.test.ts",
+        "evidence/tasks/T33.md",
+        "evidence/tasks/T33.json",
+        "evidence/tasks/T33.review.json"
+      ],
+      "acceptance": [
+        "Given publiczny email bez innych danych, When gate ocenia, Then review/blocked; nie automatyczneallowed.",
+        "Given zatwierdzona jakość pack, When gate ocenia, Then nie traktuje tego jako uprawnienia do kontaktu."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T33.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T33.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US23"
+      ],
+      "processIds": [
+        "P13",
+        "P14"
+      ]
+    },
+    {
+      "id": "T34",
+      "title": "Sprawdź gotowość zakupu w płatnym pilotażu",
+      "owner": "UI",
+      "estimateHours": 2,
+      "priority": "P1",
+      "wave": 10,
+      "dependsOn": [
+        "T26"
+      ],
+      "files": [
+        "docs/PILOT-EXPERIMENT.md",
+        "eval/commercial-review-form.json",
+        "tests/acceptance/T34.test.ts",
+        "evidence/tasks/T34.md",
+        "evidence/tasks/T34.json",
+        "evidence/tasks/T34.review.json"
+      ],
+      "acceptance": [
+        "Given próbka zaakceptowana przez sędziego, When badamy zakup, Then pytamy o rzeczywisty kolejny krok/płatny pilotaż, nie tylko czy tekst się podoba.",
+        "Given brak zgody na cenę, When zapisuję wynik, Then nie oznaczam go jako win; powód i nakład klienta są jawne."
+      ],
+      "status": "todo",
+      "taskFile": "tasks/T34.md",
+      "verification": [
+        {
+          "command": "node",
+          "args": [
+            "--import",
+            "tsx",
+            "--test",
+            "tests/acceptance/T34.test.ts"
+          ]
+        }
+      ],
+      "storyIds": [
+        "US24"
+      ],
+      "processIds": [
+        "P06",
+        "P11",
+        "P15"
+      ]
+    }
+  ]
+}

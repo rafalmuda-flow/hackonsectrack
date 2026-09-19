@@ -1,0 +1,30 @@
+{
+  "scope": "full host prerequisites, not provider/native functional test",
+  "items": [
+    {
+      "check": "Node24",
+      "pass": true,
+      "detail": "24.19.0"
+    },
+    {
+      "check": "git",
+      "pass": true,
+      "detail": "git version 2.51.1"
+    },
+    {
+      "check": "docker",
+      "pass": false,
+      "detail": "not installed"
+    },
+    {
+      "check": "pinned host prepared",
+      "pass": true,
+      "detail": "/workspace/scratch/4975a15a6828/flow-acquisition/.runtime/open-mercato"
+    },
+    {
+      "check": "provider configured in environment",
+      "pass": false,
+      "detail": "key presence only; values never logged"
+    }
+  ]
+}

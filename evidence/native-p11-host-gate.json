@@ -1,0 +1,21 @@
+{
+  "createdAt": "2026-09-19T04:41:57.929272+00:00",
+  "type": "deterministic_component_test_no_llm",
+  "command": "node --import tsx --test --test-name-pattern=P11 tests/agents.contracts.test.ts",
+  "exitCode": 0,
+  "tests": 3,
+  "passed": 3,
+  "failed": 0,
+  "nativeModelCalls": 0,
+  "helperSource": "modules/acquisition/contracts/agent-host-adapter.ts",
+  "helperSha256": "db0f673d4c8098569903a02b817302084c5b3e24e85c0dd5ea52fb1236daf3f3",
+  "assertions": [
+    "Copies exact reviewed findings and post; pins detached input snapshot and offer version.",
+    "Suppresses price for draft offer, tie, old winner and absent original.",
+    "Failed quality creates needs_input diagnostic, never approvable proof_pack."
+  ],
+  "limitations": [
+    "Proves pure helper behavior, not persistence, API, host workflow or native model correctness.",
+    "Native proof_writer failure remains needs_human in the separate native report."
+  ]
+}

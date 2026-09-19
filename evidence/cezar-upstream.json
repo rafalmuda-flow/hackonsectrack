@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-09-19T04:23:52.869Z",
+  "cezarCommit": "4763447f36b05e0c3934c77798335827f4398de4",
+  "cezarVersion": "0.11.1",
+  "schema": "pass",
+  "createRunApiContract": "pass",
+  "workflow": "flow-implement-task",
+  "mock": "pass",
+  "realCodingAgent": "not_run",
+  "githubCli": "not_run",
+  "openMercatoRuntime": "out_of_scope",
+  "mockInfrastructure": {
+    "status": "done",
+    "isolatedWorktree": true,
+    "steps": [
+      {
+        "id": "agent",
+        "status": "done"
+      },
+      {
+        "id": "check",
+        "status": "done"
+      }
+    ]
+  },
+  "negativeControl": {
+    "status": "failed",
+    "expected": "failed",
+    "checkRejectedMissingImplementation": true,
+    "steps": [
+      {
+        "id": "implement",
+        "status": "done",
+        "iterations": 3
+      },
+      {
+        "id": "review",
+        "status": "done",
+        "iterations": 3
+      },
+      {
+        "id": "verify",
+        "status": "failed",
+        "iterations": 3
+      }
+    ]
+  }
+}

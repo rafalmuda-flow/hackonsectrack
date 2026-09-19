@@ -1,0 +1,866 @@
+{
+  "kind": "one_semantic_feedback_retry",
+  "sourceReport": "evidence/native-v2.json",
+  "sourcePackHash": "b8df2d856af5aa1872289a4c3b7733ad96573160a1136a59c436a773357faf56",
+  "packHash": "fbabc8736fdd320dea5193436b6c5c217d02e223da24a9bd29ca4f16a21d69de",
+  "suiteStartedAt": "2026-09-19T04:34:06.620Z",
+  "finishedAt": "2026-09-19T04:36:34.577Z",
+  "frameworkVersion": "0.8.0",
+  "database": "PGlite PostgreSQL18.3 through PostgreSQL protocol; real MikroORM7 and upstream CommandBus",
+  "model": "anthropic/claude-sonnet-5",
+  "priceSource": "https://openrouter.ai/api/v1/models",
+  "promptPricePerTokenUsd": 0.000002,
+  "completionPricePerTokenUsd": 0.00001,
+  "estimatedCostUsd": 0.142608,
+  "total": 3,
+  "passed": 3,
+  "results": [
+    {
+      "fixtureInput": {
+        "scope": {
+          "tenantId": "11111111-1111-4111-8111-111111111111",
+          "organizationId": "22222222-2222-4222-8222-222222222222",
+          "candidateId": null,
+          "runId": "44444444-4444-4444-8444-444444444444",
+          "synthetic": true
+        },
+        "evidence": [
+          {
+            "id": "e1",
+            "url": "https://example.com/studio",
+            "sourceType": "website",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": null,
+            "text": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących. Materiały i wypał są w cenie warsztatu. Zajęcia odbywają się w Lublinie.",
+            "completeness": "complete",
+            "synthetic": true
+          },
+          {
+            "id": "e2",
+            "url": "https://example.com/studio/reviews",
+            "sourceType": "review",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": "2026-09-10T00:00:00Z",
+            "text": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny.",
+            "completeness": "complete",
+            "synthetic": true
+          },
+          {
+            "id": "e3",
+            "url": "https://example.com/studio/posts/one",
+            "sourceType": "post",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": "2026-09-17T00:00:00Z",
+            "text": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!",
+            "completeness": "complete",
+            "synthetic": true
+          }
+        ],
+        "campaign": {
+          "industry": "Warsztaty kreatywne",
+          "geography": "Lublin",
+          "service": "Regularne, konkretne posty odpowiadające na pytania klientów",
+          "maxCandidates": 5,
+          "allowedSources": [
+            "web",
+            "agency_portfolio",
+            "public_posts"
+          ]
+        }
+      },
+      "fixtureId": "search_planner.normal",
+      "agentId": "acquisition.search_planner",
+      "repairAgentId": "acquisition.search_planner_repair_eval",
+      "repairAttempt": 1,
+      "priorSourceRunId": "e00e8c5e-64b7-4854-a6a0-ae5c0ee35321",
+      "repairInput": {
+        "originalInput": {
+          "scope": {
+            "tenantId": "11111111-1111-4111-8111-111111111111",
+            "organizationId": "22222222-2222-4222-8222-222222222222",
+            "candidateId": null,
+            "runId": "44444444-4444-4444-8444-444444444444",
+            "synthetic": true
+          },
+          "evidence": [
+            {
+              "id": "e1",
+              "url": "https://example.com/studio",
+              "sourceType": "website",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": null,
+              "text": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących. Materiały i wypał są w cenie warsztatu. Zajęcia odbywają się w Lublinie.",
+              "completeness": "complete",
+              "synthetic": true
+            },
+            {
+              "id": "e2",
+              "url": "https://example.com/studio/reviews",
+              "sourceType": "review",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": "2026-09-10T00:00:00Z",
+              "text": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny.",
+              "completeness": "complete",
+              "synthetic": true
+            },
+            {
+              "id": "e3",
+              "url": "https://example.com/studio/posts/one",
+              "sourceType": "post",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": "2026-09-17T00:00:00Z",
+              "text": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!",
+              "completeness": "complete",
+              "synthetic": true
+            }
+          ],
+          "campaign": {
+            "industry": "Warsztaty kreatywne",
+            "geography": "Lublin",
+            "service": "Regularne, konkretne posty odpowiadające na pytania klientów",
+            "maxCandidates": 5,
+            "allowedSources": [
+              "web",
+              "agency_portfolio",
+              "public_posts"
+            ]
+          }
+        },
+        "priorOutput": {
+          "kind": "research",
+          "data": {
+            "status": "ready",
+            "summary": "W celu znalezienia kandydatów świadczących warsztaty kreatywne w Lublinie z regularną, konkretną komunikacją odpowiadającą na pytania klientów, proponuję zapytania skoncentrowane na analizie widoczności stron internetowych, aktywności w mediach społecznościowych i portfolio agencji. Hipotezy do zweryfikowania to ewentualne przerwy w publikacji oraz ogólnikowość treści marketingowych w ofertach konkurencyjnych. Celem jest wyłonienie podmiotów o stałej, jasnej i interaktywnej komunikacji marketingowej.",
+            "uncertainties": [
+              "Czy konkurencyjne podmioty prowadzą regularne i szczegółowe publikacje odpowiadające na typowe pytania klientów.",
+              "Czy istnieją konkurencyjne warsztaty ceramiki lub podobnych warsztatów kreatywnych w Lublinie.",
+              "Czy obecne działania marketingowe studio przykładowego są zgodne z najlepszymi praktykami branży na lokalnym rynku.",
+              "Czy kandydaci wykorzystują różnorodne formy mediów i kanałów do utrzymywania zaangażowania klientów."
+            ],
+            "reviewReasons": [
+              "Proszę potwierdzić, czy zakres poszukiwań powinien być rozszerzony na inne miasta lub typy warsztatów kreatywnych.",
+              "Czy wymagana jest szczególna analiza konkurencji w social media lub tylko strony www?",
+              "Potwierdzenie zakresu wykluczeń podmiotów niezajmujących się warsztatami kreatywnymi.",
+              "Czy interesują nas wyłącznie działalności z Lublina czy także okolic?"
+            ],
+            "queries": [
+              {
+                "query": "warsztaty ceramiki Lublin \"opinie\" OR \"recenzje\"",
+                "source": "web",
+                "purpose": "Zidentyfikowanie warsztatów ceramiki działających w Lublinie oraz sprawdzenie jakości i charakteru opinii klientów w celu oceny renomy i zaangażowania marketingowego."
+              },
+              {
+                "query": "warsztaty kreatywne Lublin regularne posty pytania klientów",
+                "source": "public_posts",
+                "purpose": "Znajdowanie publicznych postów i dyskusji dotyczących warsztatów kreatywnych w Lublinie, które pokazują tematykę i częstotliwość odpowiedzi na pytania klientów, aby zweryfikować aktywność marketingową."
+              },
+              {
+                "query": "warsztaty ceramiki Lublin portfolio agencji",
+                "source": "agency_portfolio",
+                "purpose": "Przeszukanie portfoliów agencji marketingowych pod kątem realizacji kampanii dla warsztatów kreatywnych w Lublinie, by sprawdzić dotychczasowe działania i efekty komunikacji."
+              },
+              {
+                "query": "warsztaty kreatywne Lublin przerwy w publikacjach",
+                "source": "public_posts",
+                "purpose": "Zidentyfikowanie przypadków przerywanej lub nieregularnej komunikacji marketingowej warsztatów kreatywnych, które mogą świadczyć o problemach z utrzymaniem zainteresowania klientów."
+              },
+              {
+                "query": "\"warsztaty ceramiki\" \"Lublin\" \"narzędzia i materiały w cenie\"",
+                "source": "web",
+                "purpose": "Sprawdzenie, które warsztaty jasno komunikują warunki uczestnictwa, szczególnie czy materiały i narzędzia są zapewnione, co jest ważną informacją dla początkujących klientów."
+              },
+              {
+                "query": "warsztaty kreatywne Lublin język komunikacji konkretne odpowiedzi na pytania",
+                "source": "public_posts",
+                "purpose": "Analiza publicznych dyskusji i komentarzy pod kątem jakości i konkretności odpowiedzi warsztatów kreatywnych w Lublinie na pytania klientów."
+              },
+              {
+                "query": "warsztaty kreatywne Lublin content marketing",
+                "source": "web",
+                "purpose": "Analiza strategii content marketingu stosowanych przez warsztaty kreatywne w Lublinie, by ocenić poziom zaangażowania i profesjonalizmu komunikacji."
+              },
+              {
+                "query": "warsztaty ceramiki Lublin social media aktywność",
+                "source": "public_posts",
+                "purpose": "Ocena obecności i aktywności warsztatów ceramiki w mediach społecznościowych w Lublinie, która decyduje o utrzymaniu relacji z klientami."
+              }
+            ],
+            "inclusionCriteria": [
+              "Oferta warsztatów kreatywnych prowadzone w Lublinie.",
+              "Źródła publiczne typu web, portfolio agencji lub publiczne posty.",
+              "Materiały odpowiadające na pytania klientów lub manifestujące regularność komunikacji."
+            ],
+            "exclusionCriteria": [
+              "Warsztaty spoza Lublina.",
+              "Informacje niemające związku z warsztatami kreatywnymi.",
+              "Brak dostępu do publicznie dostępnych treści marketingowych."
+            ]
+          }
+        },
+        "semanticFeedback": [
+          "The previous plan confuses the offered service capability (regular useful posts) with prospect selection: its goal is to find companies already communicating clearly and regularly, and some queries seek benchmarks. The campaign is acquisition for the supplied service. Identify relevant businesses and treat interrupted/generic marketing as hypotheses to verify from sources, not desired existing qualities or claims that a search has run. Do not select against prospects simply because they lack the desired future service outcome. Preserve the allowed sources/geography and keep the plan feasible."
+        ]
+      },
+      "startedAt": "2026-09-19T04:34:14.567Z",
+      "finishedAt": "2026-09-19T04:35:17.225Z",
+      "passed": true,
+      "errors": [],
+      "result": {
+        "kind": "research",
+        "data": {
+          "status": "ready",
+          "summary": "Zadanie to research akwizycyjny: celem jest znalezienie do 5 podmiotów prowadzących warsztaty kreatywne w Lublinie, którym można zaproponować usługę regularnych, konkretnych postów odpowiadających na pytania klientów. Materiał wejściowy (e1–e3) dotyczy jednego przykładowego studia i ilustruje wzorzec potencjalnego problemu – pytanie klienta pozostające bez odpowiedzi w recenzji oraz ogólnikowy, niekonkretny wpis promocyjny. Te obserwacje traktuję jako hipotezy wzorca do zweryfikowania u innych znalezionych podmiotów, a nie jako kryterium wykluczające: firmy, które jeszcze nie prowadzą regularnej, konkretnej komunikacji, są właśnie właściwym celem oferty, nie konkurentami do naśladowania. Poprawiony plan skupia zapytania na identyfikacji rzeczywistych firm z branży warsztatów kreatywnych działających w Lublinie (przez web, public_posts i agency_portfolio jako źródło seedowe), bez preselekcji na podstawie jakości ich obecnej komunikacji.",
+          "uncertainties": [
+            "Nie wiadomo, ile faktycznie działających podmiotów warsztatów kreatywnych istnieje w Lublinie poza przykładem ze evidence – wymaga potwierdzenia przez wyszukiwanie.",
+            "Nieznane jest, czy wzorzec z evidence (nieodpowiedziane pytanie klienta, ogólnikowy wpis) występuje u innych podmiotów – to hipoteza do zweryfikowania per-kandydat, nie fakt ogólnobranżowy.",
+            "Brak informacji, czy portfolio jakiejkolwiek agencji zawiera realizacje dla warsztatów kreatywnych w Lublinie – trzeba to sprawdzić, traktując portfolio wyłącznie jako źródło seedowe, nie dowód aktualnej relacji.",
+            "Nie jest jasne, czy zakres geograficzny obejmuje wyłącznie miasto Lublin czy też najbliższe okolice – jeśli klient tego nie określił, należy trzymać się dosłownie 'Lublin'."
+          ],
+          "reviewReasons": [],
+          "queries": [
+            {
+              "query": "warsztaty kreatywne Lublin",
+              "source": "web",
+              "purpose": "Zidentyfikowanie działających w Lublinie firm/pracowni prowadzących warsztaty kreatywne jako potencjalnych kandydatów do usługi, niezależnie od jakości ich obecnej komunikacji."
+            },
+            {
+              "query": "warsztaty ceramiki Lublin",
+              "source": "web",
+              "purpose": "Znalezienie konkretnych pracowni ceramicznych w Lublinie (typ warsztatu zgodny z przykładem z evidence) jako kandydatów."
+            },
+            {
+              "query": "warsztaty rękodzieła Lublin",
+              "source": "web",
+              "purpose": "Rozszerzenie poszukiwań na inne formy warsztatów kreatywnych (rękodzieło) działających w Lublinie, by nie ograniczać się tylko do ceramiki."
+            },
+            {
+              "query": "pracownia artystyczna warsztaty Lublin kontakt",
+              "source": "web",
+              "purpose": "Wyszukanie stron/wizytówek lokalnych pracowni artystycznych w Lublinie w celu uzyskania listy potencjalnych kandydatów z danymi kontaktowymi publicznie dostępnymi."
+            },
+            {
+              "query": "warsztaty kreatywne Lublin Facebook posty",
+              "source": "public_posts",
+              "purpose": "Sprawdzenie publicznej aktywności social media znalezionych podmiotów w celu weryfikacji hipotezy o nieregularnej lub przerywanej publikacji treści."
+            },
+            {
+              "query": "warsztaty ceramiki Lublin Instagram opinie pytania",
+              "source": "public_posts",
+              "purpose": "Weryfikacja hipotezy dotyczącej ogólnikowych treści lub nieodpowiedzianych pytań klientów w publicznych postach i komentarzach podobnych do wzorca z evidence (e2, e3)."
+            },
+            {
+              "query": "warsztaty kreatywne Lublin dla dzieci i dorosłych",
+              "source": "web",
+              "purpose": "Poszerzenie zakresu segmentu warsztatów kreatywnych (np. malarstwo, decoupage, florystyka) w Lublinie w celu zwiększenia liczby potencjalnych kandydatów do maksymalnie 5 wymaganych."
+            },
+            {
+              "query": "warsztaty kreatywne Lublin portfolio realizacji",
+              "source": "agency_portfolio",
+              "purpose": "Sprawdzenie portfolio agencji jako źródła seedowego pod kątem wcześniejszych projektów związanych z warsztatami kreatywnymi w Lublinie, wyłącznie jako punkt wyjścia do dalszej weryfikacji, nie jako dowód aktualnej relacji."
+            }
+          ],
+          "inclusionCriteria": [
+            "Podmiot prowadzi warsztaty kreatywne (np. ceramika, rękodzieło, sztuka) jako główną lub istotną działalność.",
+            "Działalność jest zlokalizowana w Lublinie (siedziba, miejsce zajęć lub jednoznaczny opis lokalizacji).",
+            "Podmiot ma publicznie dostępną obecność (strona www, profil social media, wpis w katalogu) możliwą do zweryfikowania przez wskazane źródła.",
+            "Kandydat może, ale nie musi, wykazywać obecnie problemy komunikacyjne (nieregularność, ogólnikowość) – to hipoteza do zweryfikowania per-kandydat, nie warunek wstępny wyboru."
+          ],
+          "exclusionCriteria": [
+            "Podmioty działające poza Lublinem.",
+            "Firmy niezwiązane z warsztatami kreatywnymi (inne branże).",
+            "Same agencje marketingowe/portfolio jako podmiot docelowy (portfolio służy tylko jako seed, nie jest kandydatem).",
+            "Podmioty, dla których nie istnieje żadna publicznie dostępna treść umożliwiająca weryfikację (brak strony, brak profilu, brak wzmianek)."
+          ]
+        }
+      },
+      "run": {
+        "id": "1ed93ae9-5882-4910-82fd-5c46dd4cd20c",
+        "status": "ok",
+        "runtime": "native",
+        "resultKind": "research",
+        "inputTokens": 4245,
+        "outputTokens": 5226
+      },
+      "guardrailRows": 2,
+      "traceSpans": 1,
+      "estimatedCostUsd": 0.06075
+    },
+    {
+      "fixtureInput": {
+        "scope": {
+          "tenantId": "11111111-1111-4111-8111-111111111111",
+          "organizationId": "22222222-2222-4222-8222-222222222222",
+          "candidateId": "33333333-3333-4333-8333-333333333333",
+          "runId": "44444444-4444-4444-8444-444444444444",
+          "synthetic": true
+        },
+        "evidence": [
+          {
+            "id": "e1",
+            "url": "https://example.com/studio",
+            "sourceType": "website",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": null,
+            "text": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących. Materiały i wypał są w cenie warsztatu. Zajęcia odbywają się w Lublinie.",
+            "completeness": "complete",
+            "synthetic": true
+          },
+          {
+            "id": "e2",
+            "url": "https://example.com/studio/reviews",
+            "sourceType": "review",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": "2026-09-10T00:00:00Z",
+            "text": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny.",
+            "completeness": "complete",
+            "synthetic": true
+          },
+          {
+            "id": "e3",
+            "url": "https://example.com/studio/posts/one",
+            "sourceType": "post",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": "2026-09-17T00:00:00Z",
+            "text": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!",
+            "completeness": "complete",
+            "synthetic": true
+          }
+        ],
+        "candidate": {
+          "name": "Studio Przykład — SYNTHETIC",
+          "websiteUrl": "https://example.com/studio",
+          "profileUrl": "https://example.com/studio/posts",
+          "identityVerified": true
+        },
+        "findings": [
+          {
+            "id": "f1",
+            "category": "content_defect",
+            "statement": "Post nie wyjaśnia, na czym polega oferta ani co uczestnik dostaje.",
+            "certainty": "observed",
+            "citations": [
+              {
+                "evidenceId": "e3",
+                "quote": "Odkryj magię nieograniczonych możliwości!"
+              }
+            ],
+            "implication": "Warto odpowiedzieć na konkretne pytanie początkującego uczestnika."
+          }
+        ],
+        "post": {
+          "text": "Pierwszy warsztat ceramiki? Materiały i wypał są w cenie warsztatu. Możesz skupić się na poznawaniu pracy z gliną. Zapytaj o najbliższy termin.",
+          "claimReferences": [
+            {
+              "excerpt": "Materiały i wypał są w cenie warsztatu.",
+              "citations": [
+                {
+                  "evidenceId": "e1",
+                  "quote": "Materiały i wypał są w cenie warsztatu."
+                }
+              ]
+            }
+          ],
+          "assumptions": []
+        },
+        "offer": {
+          "id": "offer-synthetic-01",
+          "approval": "approved",
+          "name": "Miesięczna obsługa treści — SYNTHETIC",
+          "scope": [
+            "Research pytań klientów",
+            "Cztery posty miesięcznie",
+            "Akceptacja przed publikacją"
+          ],
+          "exclusions": [
+            "Płatne kampanie",
+            "Gwarancja sprzedaży"
+          ],
+          "pricePln": 1200,
+          "approvedBy": "synthetic-operator"
+        },
+        "comparisonStatus": "new_wins"
+      },
+      "fixtureId": "proof_writer.normal",
+      "agentId": "acquisition.proof_writer",
+      "repairAgentId": "acquisition.proof_writer_repair_eval",
+      "repairAttempt": 1,
+      "priorSourceRunId": "98867b13-1014-44ba-a80e-4f9826cfc67a",
+      "repairInput": {
+        "originalInput": {
+          "scope": {
+            "tenantId": "11111111-1111-4111-8111-111111111111",
+            "organizationId": "22222222-2222-4222-8222-222222222222",
+            "candidateId": "33333333-3333-4333-8333-333333333333",
+            "runId": "44444444-4444-4444-8444-444444444444",
+            "synthetic": true
+          },
+          "evidence": [
+            {
+              "id": "e1",
+              "url": "https://example.com/studio",
+              "sourceType": "website",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": null,
+              "text": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących. Materiały i wypał są w cenie warsztatu. Zajęcia odbywają się w Lublinie.",
+              "completeness": "complete",
+              "synthetic": true
+            },
+            {
+              "id": "e2",
+              "url": "https://example.com/studio/reviews",
+              "sourceType": "review",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": "2026-09-10T00:00:00Z",
+              "text": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny.",
+              "completeness": "complete",
+              "synthetic": true
+            },
+            {
+              "id": "e3",
+              "url": "https://example.com/studio/posts/one",
+              "sourceType": "post",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": "2026-09-17T00:00:00Z",
+              "text": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!",
+              "completeness": "complete",
+              "synthetic": true
+            }
+          ],
+          "candidate": {
+            "name": "Studio Przykład — SYNTHETIC",
+            "websiteUrl": "https://example.com/studio",
+            "profileUrl": "https://example.com/studio/posts",
+            "identityVerified": true
+          },
+          "findings": [
+            {
+              "id": "f1",
+              "category": "content_defect",
+              "statement": "Post nie wyjaśnia, na czym polega oferta ani co uczestnik dostaje.",
+              "certainty": "observed",
+              "citations": [
+                {
+                  "evidenceId": "e3",
+                  "quote": "Odkryj magię nieograniczonych możliwości!"
+                }
+              ],
+              "implication": "Warto odpowiedzieć na konkretne pytanie początkującego uczestnika."
+            }
+          ],
+          "post": {
+            "text": "Pierwszy warsztat ceramiki? Materiały i wypał są w cenie warsztatu. Możesz skupić się na poznawaniu pracy z gliną. Zapytaj o najbliższy termin.",
+            "claimReferences": [
+              {
+                "excerpt": "Materiały i wypał są w cenie warsztatu.",
+                "citations": [
+                  {
+                    "evidenceId": "e1",
+                    "quote": "Materiały i wypał są w cenie warsztatu."
+                  }
+                ]
+              }
+            ],
+            "assumptions": []
+          },
+          "offer": {
+            "id": "offer-synthetic-01",
+            "approval": "approved",
+            "name": "Miesięczna obsługa treści — SYNTHETIC",
+            "scope": [
+              "Research pytań klientów",
+              "Cztery posty miesięcznie",
+              "Akceptacja przed publikacją"
+            ],
+            "exclusions": [
+              "Płatne kampanie",
+              "Gwarancja sprzedaży"
+            ],
+            "pricePln": 1200,
+            "approvedBy": "synthetic-operator"
+          },
+          "comparisonStatus": "new_wins"
+        },
+        "priorOutput": {
+          "kind": "research",
+          "data": {
+            "status": "ready",
+            "summary": "Post jest teraz konkretny i odpowiada na pytania początkujących uczestników warsztatów ceramiki, wyjaśniając, że materiały i wypał są w cenie warsztatu, co daje jasność co do oferty. Dodano także zachętę do zapytania o najbliższy termin, co stanowi jasne wezwanie do działania. Poprzedni post był ogólny i nie wyjaśniał, co dokładnie uczestnik otrzymuje.",
+            "uncertainties": [
+              "Nie wiadomo, jaka jest dokładna struktura i czas trwania warsztatu.",
+              "Brak informacji o dostępności terminów i maksymalnej liczbie uczestników.",
+              "Nieznana jest gotowość odbiorców do zapłaty za warsztat w podanej cenie."
+            ],
+            "reviewReasons": [],
+            "title": "Lepszy post promujący warsztat ceramiki dla początkujących z jasnym zakresem oferty",
+            "observations": [
+              {
+                "id": "obs1",
+                "category": "content_defect",
+                "statement": "Post zawiera jasną informację: materiały i wypał są w cenie warsztatu.",
+                "certainty": "observed",
+                "citations": [
+                  {
+                    "evidenceId": "e1",
+                    "quote": "Materiały i wypał są w cenie warsztatu."
+                  }
+                ],
+                "implication": "Zwiększa to jasność oferty dla potencjalnego klienta."
+              },
+              {
+                "id": "obs2",
+                "category": "declared_need",
+                "statement": "Potencjalny uczestnik zadaje pytanie o potrzebę przyniesienia własnych narzędzi, ważne dla początkujących.",
+                "certainty": "observed",
+                "citations": [
+                  {
+                    "evidenceId": "e2",
+                    "quote": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny."
+                  }
+                ],
+                "implication": "Post odpowiada na tę potrzebę, uspokajając klienta i obniżając barierę wejścia."
+              },
+              {
+                "id": "obs3",
+                "category": "content_defect",
+                "statement": "Poprzedni post używał ogólnych sloganów bez konkretów o ofercie.",
+                "certainty": "observed",
+                "citations": [
+                  {
+                    "evidenceId": "e3",
+                    "quote": "Odkryj magię nieograniczonych możliwości!"
+                  }
+                ],
+                "implication": "Nie wyjaśniał co dokładnie otrzymuje klient, co mogło zniechęcać."
+              }
+            ],
+            "samplePost": "Pierwszy warsztat ceramiki? Materiały i wypał są w cenie warsztatu. Możesz skupić się na poznawaniu pracy z gliną. Zapytaj o najbliższy termin.",
+            "whyBetter": [
+              "Post zawiera konkretne informacje o ofercie, co buduje zaufanie.",
+              "Post odpowiada na typowe pytania początkujących, zmniejszając niepewność.",
+              "Zawiera wezwanie do działania: zapytaj o najbliższy termin."
+            ],
+            "nextStep": "Monitorować reakcje na post i zebrać feedback od potencjalnych uczestników, aby ewentualnie doprecyzować ofertę i komunikację.",
+            "offerId": "offer-synthetic-01",
+            "quotedPricePln": 1200,
+            "limitations": [
+              "Brak szczegółów dotyczących długości i formatu warsztatu.",
+              "Nieznana jest gotowość klientów do zakupu w podanej cenie mimo akceptacji oferty.",
+              "Nie znamy potencjału skali rynku i zainteresowania poza zebranymi danymi."
+            ],
+            "improvementClaimAllowed": true,
+            "commercialReadiness": true
+          }
+        },
+        "semanticFeedback": [
+          "The prior output talks about willingness to pay for the workshop at the supplied price. input.offer.pricePln belongs to the agency content service, NOT the workshop. No workshop amount is known. Keep these two businesses and their buyers distinct.",
+          "The proof says the post responds to the customer tools question, calming the customer. The sample only confirms materials and firing, not tools. A question is not an answer; do not claim an unsupported improvement or customer effect.",
+          "The role packages existing input.findings; the previous output added new audit observations. Preserve only supplied observations with supported scope, keep samplePost exactly unchanged, and use modest content-based whyBetter explanations rather than invented business outcomes."
+        ]
+      },
+      "startedAt": "2026-09-19T04:35:17.232Z",
+      "finishedAt": "2026-09-19T04:36:01.902Z",
+      "passed": true,
+      "errors": [],
+      "result": {
+        "kind": "research",
+        "data": {
+          "status": "ready",
+          "summary": "Poprzedni post (e3) opierał się na ogólnych sloganach bez konkretnej informacji o ofercie warsztatu, co zidentyfikowano jako defekt treści (finding f1). Nowo przygotowany post zawiera konkretną informację operacyjną — że materiały i wypał są w cenie warsztatu — zgodną z opisem oferty studia (e1), oraz zawiera wezwanie do działania. Recenzja klienta (e2) pokazuje, że początkujący uczestnicy mają pytania dotyczące przygotowania do zajęć, w tym o narzędzia; nowy post nie odnosi się wprost do tej kwestii, więc nie można stwierdzić, że ją rozwiązuje.",
+          "uncertainties": [
+            "Nie wiadomo, czy nowy post odpowiada na pytanie o narzędzia zadane w recenzji (e2) — sample wspomina tylko o materiałach i wypale, nie o narzędziach.",
+            "Cena 1200 PLN w ofercie dotyczy usługi agencyjnej (miesięczna obsługa treści), a nie ceny warsztatu ceramiki dla klienta końcowego; gotowość uczestników do zapłaty za warsztat pozostaje nieznana.",
+            "Brak informacji o strukturze, czasie trwania i dostępności terminów warsztatu, co może wpływać na trafność treści posta."
+          ],
+          "reviewReasons": [],
+          "title": "Pakiet wewnętrzny: porównanie posta studia ceramiki z poprzednią wersją ogólnikową",
+          "observations": [
+            {
+              "id": "obs1",
+              "category": "content_defect",
+              "statement": "Poprzedni post studia zawierał ogólne sformułowania bez konkretnej informacji o zakresie oferty warsztatu.",
+              "certainty": "observed",
+              "citations": [
+                {
+                  "evidenceId": "e3",
+                  "quote": "Odkryj magię nieograniczonych możliwości!"
+                }
+              ],
+              "implication": "Warto rozważyć uzupełnienie komunikacji o konkretne informacje dotyczące oferty warsztatu."
+            },
+            {
+              "id": "obs2",
+              "category": "declared_need",
+              "statement": "W recenzji klientka pyta, czy na pierwsze zajęcia trzeba przynieść własne narzędzia, zaznaczając, że nigdy nie lepiła z gliny.",
+              "certainty": "observed",
+              "citations": [
+                {
+                  "evidenceId": "e2",
+                  "quote": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny."
+                }
+              ],
+              "implication": "To zgłoszone pytanie sugeruje, że informacja o narzędziach mogłaby być przydatna dla początkujących odbiorców przyszłych treści, choć obecny sample post go nie adresuje."
+            },
+            {
+              "id": "obs3",
+              "category": "business_fact",
+              "statement": "Studio deklaruje na swojej stronie, że materiały i wypał są w cenie warsztatu.",
+              "certainty": "observed",
+              "citations": [
+                {
+                  "evidenceId": "e1",
+                  "quote": "Materiały i wypał są w cenie warsztatu."
+                }
+              ],
+              "implication": "Ten fakt operacyjny jest odzwierciedlony w nowym poście jako konkretna informacja o ofercie."
+            }
+          ],
+          "samplePost": "Pierwszy warsztat ceramiki? Materiały i wypał są w cenie warsztatu. Możesz skupić się na poznawaniu pracy z gliną. Zapytaj o najbliższy termin.",
+          "whyBetter": [
+            "Nowy post zawiera konkretną informację operacyjną (materiały i wypał w cenie), podczas gdy poprzedni post ograniczał się do ogólnych sloganów bez treści o ofercie.",
+            "Nowy post zawiera wyraźne wezwanie do działania ('Zapytaj o najbliższy termin'), którego nie było w poprzedniej wersji.",
+            "Nowy post jest krótszy i skoncentrowany na jednym konkretnym fakcie o warsztacie, w przeciwieństwie do ogólnikowego języka poprzedniej wersji ('Odkryj magię nieograniczonych możliwości!')."
+          ],
+          "nextStep": "Przekazać przygotowany post do wewnętrznej akceptacji zespołu studia przed jakąkolwiek publikacją; rozważyć, czy warto dodać informację o narzędziach w kolejnej wersji treści.",
+          "offerId": "offer-synthetic-01",
+          "quotedPricePln": 1200,
+          "limitations": [
+            "Sample post nie odpowiada wprost na pytanie o narzędzia zgłoszone w recenzji (e2).",
+            "Cena 1200 PLN dotyczy oferty agencyjnej (obsługa treści), nie ceny warsztatu ceramiki; gotowość klientów studia do zapłaty za warsztat jest nieznana.",
+            "Brak danych o strukturze, czasie trwania i dostępności terminów warsztatu.",
+            "To jest wewnętrzny pakiet demonstracyjny, nie dowód na wzrost sprzedaży ani zainteresowania."
+          ],
+          "improvementClaimAllowed": true,
+          "commercialReadiness": true
+        }
+      },
+      "run": {
+        "id": "05057733-034a-4cf4-887e-897f2bb1f94f",
+        "status": "ok",
+        "runtime": "native",
+        "resultKind": "research",
+        "inputTokens": 5284,
+        "outputTokens": 3643
+      },
+      "guardrailRows": 2,
+      "traceSpans": 1,
+      "estimatedCostUsd": 0.046998000000000005
+    },
+    {
+      "fixtureInput": {
+        "scope": {
+          "tenantId": "11111111-1111-4111-8111-111111111111",
+          "organizationId": "22222222-2222-4222-8222-222222222222",
+          "candidateId": "33333333-3333-4333-8333-333333333333",
+          "runId": "44444444-4444-4444-8444-444444444444",
+          "synthetic": true
+        },
+        "evidence": [
+          {
+            "id": "e1",
+            "url": "https://example.com/studio",
+            "sourceType": "website",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": null,
+            "text": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących. Materiały i wypał są w cenie warsztatu. Zajęcia odbywają się w Lublinie.",
+            "completeness": "complete",
+            "synthetic": true
+          },
+          {
+            "id": "e2",
+            "url": "https://example.com/studio/reviews",
+            "sourceType": "review",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": "2026-09-10T00:00:00Z",
+            "text": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny.",
+            "completeness": "complete",
+            "synthetic": true
+          },
+          {
+            "id": "e3",
+            "url": "https://example.com/studio/posts/one",
+            "sourceType": "post",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": "2026-09-17T00:00:00Z",
+            "text": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!",
+            "completeness": "complete",
+            "synthetic": true
+          }
+        ],
+        "candidate": {
+          "name": "Studio Przykład — SYNTHETIC",
+          "websiteUrl": "https://example.com/studio",
+          "profileUrl": "https://example.com/studio/posts",
+          "identityVerified": true
+        },
+        "offer": {
+          "id": "offer-synthetic-01",
+          "approval": "approved",
+          "name": "Miesięczna obsługa treści — SYNTHETIC",
+          "scope": [
+            "Research pytań klientów",
+            "Cztery posty miesięcznie",
+            "Akceptacja przed publikacją"
+          ],
+          "exclusions": [
+            "Płatne kampanie",
+            "Gwarancja sprzedaży"
+          ],
+          "pricePln": 1200,
+          "approvedBy": "synthetic-operator"
+        },
+        "mode": "commercial",
+        "comparisonStatus": "new_wins",
+        "proofSummary": "Próbka wyjaśnia wprost, że materiały i wypał są w cenie warsztatu.",
+        "materialApproved": true,
+        "contactEligibility": "approved",
+        "approvedContactChannel": "email"
+      },
+      "fixtureId": "handoff_writer.normal",
+      "agentId": "acquisition.handoff_writer",
+      "repairAgentId": "acquisition.handoff_writer_repair_eval",
+      "repairAttempt": 1,
+      "priorSourceRunId": "19d0f26c-81d0-46f5-a91f-57d13ad6b3a9",
+      "repairInput": {
+        "originalInput": {
+          "scope": {
+            "tenantId": "11111111-1111-4111-8111-111111111111",
+            "organizationId": "22222222-2222-4222-8222-222222222222",
+            "candidateId": "33333333-3333-4333-8333-333333333333",
+            "runId": "44444444-4444-4444-8444-444444444444",
+            "synthetic": true
+          },
+          "evidence": [
+            {
+              "id": "e1",
+              "url": "https://example.com/studio",
+              "sourceType": "website",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": null,
+              "text": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących. Materiały i wypał są w cenie warsztatu. Zajęcia odbywają się w Lublinie.",
+              "completeness": "complete",
+              "synthetic": true
+            },
+            {
+              "id": "e2",
+              "url": "https://example.com/studio/reviews",
+              "sourceType": "review",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": "2026-09-10T00:00:00Z",
+              "text": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny.",
+              "completeness": "complete",
+              "synthetic": true
+            },
+            {
+              "id": "e3",
+              "url": "https://example.com/studio/posts/one",
+              "sourceType": "post",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": "2026-09-17T00:00:00Z",
+              "text": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!",
+              "completeness": "complete",
+              "synthetic": true
+            }
+          ],
+          "candidate": {
+            "name": "Studio Przykład — SYNTHETIC",
+            "websiteUrl": "https://example.com/studio",
+            "profileUrl": "https://example.com/studio/posts",
+            "identityVerified": true
+          },
+          "offer": {
+            "id": "offer-synthetic-01",
+            "approval": "approved",
+            "name": "Miesięczna obsługa treści — SYNTHETIC",
+            "scope": [
+              "Research pytań klientów",
+              "Cztery posty miesięcznie",
+              "Akceptacja przed publikacją"
+            ],
+            "exclusions": [
+              "Płatne kampanie",
+              "Gwarancja sprzedaży"
+            ],
+            "pricePln": 1200,
+            "approvedBy": "synthetic-operator"
+          },
+          "mode": "commercial",
+          "comparisonStatus": "new_wins",
+          "proofSummary": "Próbka wyjaśnia wprost, że materiały i wypał są w cenie warsztatu.",
+          "materialApproved": true,
+          "contactEligibility": "approved",
+          "approvedContactChannel": "email"
+        },
+        "priorOutput": {
+          "kind": "research",
+          "data": {
+            "status": "ready",
+            "summary": "Studio Przykład offers beginner pottery workshops including all materials and firing costs, held in Lublin. Customer inquiry clarifies no need to bring own tools, easing entry barriers. The agency offer proposes monthly content management with research, four posts per month, and approval before publishing, excluding paid campaigns and sales guarantees, at a price of 1200 PLN approved by an operator. The material is approved and the contact channel is email, with full identity verification of the candidate studio. This aligns well with the new client acquisition objective.",
+            "uncertainties": [
+              "No explicit customer testimonials or sales metrics confirming the effectiveness of content service.",
+              "No direct evidence that the customer actively requests or agrees to paid content service beyond initial sample.",
+              "No data about how the posts will specifically detail or enhance customer understanding beyond the brief sample text."
+            ],
+            "reviewReasons": [],
+            "internalSummary": "Studio Przykład conducts beginner pottery workshops including materials and firing in Lublin. Customer questions confirm no need for personal tools. Provided offer for monthly content creation includes research of client questions, four posts monthly, and approval process, price 1200 PLN, fully approved by synthetic-operator. Materials and contact eligibility confirmed with email channel approved. Evidence supports readiness for a content service engagement but lacks quantitative proof of impact or detailed content strategy. Next step is review of draft message before sales contact.",
+            "messageDraft": "Dear Studio Przykład team,\n\nWe appreciate your commitment to providing comprehensive beginner pottery workshops that include all necessary materials and firing. To help you further connect with your audience and ease their first experience, we have prepared a content service that includes regular posts addressing common questions and highlighting your studio's unique advantages.\n\nWe look forward to discussing how this collaboration can enhance your outreach and engage more enthusiasts in Lublin.\n\nBest regards,",
+            "nextOwner": "sales",
+            "nextAction": "review_draft",
+            "offerId": "offer-synthetic-01",
+            "commercialReadiness": true,
+            "sendAuthorized": false
+          }
+        },
+        "semanticFeedback": [
+          "The prior output states that customer questions confirm no need to bring personal tools. Evidence contains only a question, not an answer, while the website confirms materials and firing, not tools. Correct summary and any draft wherever they make this unsupported inference. Preserve contact/material/offer gates and sendAuthorized=false. Do not replace this mistake with another invented selling point."
+        ]
+      },
+      "startedAt": "2026-09-19T04:36:01.904Z",
+      "finishedAt": "2026-09-19T04:36:34.577Z",
+      "passed": true,
+      "errors": [],
+      "result": {
+        "kind": "research",
+        "data": {
+          "status": "ready",
+          "summary": "Studio Przykład (SYNTHETIC) prowadzi warsztaty ceramiki dla początkujących w Lublinie; strona (e1) potwierdza, że materiały i wypał są wliczone w cenę warsztatu. Recenzja klienta (e2) zawiera pytanie, czy na pierwsze zajęcia trzeba przynieść własne narzędzia — pytanie to pozostaje bez odpowiedzi w dostępnych dowodach, więc nie można twierdzić, że kwestia narzędzi jest wyjaśniona. Zatwierdzona oferta obsługi treści (research pytań klientów, cztery posty miesięcznie, akceptacja przed publikacją; wyłączenia: płatne kampanie, gwarancja sprzedaży; 1200 PLN) została zaakceptowana przez synthetic-operator. Materiał próbki jest zatwierdzony, kanał kontaktu (e-mail) jest zatwierdzony, tożsamość kandydata zweryfikowana. Zatwierdzone podsumowanie próbki wskazuje, że przykładowy wpis jasno wyjaśnia, że materiały i wypał są w cenie warsztatu — to konkretna, wsparta dowodami poprawa komunikacji, niezależna od nierozstrzygniętej kwestii narzędzi.",
+          "uncertainties": [
+            "Brak dowodów potwierdzających, czy studio odpowiedziało klientowi na pytanie o własne narzędzia (e2) — pytanie pozostaje otwarte, nie jest to potwierdzona odpowiedź 'nie trzeba'.",
+            "Brak danych ilościowych (konwersje, liczba zapisów) potwierdzających efektywność treści.",
+            "willingnessToPay pozostaje niezweryfikowana — zatwierdzona cena oferty nie jest dowodem budżetu klienta.",
+            "Brak potwierdzenia, czy studio zgodzi się na regularną współpracę poza próbką."
+          ],
+          "reviewReasons": [],
+          "internalSummary": "Studio Przykład prowadzi warsztaty ceramiki w Lublinie; e1 potwierdza materiały i wypał w cenie. e2 to nieodpowiedziane pytanie klienta o własne narzędzia — brak dowodu na odpowiedź, więc wcześniejsze twierdzenie o 'braku potrzeby narzędzi' zostało usunięte jako niewsparte. Zatwierdzona oferta (1200 PLN, approvedBy: synthetic-operator) obejmuje research pytań klientów, cztery posty miesięcznie i akceptację przed publikacją. Materiał próbki zatwierdzony, kanał kontaktu e-mail zatwierdzony, comparisonStatus=new_wins. Wszystkie wymagane zgody (oferta, materiał, kontakt) są spełnione, co umożliwia przygotowanie szkicu wiadomości handlowej opisującego konkretną, potwierdzoną dowodami poprawę (wyjaśnienie materiałów/wypału), bez odnoszenia się do nierozstrzygniętej kwestii narzędzi.",
+          "messageDraft": "Dzień dobry,\n\nZauważyliśmy, że klienci pytają o szczegóły pierwszych zajęć — np. czy trzeba przynieść własne narzędzia. Przygotowaliśmy przykładowy wpis, który jasno wyjaśnia, że materiały i wypał są wliczone w cenę warsztatu, co może rozwiać część wątpliwości początkujących uczestników.\n\nJeśli byliby Państwo zainteresowani, chętnie porozmawiamy o comiesięcznej obsłudze treści, która regularnie odpowiada na pytania klientów przed publikacją.\n\nZ poważaniem,",
+          "nextOwner": "sales",
+          "nextAction": "review_draft",
+          "offerId": "offer-synthetic-01",
+          "commercialReadiness": true,
+          "sendAuthorized": false
+        }
+      },
+      "run": {
+        "id": "66605bcb-e755-476f-b5a1-fe16f5cebbc2",
+        "status": "ok",
+        "runtime": "native",
+        "resultKind": "research",
+        "inputTokens": 4200,
+        "outputTokens": 2646
+      },
+      "guardrailRows": 2,
+      "traceSpans": 1,
+      "estimatedCostUsd": 0.03486
+    }
+  ],
+  "limitations": [
+    "Repair uses an evaluation-only native definition with the same role/skills/schema plus an explicit repair instruction; app retry wrapper remains a host implementation task.",
+    "No expected answer or referenceOutput was supplied to the model.",
+    "Developer harness uses official seeded registry test hook, no generated host registry.",
+    "RBAC fixture scope; no HTTP/session or negative tenant authorization test.",
+    "Events collected in harness; no durable event worker.",
+    "No UI and no workflow transitions.",
+    "Synthetic data only; KMS fallback noop, encryption not verified.",
+    "Native runtime persists before custom cross-field postcheck; app wrapper must not commit domain output before postcheck.",
+    "Provider catalogue pricing estimate excludes unreported retry overhead; provider billing is authoritative."
+  ]
+}

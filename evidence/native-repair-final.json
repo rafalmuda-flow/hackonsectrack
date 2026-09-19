@@ -1,0 +1,749 @@
+{
+  "kind": "one_semantic_feedback_retry",
+  "sourceReport": "evidence/native-final-retest.json",
+  "sourcePackHash": "420f22326739e57d7e98ff39e86dd7df3aaa128b9e23369e4949b936cc662418",
+  "packHash": "420f22326739e57d7e98ff39e86dd7df3aaa128b9e23369e4949b936cc662418",
+  "suiteStartedAt": "2026-09-19T04:29:55.428Z",
+  "finishedAt": "2026-09-19T04:30:46.594Z",
+  "frameworkVersion": "0.8.0",
+  "database": "PGlite PostgreSQL18.3 through PostgreSQL protocol; real MikroORM7 and upstream CommandBus",
+  "model": "anthropic/claude-sonnet-5",
+  "priceSource": "https://openrouter.ai/api/v1/models",
+  "promptPricePerTokenUsd": 0.000002,
+  "completionPricePerTokenUsd": 0.00001,
+  "estimatedCostUsd": 0.066252,
+  "total": 3,
+  "passed": 3,
+  "results": [
+    {
+      "fixtureInput": {
+        "scope": {
+          "tenantId": "11111111-1111-4111-8111-111111111111",
+          "organizationId": "22222222-2222-4222-8222-222222222222",
+          "candidateId": "33333333-3333-4333-8333-333333333333",
+          "runId": "44444444-4444-4444-8444-444444444444",
+          "synthetic": true
+        },
+        "evidence": [
+          {
+            "id": "e1",
+            "url": "https://example.com/studio",
+            "sourceType": "website",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": null,
+            "text": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących. Materiały i wypał są w cenie warsztatu. Zajęcia odbywają się w Lublinie.",
+            "completeness": "complete",
+            "synthetic": true
+          },
+          {
+            "id": "e2",
+            "url": "https://example.com/studio/reviews",
+            "sourceType": "review",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": "2026-09-10T00:00:00Z",
+            "text": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny.",
+            "completeness": "complete",
+            "synthetic": true
+          },
+          {
+            "id": "e3",
+            "url": "https://example.com/studio/posts/one",
+            "sourceType": "post",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": "2026-09-17T00:00:00Z",
+            "text": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!",
+            "completeness": "complete",
+            "synthetic": true
+          }
+        ],
+        "candidate": {
+          "name": "Studio Przykład — SYNTHETIC",
+          "websiteUrl": "https://example.com/studio",
+          "profileUrl": "https://example.com/studio/posts",
+          "identityVerified": true
+        },
+        "collection": {
+          "completeness": "complete",
+          "postCount": 1
+        },
+        "cadence": {
+          "previousMedianGapDays": null,
+          "lastPostAgeDays": 2,
+          "seasonalityKnown": false
+        }
+      },
+      "fixtureId": "signal_auditor.normal",
+      "agentId": "acquisition.signal_auditor",
+      "repairAgentId": "acquisition.signal_auditor_repair_eval",
+      "repairAttempt": 1,
+      "priorSourceRunId": "c83ca963-c292-4412-bc74-340d4e64b706",
+      "repairInput": {
+        "originalInput": {
+          "scope": {
+            "tenantId": "11111111-1111-4111-8111-111111111111",
+            "organizationId": "22222222-2222-4222-8222-222222222222",
+            "candidateId": "33333333-3333-4333-8333-333333333333",
+            "runId": "44444444-4444-4444-8444-444444444444",
+            "synthetic": true
+          },
+          "evidence": [
+            {
+              "id": "e1",
+              "url": "https://example.com/studio",
+              "sourceType": "website",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": null,
+              "text": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących. Materiały i wypał są w cenie warsztatu. Zajęcia odbywają się w Lublinie.",
+              "completeness": "complete",
+              "synthetic": true
+            },
+            {
+              "id": "e2",
+              "url": "https://example.com/studio/reviews",
+              "sourceType": "review",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": "2026-09-10T00:00:00Z",
+              "text": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny.",
+              "completeness": "complete",
+              "synthetic": true
+            },
+            {
+              "id": "e3",
+              "url": "https://example.com/studio/posts/one",
+              "sourceType": "post",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": "2026-09-17T00:00:00Z",
+              "text": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!",
+              "completeness": "complete",
+              "synthetic": true
+            }
+          ],
+          "candidate": {
+            "name": "Studio Przykład — SYNTHETIC",
+            "websiteUrl": "https://example.com/studio",
+            "profileUrl": "https://example.com/studio/posts",
+            "identityVerified": true
+          },
+          "collection": {
+            "completeness": "complete",
+            "postCount": 1
+          },
+          "cadence": {
+            "previousMedianGapDays": null,
+            "lastPostAgeDays": 2,
+            "seasonalityKnown": false
+          }
+        },
+        "priorOutput": {
+          "kind": "research",
+          "data": {
+            "status": "ready",
+            "summary": "Tożsamość kandydata jest zweryfikowana, a zebrany materiał (1 post, kompletna kolekcja) pozwala wskazać konkretny defekt treści: opublikowany post opiera się na ogólnikowych sloganach marketingowych bez żadnej konkretnej informacji dla czytelnika. Jednocześnie w recenzji widać realne pytanie odbiorcy dotyczące zajęć dla początkujących, na które obecny post nie odpowiada. Dane o częstotliwości publikacji (tylko 1 post, lastPostAgeDays=2, seasonalityKnown=false) są zbyt ograniczone, by ocenić regularność — nie stanowią podstawy do wniosku o przerwie w publikacjach.",
+            "uncertainties": [
+              "Dostępny jest tylko jeden post z kolekcji, więc nie można wiarygodnie ocenić rytmu/regularności publikacji (previousMedianGapDays=null, seasonalityKnown=false).",
+              "Nie wiadomo, czy inne posty na profilu zawierają więcej konkretnych informacji — ocena dotyczy tylko dostarczonego postu e3.",
+              "Nie jest jasne, czy studio odpowiada na pytania klientów (np. e2) w innych kanałach niż analizowany post."
+            ],
+            "reviewReasons": [],
+            "findings": [
+              {
+                "id": "f1",
+                "category": "content_defect",
+                "statement": "Analizowany post (e3) składa się wyłącznie z ogólnych sformułowań marketingowych bez żadnej konkretnej informacji o zajęciach, cenie, terminie czy grupie docelowej.",
+                "certainty": "observed",
+                "citations": [
+                  {
+                    "evidenceId": "e3",
+                    "quote": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!"
+                  }
+                ],
+                "implication": "Warto zrewidować ten post tak, by zawierał konkretną, użyteczną informację (np. dla kogo są zajęcia, co obejmuje cena) — obecna wersja nie odpowiada na żadne pytanie odbiorcy."
+              },
+              {
+                "id": "f2",
+                "category": "declared_need",
+                "statement": "Recenzja klientki (e2) zawiera konkretne pytanie o to, czy na pierwsze zajęcia trzeba przynieść własne narzędzia, mimo że nigdy wcześniej nie lepiła z gliny — a strona (e1) wspomina jedynie, że materiały i wypał są w cenie, bez wyraźnego odniesienia do narzędzi.",
+                "certainty": "observed",
+                "citations": [
+                  {
+                    "evidenceId": "e2",
+                    "quote": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny."
+                  }
+                ],
+                "implication": "Sugerowane: w przyszłych postach lub na stronie wyraźnie doprecyzować, czy narzędzia są zapewniane, aby wprost odpowiedzieć na powtarzającą się niepewność początkujących klientów."
+              }
+            ],
+            "need": "content_quality"
+          }
+        },
+        "semanticFeedback": [
+          "The prior output says powtarzająca się niepewność początkujących klientów. Only one customer question is available. Remove unsupported prevalence or repetition claims. Keep observations scoped to supplied post and source."
+        ]
+      },
+      "startedAt": "2026-09-19T04:30:03.610Z",
+      "finishedAt": "2026-09-19T04:30:21.887Z",
+      "passed": true,
+      "errors": [],
+      "result": {
+        "kind": "research",
+        "data": {
+          "status": "ready",
+          "summary": "Tożsamość kandydata jest zweryfikowana, a zebrany materiał (1 post, kompletna kolekcja) pozwala wskazać konkretny defekt treści: opublikowany post opiera się na ogólnikowych sloganach marketingowych bez żadnej konkretnej informacji dla czytelnika. Jednocześnie w dostarczonej recenzji widać konkretne pytanie odbiorcy dotyczące zajęć dla początkujących, na które obecny post nie odpowiada. Dane o częstotliwości publikacji (tylko 1 post, lastPostAgeDays=2, seasonalityKnown=false) są zbyt ograniczone, by ocenić regularność — nie stanowią podstawy do wniosku o przerwie w publikacjach.",
+          "uncertainties": [
+            "Dostępny jest tylko jeden post z kolekcji, więc nie można wiarygodnie ocenić rytmu/regularności publikacji (previousMedianGapDays=null, seasonalityKnown=false).",
+            "Nie wiadomo, czy inne posty na profilu zawierają więcej konkretnych informacji — ocena dotyczy tylko dostarczonego postu e3.",
+            "Dostępna jest tylko jedna recenzja (e2) z pytaniem klientki — nie wiadomo, czy takie pytanie jest reprezentatywne dla innych odbiorców."
+          ],
+          "reviewReasons": [],
+          "findings": [
+            {
+              "id": "f1",
+              "category": "content_defect",
+              "statement": "Analizowany post (e3) składa się wyłącznie z ogólnych sformułowań marketingowych bez żadnej konkretnej informacji o zajęciach, cenie, terminie czy grupie docelowej.",
+              "certainty": "observed",
+              "citations": [
+                {
+                  "evidenceId": "e3",
+                  "quote": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!"
+                }
+              ],
+              "implication": "Warto zrewidować ten post tak, by zawierał konkretną, użyteczną informację (np. dla kogo są zajęcia, co obejmuje cena) — obecna wersja nie odpowiada na żadne pytanie odbiorcy."
+            },
+            {
+              "id": "f2",
+              "category": "declared_need",
+              "statement": "Recenzja klientki (e2) zawiera konkretne pytanie o to, czy na pierwsze zajęcia trzeba przynieść własne narzędzia, mimo że nigdy wcześniej nie lepiła z gliny — a strona (e1) wspomina jedynie, że materiały i wypał są w cenie, bez wyraźnego odniesienia do narzędzi.",
+              "certainty": "observed",
+              "citations": [
+                {
+                  "evidenceId": "e2",
+                  "quote": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny."
+                }
+              ],
+              "implication": "Sugerowane: doprecyzować na stronie lub w komunikacji, czy narzędzia są zapewniane, aby wprost odpowiedzieć na tę konkretną niepewność wyrażoną w dostarczonej recenzji."
+            }
+          ],
+          "need": "content_quality"
+        }
+      },
+      "run": {
+        "id": "d965d8a2-02dc-4a49-8bbb-0d71bd42ca5f",
+        "status": "ok",
+        "runtime": "native",
+        "resultKind": "research",
+        "inputTokens": 4453,
+        "outputTokens": 1637
+      },
+      "guardrailRows": 2,
+      "traceSpans": 1,
+      "estimatedCostUsd": 0.025276
+    },
+    {
+      "fixtureInput": {
+        "scope": {
+          "tenantId": "11111111-1111-4111-8111-111111111111",
+          "organizationId": "22222222-2222-4222-8222-222222222222",
+          "candidateId": "33333333-3333-4333-8333-333333333333",
+          "runId": "44444444-4444-4444-8444-444444444444",
+          "synthetic": true
+        },
+        "evidence": [
+          {
+            "id": "e1",
+            "url": "https://example.com/studio",
+            "sourceType": "website",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": null,
+            "text": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących. Materiały i wypał są w cenie warsztatu. Zajęcia odbywają się w Lublinie.",
+            "completeness": "complete",
+            "synthetic": true
+          },
+          {
+            "id": "e2",
+            "url": "https://example.com/studio/reviews",
+            "sourceType": "review",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": "2026-09-10T00:00:00Z",
+            "text": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny.",
+            "completeness": "complete",
+            "synthetic": true
+          },
+          {
+            "id": "e3",
+            "url": "https://example.com/studio/posts/one",
+            "sourceType": "post",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": "2026-09-17T00:00:00Z",
+            "text": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!",
+            "completeness": "complete",
+            "synthetic": true
+          }
+        ],
+        "candidate": {
+          "name": "Studio Przykład — SYNTHETIC",
+          "websiteUrl": "https://example.com/studio",
+          "profileUrl": "https://example.com/studio/posts",
+          "identityVerified": true
+        },
+        "audience": "Osoby zaczynające przygodę z ceramiką w Lublinie",
+        "customerQuestion": "Co jest w cenie pierwszego warsztatu?",
+        "findings": [
+          {
+            "id": "f1",
+            "category": "content_defect",
+            "statement": "Post nie wyjaśnia, na czym polega oferta ani co uczestnik dostaje.",
+            "certainty": "observed",
+            "citations": [
+              {
+                "evidenceId": "e3",
+                "quote": "Odkryj magię nieograniczonych możliwości!"
+              }
+            ],
+            "implication": "Warto odpowiedzieć na konkretne pytanie początkującego uczestnika."
+          }
+        ],
+        "brandVoice": [
+          "Prosty",
+          "Spokojny",
+          "Konkretny"
+        ],
+        "channel": "facebook",
+        "maxCharacters": 800
+      },
+      "fixtureId": "brief_writer.normal",
+      "agentId": "acquisition.brief_writer",
+      "repairAgentId": "acquisition.brief_writer_repair_eval",
+      "repairAttempt": 1,
+      "priorSourceRunId": "f41423fe-7811-422d-abc0-729623371213",
+      "repairInput": {
+        "originalInput": {
+          "scope": {
+            "tenantId": "11111111-1111-4111-8111-111111111111",
+            "organizationId": "22222222-2222-4222-8222-222222222222",
+            "candidateId": "33333333-3333-4333-8333-333333333333",
+            "runId": "44444444-4444-4444-8444-444444444444",
+            "synthetic": true
+          },
+          "evidence": [
+            {
+              "id": "e1",
+              "url": "https://example.com/studio",
+              "sourceType": "website",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": null,
+              "text": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących. Materiały i wypał są w cenie warsztatu. Zajęcia odbywają się w Lublinie.",
+              "completeness": "complete",
+              "synthetic": true
+            },
+            {
+              "id": "e2",
+              "url": "https://example.com/studio/reviews",
+              "sourceType": "review",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": "2026-09-10T00:00:00Z",
+              "text": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny.",
+              "completeness": "complete",
+              "synthetic": true
+            },
+            {
+              "id": "e3",
+              "url": "https://example.com/studio/posts/one",
+              "sourceType": "post",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": "2026-09-17T00:00:00Z",
+              "text": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!",
+              "completeness": "complete",
+              "synthetic": true
+            }
+          ],
+          "candidate": {
+            "name": "Studio Przykład — SYNTHETIC",
+            "websiteUrl": "https://example.com/studio",
+            "profileUrl": "https://example.com/studio/posts",
+            "identityVerified": true
+          },
+          "audience": "Osoby zaczynające przygodę z ceramiką w Lublinie",
+          "customerQuestion": "Co jest w cenie pierwszego warsztatu?",
+          "findings": [
+            {
+              "id": "f1",
+              "category": "content_defect",
+              "statement": "Post nie wyjaśnia, na czym polega oferta ani co uczestnik dostaje.",
+              "certainty": "observed",
+              "citations": [
+                {
+                  "evidenceId": "e3",
+                  "quote": "Odkryj magię nieograniczonych możliwości!"
+                }
+              ],
+              "implication": "Warto odpowiedzieć na konkretne pytanie początkującego uczestnika."
+            }
+          ],
+          "brandVoice": [
+            "Prosty",
+            "Spokojny",
+            "Konkretny"
+          ],
+          "channel": "facebook",
+          "maxCharacters": 800
+        },
+        "priorOutput": {
+          "kind": "research",
+          "data": {
+            "status": "ready",
+            "summary": "Przygotowano brief na post na Facebooka odpowiadający na pytanie początkujących uczestników o to, co jest wliczone w cenę pierwszego warsztatu ceramiki w Studio Przykład w Lublinie. Wykorzystano wyłącznie potwierdzone fakty ze strony studia (materiały i wypał w cenie, lokalizacja Lublin, warsztaty dla początkujących). Nie potwierdzono, czy trzeba przynosić własne narzędzia — to pytanie z recenzji, nie odpowiedź, więc temat pozostaje poza zakresem posta.",
+            "uncertainties": [
+              "Nie wiadomo, czy uczestnicy muszą przynosić własne narzędzia na pierwsze zajęcia — e2 to pytanie recenzenta, nie potwierdzona odpowiedź studia.",
+              "Brak informacji o konkretnej cenie warsztatu (kwocie) — e1 nie podaje liczby."
+            ],
+            "reviewReasons": [],
+            "brief": {
+              "audience": "Osoby zaczynające przygodę z ceramiką w Lublinie",
+              "question": "Co jest w cenie pierwszego warsztatu?",
+              "objective": "Czytelnik ma zrozumieć, że materiały i wypał są wliczone w cenę pierwszego warsztatu, więc może przyjść bez dodatkowych zakupów i bez obaw zacząć naukę ceramiki.",
+              "angle": "Spokojne wyjaśnienie, że pierwszy warsztat jest przyjazny dla początkujących — wszystko potrzebne do stworzenia i wypalenia pracy jest już w cenie zajęć w Lublinie.",
+              "voice": [
+                "Prosty",
+                "Spokojny",
+                "Konkretny"
+              ],
+              "requiredFacts": [
+                {
+                  "evidenceId": "e1",
+                  "quote": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących."
+                },
+                {
+                  "evidenceId": "e1",
+                  "quote": "Materiały i wypał są w cenie warsztatu."
+                },
+                {
+                  "evidenceId": "e1",
+                  "quote": "Zajęcia odbywają się w Lublinie."
+                }
+              ],
+              "avoidClaims": [
+                "Nie podawać konkretnej kwoty ceny warsztatu (brak danych).",
+                "Nie twierdzić, że narzędzia są zapewniane lub że trzeba przynieść własne — brak potwierdzonej informacji.",
+                "Nie używać ogólnych sloganów bez treści (np. 'magia nieograniczonych możliwości').",
+                "Nie obiecywać efektów, rezultatów ani satysfakcji uczestników.",
+                "Nie wspominać opinii lub cytatów klientów jako potwierdzonych faktów."
+              ],
+              "channel": "facebook",
+              "maxCharacters": 800,
+              "callToAction": "Napisz do nas, aby zapytać o najbliższy termin pierwszego warsztatu."
+            }
+          }
+        },
+        "semanticFeedback": [
+          "The objective says bez dodatkowych zakupów and the angle says wszystko potrzebne is included. Source confirms materials and firing only, not tools or all supplies. Narrow every objective, angle and other field to facts entailed by the source; do not contradict the avoidClaims section."
+        ]
+      },
+      "startedAt": "2026-09-19T04:30:21.891Z",
+      "finishedAt": "2026-09-19T04:30:36.732Z",
+      "passed": true,
+      "errors": [],
+      "result": {
+        "kind": "research",
+        "data": {
+          "status": "ready",
+          "summary": "Przygotowano brief na post na Facebooka odpowiadający na pytanie początkujących uczestników o to, co jest wliczone w cenę pierwszego warsztatu ceramiki w Studio Przykład w Lublinie. Wykorzystano wyłącznie potwierdzone fakty ze strony studia (materiały i wypał w cenie, lokalizacja Lublin, warsztaty dla początkujących). Zawężono treść tak, aby nie sugerowała, że w cenie są też narzędzia lub że uczestnik nie musi niczego przynosić — źródło potwierdza jedynie materiały i wypał, nie narzędzia.",
+          "uncertainties": [
+            "Nie wiadomo, czy uczestnicy muszą przynosić własne narzędzia na pierwsze zajęcia — e2 to pytanie recenzenta, nie potwierdzona odpowiedź studia.",
+            "Brak informacji o konkretnej cenie warsztatu (kwocie) — e1 nie podaje liczby."
+          ],
+          "reviewReasons": [],
+          "brief": {
+            "audience": "Osoby zaczynające przygodę z ceramiką w Lublinie",
+            "question": "Co jest w cenie pierwszego warsztatu?",
+            "objective": "Czytelnik ma zrozumieć, że materiały i wypał są wliczone w cenę pierwszego warsztatu ceramiki w Lublinie.",
+            "angle": "Spokojne, konkretne wyjaśnienie, że materiały i wypał są już w cenie pierwszego warsztatu dla początkujących w Lublinie — bez odnoszenia się do narzędzi czy innych elementów, których źródło nie potwierdza.",
+            "voice": [
+              "Prosty",
+              "Spokojny",
+              "Konkretny"
+            ],
+            "requiredFacts": [
+              {
+                "evidenceId": "e1",
+                "quote": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących."
+              },
+              {
+                "evidenceId": "e1",
+                "quote": "Materiały i wypał są w cenie warsztatu."
+              },
+              {
+                "evidenceId": "e1",
+                "quote": "Zajęcia odbywają się w Lublinie."
+              }
+            ],
+            "avoidClaims": [
+              "Nie podawać konkretnej kwoty ceny warsztatu (brak danych).",
+              "Nie twierdzić, że narzędzia są zapewniane lub że trzeba przynieść własne — brak potwierdzonej informacji.",
+              "Nie sugerować, że wszystko potrzebne (np. narzędzia, inne materiały) jest w cenie — źródło potwierdza tylko materiały i wypał.",
+              "Nie używać ogólnych sloganów bez treści (np. 'magia nieograniczonych możliwości').",
+              "Nie obiecywać efektów, rezultatów ani satysfakcji uczestników.",
+              "Nie wspominać opinii lub cytatów klientów jako potwierdzonych faktów."
+            ],
+            "channel": "facebook",
+            "maxCharacters": 800,
+            "callToAction": "Napisz do nas, aby zapytać o najbliższy termin pierwszego warsztatu."
+          }
+        }
+      },
+      "run": {
+        "id": "5994c213-7858-49a2-9834-b72d59ba1d26",
+        "status": "ok",
+        "runtime": "native",
+        "resultKind": "research",
+        "inputTokens": 4302,
+        "outputTokens": 1489
+      },
+      "guardrailRows": 2,
+      "traceSpans": 1,
+      "estimatedCostUsd": 0.023494
+    },
+    {
+      "fixtureInput": {
+        "scope": {
+          "tenantId": "11111111-1111-4111-8111-111111111111",
+          "organizationId": "22222222-2222-4222-8222-222222222222",
+          "candidateId": "33333333-3333-4333-8333-333333333333",
+          "runId": "44444444-4444-4444-8444-444444444444",
+          "synthetic": true
+        },
+        "evidence": [
+          {
+            "id": "e1",
+            "url": "https://example.com/studio",
+            "sourceType": "website",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": null,
+            "text": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących. Materiały i wypał są w cenie warsztatu. Zajęcia odbywają się w Lublinie.",
+            "completeness": "complete",
+            "synthetic": true
+          },
+          {
+            "id": "e2",
+            "url": "https://example.com/studio/reviews",
+            "sourceType": "review",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": "2026-09-10T00:00:00Z",
+            "text": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny.",
+            "completeness": "complete",
+            "synthetic": true
+          },
+          {
+            "id": "e3",
+            "url": "https://example.com/studio/posts/one",
+            "sourceType": "post",
+            "retrievedAt": "2026-09-19T00:00:00Z",
+            "publishedAt": "2026-09-17T00:00:00Z",
+            "text": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!",
+            "completeness": "complete",
+            "synthetic": true
+          }
+        ],
+        "brief": {
+          "audience": "Osoby zaczynające przygodę z ceramiką w Lublinie",
+          "question": "Co jest w cenie pierwszego warsztatu?",
+          "objective": "Wyjaśnić, co obejmuje udział.",
+          "angle": "Pierwsze zajęcia bez niejasności dotyczących materiałów.",
+          "voice": [
+            "Prosty",
+            "Spokojny",
+            "Konkretny"
+          ],
+          "requiredFacts": [
+            {
+              "evidenceId": "e1",
+              "quote": "Materiały i wypał są w cenie warsztatu."
+            }
+          ],
+          "avoidClaims": [
+            "Nie podawaj niepotwierdzonej ceny ani gwarancji efektów."
+          ],
+          "channel": "facebook",
+          "maxCharacters": 800,
+          "callToAction": "Zapytaj o najbliższy termin."
+        }
+      },
+      "fixtureId": "post_writer.normal",
+      "agentId": "acquisition.post_writer",
+      "repairAgentId": "acquisition.post_writer_repair_eval",
+      "repairAttempt": 1,
+      "priorSourceRunId": "6f459bc0-9212-4ad4-9760-594f05d1aa31",
+      "repairInput": {
+        "originalInput": {
+          "scope": {
+            "tenantId": "11111111-1111-4111-8111-111111111111",
+            "organizationId": "22222222-2222-4222-8222-222222222222",
+            "candidateId": "33333333-3333-4333-8333-333333333333",
+            "runId": "44444444-4444-4444-8444-444444444444",
+            "synthetic": true
+          },
+          "evidence": [
+            {
+              "id": "e1",
+              "url": "https://example.com/studio",
+              "sourceType": "website",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": null,
+              "text": "Studio Przykład prowadzi warsztaty ceramiki dla początkujących. Materiały i wypał są w cenie warsztatu. Zajęcia odbywają się w Lublinie.",
+              "completeness": "complete",
+              "synthetic": true
+            },
+            {
+              "id": "e2",
+              "url": "https://example.com/studio/reviews",
+              "sourceType": "review",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": "2026-09-10T00:00:00Z",
+              "text": "Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny.",
+              "completeness": "complete",
+              "synthetic": true
+            },
+            {
+              "id": "e3",
+              "url": "https://example.com/studio/posts/one",
+              "sourceType": "post",
+              "retrievedAt": "2026-09-19T00:00:00Z",
+              "publishedAt": "2026-09-17T00:00:00Z",
+              "text": "Odkryj magię nieograniczonych możliwości! Nasza pasja i najwyższa jakość to klucz do niezapomnianych doświadczeń. Dołącz do nas!",
+              "completeness": "complete",
+              "synthetic": true
+            }
+          ],
+          "brief": {
+            "audience": "Osoby zaczynające przygodę z ceramiką w Lublinie",
+            "question": "Co jest w cenie pierwszego warsztatu?",
+            "objective": "Wyjaśnić, co obejmuje udział.",
+            "angle": "Pierwsze zajęcia bez niejasności dotyczących materiałów.",
+            "voice": [
+              "Prosty",
+              "Spokojny",
+              "Konkretny"
+            ],
+            "requiredFacts": [
+              {
+                "evidenceId": "e1",
+                "quote": "Materiały i wypał są w cenie warsztatu."
+              }
+            ],
+            "avoidClaims": [
+              "Nie podawaj niepotwierdzonej ceny ani gwarancji efektów."
+            ],
+            "channel": "facebook",
+            "maxCharacters": 800,
+            "callToAction": "Zapytaj o najbliższy termin."
+          }
+        },
+        "priorOutput": {
+          "kind": "research",
+          "data": {
+            "status": "ready",
+            "summary": "Post odpowiada na pytanie o zawartość ceny pierwszych warsztatów ceramiki, opierając się wyłącznie na potwierdzonym fakcie z materiału źródłowego (materiały i wypał w cenie) oraz lokalizacji w Lublinie. Kwestia narzędzi, poruszona w recenzji, nie jest częścią zadanego pytania i została pominięta, aby nie tworzyć nieuprawnionych wniosków.",
+            "uncertainties": [
+              "Nie potwierdzono, czy uczestnik musi przynieść własne narzędzia na pierwsze zajęcia – dostępne dane (e2) to tylko pytanie klientki, nie odpowiedź studia.",
+              "Brak informacji o cenie warsztatu, czasie trwania czy dostępnych terminach."
+            ],
+            "reviewReasons": [],
+            "post": {
+              "text": "Zaczynasz przygodę z ceramiką w Lublinie? Na pierwszych warsztatach materiały i wypał są w cenie zajęć – nie musisz ich dokupować. Zajęcia odbywają się w Lublinie, w spokojnej atmosferze, krok po kroku. Zapytaj o najbliższy termin.",
+              "claimReferences": [
+                {
+                  "excerpt": "materiały i wypał są w cenie zajęć",
+                  "citations": [
+                    {
+                      "evidenceId": "e1",
+                      "quote": "Materiały i wypał są w cenie warsztatu."
+                    }
+                  ]
+                },
+                {
+                  "excerpt": "Zajęcia odbywają się w Lublinie",
+                  "citations": [
+                    {
+                      "evidenceId": "e1",
+                      "quote": "Zajęcia odbywają się w Lublinie."
+                    }
+                  ]
+                }
+              ],
+              "assumptions": [
+                "Pytanie o narzędzia z recenzji (e2) nie jest przedmiotem tego posta i nie zostało w nim rozstrzygnięte."
+              ]
+            }
+          }
+        },
+        "semanticFeedback": [
+          "The post says w spokojnej atmosferze, krok po kroku. The input voice defines how to write, not facts about classroom atmosphere or teaching method. Remove unsupported service-experience claims. Do not replace them with other plausible invented benefits. Every remaining concrete externally verifiable claim must be supported by exact claimReferences."
+        ]
+      },
+      "startedAt": "2026-09-19T04:30:36.734Z",
+      "finishedAt": "2026-09-19T04:30:46.594Z",
+      "passed": true,
+      "errors": [],
+      "result": {
+        "kind": "research",
+        "data": {
+          "status": "ready",
+          "summary": "Post odpowiada na pytanie o zawartość ceny pierwszych warsztatów ceramiki, opierając się wyłącznie na potwierdzonym fakcie z materiału źródłowego (materiały i wypał w cenie) oraz lokalizacji w Lublinie. Usunięto niepotwierdzone sformułowania o atmosferze i sposobie prowadzenia zajęć, ponieważ nie mają one oparcia w dowodach. Kwestia narzędzi, poruszona w recenzji, nie jest częścią zadanego pytania i została pominięta, aby nie tworzyć nieuprawnionych wniosków.",
+          "uncertainties": [
+            "Nie potwierdzono, czy uczestnik musi przynieść własne narzędzia na pierwsze zajęcia – dostępne dane (e2) to tylko pytanie klientki, nie odpowiedź studia.",
+            "Brak informacji o cenie warsztatu, czasie trwania, atmosferze na zajęciach czy dostępnych terminach."
+          ],
+          "reviewReasons": [],
+          "post": {
+            "text": "Zaczynasz przygodę z ceramiką w Lublinie? Na pierwszych warsztatach materiały i wypał są w cenie zajęć – nie musisz ich dokupować. Zajęcia odbywają się w Lublinie. Zapytaj o najbliższy termin.",
+            "claimReferences": [
+              {
+                "excerpt": "materiały i wypał są w cenie zajęć",
+                "citations": [
+                  {
+                    "evidenceId": "e1",
+                    "quote": "Materiały i wypał są w cenie warsztatu."
+                  }
+                ]
+              },
+              {
+                "excerpt": "Zajęcia odbywają się w Lublinie",
+                "citations": [
+                  {
+                    "evidenceId": "e1",
+                    "quote": "Zajęcia odbywają się w Lublinie."
+                  }
+                ]
+              }
+            ],
+            "assumptions": [
+              "Pytanie o narzędzia z recenzji (e2) nie jest przedmiotem tego posta i nie zostało w nim rozstrzygnięte.",
+              "Usunięto sformułowania o atmosferze i metodzie prowadzenia zajęć, ponieważ nie były potwierdzone materiałem źródłowym."
+            ]
+          }
+        }
+      },
+      "run": {
+        "id": "251e1cf6-ff65-46f3-8d08-e003c619ba6c",
+        "status": "ok",
+        "runtime": "native",
+        "resultKind": "research",
+        "inputTokens": 4016,
+        "outputTokens": 945
+      },
+      "guardrailRows": 2,
+      "traceSpans": 1,
+      "estimatedCostUsd": 0.017481999999999998
+    }
+  ],
+  "limitations": [
+    "Repair uses an evaluation-only native definition with the same role/skills/schema plus an explicit repair instruction; app retry wrapper remains a host implementation task.",
+    "No expected answer or referenceOutput was supplied to the model.",
+    "Developer harness uses official seeded registry test hook, no generated host registry.",
+    "RBAC fixture scope; no HTTP/session or negative tenant authorization test.",
+    "Events collected in harness; no durable event worker.",
+    "No UI and no workflow transitions.",
+    "Synthetic data only; KMS fallback noop, encryption not verified.",
+    "Native runtime persists before custom cross-field postcheck; app wrapper must not commit domain output before postcheck.",
+    "Provider catalogue pricing estimate excludes unreported retry overhead; provider billing is authoritative."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "flow-acquisition-native-eval",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Developer-only evaluation of acquisition agents using unmodified Open Mercato packages",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "test": "node --import tsx run.mjs",
+    "judge": "node --import tsx judge.mjs",
+    "gate": "node gate.mjs",
+    "repair": "node --import tsx repair.mjs",
+    "summarize": "node summarize.mjs"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "0.5.8",
+    "@electric-sql/pglite-socket": "0.2.11",
+    "@mikro-orm/decorators": "7.1.14",
+    "@mikro-orm/migrations": "7.1.14",
+    "@mikro-orm/postgresql": "7.1.14",
+    "@open-mercato/ai-assistant": "0.8.0",
+    "@open-mercato/enterprise": "0.8.0",
+    "@open-mercato/shared": "0.8.0",
+    "awilix": "13.0.5",
+    "bcryptjs": "3.0.3",
+    "esbuild": "0.28.2",
+    "reflect-metadata": "0.2.2",
+    "tsx": "4.23.13",
+    "zod": "4.4.3"
+  }
+}

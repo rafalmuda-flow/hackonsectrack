@@ -1,0 +1,56 @@
+{
+  "createdAt": "2026-09-19T04:35:22.225Z",
+  "contractBundleHash": "0feb3319e914d79de654a063de65fef0ed947c1f4f07dbcdaedada4b7c032869",
+  "description": "Deterministic host preflight before native runtime. No model called, no expected answer supplied to a model.",
+  "total": 4,
+  "passed": 4,
+  "nativeCalls": 0,
+  "results": [
+    {
+      "fixtureId": "post_writer.normal",
+      "scenario": "verified required evidence",
+      "expectedDecision": "run",
+      "result": {
+        "decision": "run",
+        "reasons": []
+      }
+    },
+    {
+      "fixtureId": "post_writer.challenging",
+      "scenario": "missing source for required fact",
+      "expectedDecision": "needs_input",
+      "result": {
+        "decision": "needs_input",
+        "reasons": [
+          "Restore verified source e1 supporting a required brief fact."
+        ]
+      }
+    },
+    {
+      "fixtureId": "post_writer.changed_quote",
+      "scenario": "existing source id but unsupported required quote",
+      "expectedDecision": "needs_input",
+      "result": {
+        "decision": "needs_input",
+        "reasons": [
+          "Restore verified source e1 supporting a required brief fact."
+        ]
+      }
+    },
+    {
+      "fixtureId": "signal_auditor.challenging",
+      "scenario": "collection failed",
+      "expectedDecision": "needs_input",
+      "result": {
+        "decision": "needs_input",
+        "reasons": [
+          "Re-fetch public posts or provide an explicit unknown-data record for operator review."
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Component gate test only. Host HTTP handler and workflow integration remain implementation tasks.",
+    "Raw adverse native agent outputs remain in their original evidence reports and are not reclassified by these passes."
+  ]
+}

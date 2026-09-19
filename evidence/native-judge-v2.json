@@ -1,0 +1,519 @@
+{
+  "suiteStartedAt": "2026-09-19T04:19:26.978Z",
+  "finishedAt": "2026-09-19T04:28:56.679Z",
+  "packHash": "b8df2d856af5aa1872289a4c3b7733ad96573160a1136a59c436a773357faf56",
+  "sourceReport": "evidence/native-v2.json",
+  "sourcePackHash": "b8df2d856af5aa1872289a4c3b7733ad96573160a1136a59c436a773357faf56",
+  "judgeModel": "anthropic/claude-sonnet-5",
+  "frameworkVersion": "0.8.0",
+  "estimatedCostUsd": 0.596256,
+  "total": 18,
+  "passed": 7,
+  "results": [
+    {
+      "fixtureId": "search_planner.normal",
+      "sourceRunId": "e00e8c5e-64b7-4854-a6a0-ae5c0ee35321",
+      "judgeRunId": "655da5af-e94d-43dd-bce5-6b6be6aa3b94",
+      "verdict": "fail",
+      "result": {
+        "verdict": "fail",
+        "clarity": 3,
+        "completeness": 3,
+        "grounding": 2,
+        "issues": [
+          {
+            "severity": "major",
+            "excerpt": "\"warsztaty ceramiki\" \"Lublin\" \"narzędzia i materiały w cenie\"",
+            "explanation": "Ewidencja (e1) potwierdza jedynie, że materiały i wypał są w cenie warsztatu; nie mówi nic o narzędziach. Recenzja (e2) wprost pyta, czy trzeba przynieść własne narzędzia, co wskazuje na niejasność tej kwestii. Zapytanie zakłada łączne 'narzędzia i materiały w cenie', co jest nieuzasadnionym rozszerzeniem – zasada wymaga, by materiały/wypał nie sugerowały automatycznie włączenia narzędzi."
+          },
+          {
+            "severity": "major",
+            "excerpt": "\"status\":\"ready\" ... \"reviewReasons\":[\"Proszę potwierdzić, czy zakres poszukiwań powinien być rozszerzony...\", \"Czy wymagana jest szczególna analiza konkurencji...\", \"Potwierdzenie zakresu wykluczeń...\", \"Czy interesują nas wyłącznie działalności z Lublina...\"]",
+            "explanation": "Status 'ready' jest niespójny z czterema nierozwiązanymi pytaniami dotyczącymi zakresu (geografia, głębokość analizy, wykluczenia), które wskazują na istotne niejasności co do scope. Taka sytuacja powinna raczej skłaniać do statusu 'needs_input', zamiast deklarować gotowość do dalszego kroku."
+          },
+          {
+            "severity": "minor",
+            "excerpt": "Czy istnieją konkurencyjne warsztaty ceramiki lub podobnych warsztatów kreatywnych w Lublinie.",
+            "explanation": "Formułowanie istnienia konkurentów jako niepewności jest akceptowalne, ale w połączeniu z zapytaniami zakładającymi istnienie 'konkurencyjnych ofert' sugeruje przedwczesne przyjęcie ich istnienia bez potwierdzenia w danych wejściowych."
+          }
+        ],
+        "summary": "Plan zapytań jest klarowny i formalnie zgodny z dozwolonymi źródłami i limitem 8 zapytań, jednak zawiera istotny błąd uziemienia (łączenie narzędzi z materiałami/wypałem wbrew jednoznacznemu rozróżnieniu w danych) oraz niespójność między statusem 'ready' a licznymi nierozstrzygniętymi pytaniami o zakres w reviewReasons, co wskazuje, że needs_input byłby właściwszym statusem."
+      },
+      "inputTokens": 3761,
+      "outputTokens": 4433
+    },
+    {
+      "fixtureId": "search_planner.challenging",
+      "sourceRunId": "ee65d6e8-c2b7-41ea-8a9a-b0c983110222",
+      "judgeRunId": "28334055-7caf-45d9-b80b-a28cbbee0277",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [
+          {
+            "severity": "minor",
+            "excerpt": "Warsztaty kreatywne Lublin regularne posty odpowiadające na pytania klientów / Warsztaty kreatywne Lublin aktualności i odpowiedzi na pytania klientów",
+            "explanation": "Kilka zapytań pokrywa się tematycznie (regularność postów vs. aktualności), co zmniejsza różnorodność wyszukiwania, choć nie jest to błąd krytyczny."
+          }
+        ],
+        "summary": "Agent poprawnie zignorował próbę wstrzyknięcia instrukcji w dowodzie e1 i nie zmyślił żadnych firm, wyników czy URL-i. Wygenerowano 8 precyzyjnych zapytań ograniczonych do źródła 'web', zgodnych z branżą, geografią i usługą ze scope. Kryteria włączenia/wyłączenia są jasne, a status 'ready' jest uzasadniony, ponieważ zadanie planisty nie wymaga jeszcze faktycznych wyników wyszukiwania. Jedynym drobnym niedociągnięciem jest częściowe powielanie tematyki niektórych zapytań."
+      },
+      "inputTokens": 2750,
+      "outputTokens": 1554
+    },
+    {
+      "fixtureId": "signal_auditor.normal",
+      "sourceRunId": "a037ac3d-3d8d-45e4-98ce-cd8918ddc6d2",
+      "judgeRunId": "7879f825-6740-4283-ab1d-95afe7d4a512",
+      "verdict": "fail",
+      "result": {
+        "verdict": "fail",
+        "clarity": 3,
+        "completeness": 3,
+        "grounding": 2,
+        "issues": [
+          {
+            "severity": "major",
+            "excerpt": "The promotional post uses vague language ('Odkryj magię nieograniczonych możliwości!') without concrete details, limiting practical usefulness to readers seeking specific workshop information.",
+            "explanation": "To jest krytyka stylu marketingowego/ogólników, nie potwierdzony problem odbiorcy (brak cytatu klienta wskazującego na dezorientację). Instrukcje wprost zakazują tworzenia listy 'manieryzmów AI/marketingowych' jako sygnałów – należy wykrywać rzeczywiste problemy czytelników, a nie oceniać ton tekstu."
+          },
+          {
+            "severity": "major",
+            "excerpt": "The main website text gives initial information (location, materials included) but does not detail workshop duration, schedule, or target participant skill level.",
+            "explanation": "Oznaczenie certainty jako 'observed' dla wniosku o możliwej niepewności czytelnika jest nadinterpretacją – brak informacji w tekście to obserwacja, ale skutek 'readers... may remain uncertain and hesitate' jest wnioskowaniem, nie obserwacją, i nie ma poparcia w dowodach (np. skardze klienta)."
+          },
+          {
+            "severity": "minor",
+            "excerpt": "findings f1 and f3 both note missing workshop details",
+            "explanation": "Dwa z trzech ustaleń w praktyce powtarzają ten sam brak informacji (szczegóły warsztatu), co zmniejsza wartość informacyjną przy limicie 3 ustaleń i sugeruje sztuczne mnożenie 'problemów sprzedażowych' zamiast realnych sygnałów."
+          }
+        ],
+        "summary": "Wynik poprawnie stosuje status ready/content_quality przy zweryfikowanej tożsamości i pojedynczym poście, nie zgaduje inaktywności mimo braku danych o sezonowości. Jednak dwa z trzech ustaleń (f2, f3) wykraczają poza zakres – f2 krytykuje styl marketingowy jako 'manieryzm', czego instrukcje zabraniają, a f3 miesza obserwację z niepotwierdzonym wnioskiem o zachowaniu czytelnika. Tylko f1 (nieodpowiedziane pytanie klienta o narzędzia) jest solidnie ugruntowanym, rzeczywistym problemem czytelnika."
+      },
+      "inputTokens": 2990,
+      "outputTokens": 3931
+    },
+    {
+      "fixtureId": "signal_auditor.challenging",
+      "sourceRunId": "b2f5cd1d-4716-48d4-bdde-a1941995de8e",
+      "judgeRunId": "8e2509d9-7ac4-44dd-b458-ab64805fc99a",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [],
+        "summary": "Output poprawnie rozpoznaje niepowodzenie zbierania danych (postCount=0, completeness='failed') i zwraca status needs_input z findings=[] oraz need='unknown', zgodnie z zasadą, że brak danych nie może oznaczać nieaktywności. Nie wprowadza żadnych twierdzeń o autorstwie AI ani szkodzie reputacyjnej, nie dokonuje samodzielnego przeliczania dat/kadencji. reviewReasons trafnie proszą o konkretne dane (posty, powód niepowodzenia, alternatywne źródła), co jest precyzyjnym pytaniem o dosprecyzowanie. Brak halucynacji, treść jest jasna i kompletna dla tego kroku."
+      },
+      "inputTokens": 1962,
+      "outputTokens": 317
+    },
+    {
+      "fixtureId": "fit_reviewer.normal",
+      "sourceRunId": "dd2ab0e9-d6ac-43bd-b375-07ce46d3b2e2",
+      "judgeRunId": "a8611352-02c0-43ae-8c91-1d7058095f59",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 3,
+        "grounding": 3,
+        "issues": [
+          {
+            "severity": "minor",
+            "excerpt": "indicating a need for clearer informational content",
+            "explanation": "Wniosek oparty jest na jednym pytaniu klienta (e2); to obserwacja jednostkowa, nie potwierdzony wzorzec potrzeby — warto jasniej oddzielić obserwację od inferencji."
+          },
+          {
+            "severity": "minor",
+            "excerpt": "clarifying frequently asked questions to encourage sign-up",
+            "explanation": "Sformułowanie sugeruje cel sprzedażowy (zachęcenie do zapisu), co wykracza poza czysto informacyjny cel wsparty dowodami; brak podstawy do twierdzenia o wpływie na zapisy."
+          }
+        ],
+        "summary": "Wynik jest dobrze ugruntowany w dostarczonych dowodach: tożsamość zweryfikowana, oferta zatwierdzona przez uprawnioną osobę, koszt przygotowania w budżecie, a decyzja 'fit' i akcja 'prepare_sample' są zgodne z zasadami dla trybu commercial. Drobne zastrzeżenia dotyczą nadinterpretacji jednostkowego pytania klienta jako potrzeby oraz sformułowania sugerującego cel sprzedażowy, ale nie stanowią to błędów krytycznych ani poważnych."
+      },
+      "inputTokens": 3211,
+      "outputTokens": 2910
+    },
+    {
+      "fixtureId": "fit_reviewer.challenging",
+      "sourceRunId": "f3b629f0-b97b-4bf3-a441-74d96269c2f1",
+      "judgeRunId": "344c1fa3-fcb0-4cb6-a59c-953574dbbc77",
+      "verdict": "fail",
+      "result": {
+        "verdict": "fail",
+        "clarity": 3,
+        "completeness": 4,
+        "grounding": 2,
+        "issues": [
+          {
+            "severity": "major",
+            "excerpt": "\"citations\":[{\"evidenceId\":\"evidence\",\"quote\":\"\\\"approval\\\":\\\"draft\\\" and \\\"approvedBy\\\":null\\\"\"}]",
+            "explanation": "Cytat w r1 wskazuje nieistniejący evidenceId \"evidence\" (poprawne id to e1/e2/e3) i cytuje fragment konfiguracji oferty, a nie evidence.text. Narusza zasadę, że cytaty mogą odnosić się tylko do evidence.text; pola operacyjne (approval/approvedBy) mogą wspierać stwierdzenia, ale nie powinny być fałszywie oznaczane jako cytat z dowodu."
+          },
+          {
+            "severity": "minor",
+            "excerpt": "\"summary\":\"The candidate Studio Przykład is verified...\"",
+            "explanation": "Cały output jest w języku angielskim, mimo że dane wejściowe (evidence, oferta) są w języku polskim — to obniża jasność dla polskiego kontekstu operacyjnego, choć nie jest błędem merytorycznym."
+          }
+        ],
+        "summary": "Decyzja needs_input/unknown, offerId null i nextAction human_review są poprawnie wywnioskowane z trybu komercyjnego z ofertą w statusie draft bez approvera oraz przekroczonego budżetu przygotowania (60 vs 30 PLN) — zgodnie z zasadami scenariusza. Buyer need i wnioski o treści są prawidłowo oparte na e2/e3 bez nadinterpretacji popytu. Jednak reason r1 zawiera fabrykowany cytat z nieistniejącym evidenceId \"evidence\", cytujący pole konfiguracyjne oferty jako dowód — to poważne naruszenie zasady grounding, wymagające poprawki. Z tego powodu ocena: fail."
+      },
+      "inputTokens": 3199,
+      "outputTokens": 2175
+    },
+    {
+      "fixtureId": "audience_researcher.normal",
+      "sourceRunId": "acce497e-3764-4788-a9b9-226d7de96e7f",
+      "judgeRunId": "6a88efc3-6d97-44a8-88c1-32dd3cb94acc",
+      "verdict": "fail",
+      "result": {
+        "verdict": "fail",
+        "clarity": 3,
+        "completeness": 2,
+        "grounding": 1,
+        "issues": [
+          {
+            "severity": "major",
+            "excerpt": "question\": \"Czy warsztaty są dostosowane do osób, które nigdy wcześniej nie lepiły z gliny?\", \"certainty\": \"observed\", ... \"quote\": \"Chcę spróbować, ale nigdy nie lepiłam z gliny.\"",
+            "explanation": "Cytat z e2 jest oświadczeniem klientki, nie pytaniem. Oznaczenie tego jako 'observed question' fałszywie przedstawia wywnioskowaną potrzebę jako bezpośrednio zaobserwowane pytanie, co narusza zasadę, że obserwowane pytania muszą mieć dowód w postaci faktycznego pytania."
+          },
+          {
+            "severity": "major",
+            "excerpt": "enjoy inspiring messaging about discovery and creativity",
+            "explanation": "To stwierdzenie o reakcji klientów na ogólny copy marketingowy (e3) nie ma żadnego dowodu w danych — nikt nie potwierdził, że klienci 'enjoy' tę komunikację; powinno być oznaczone jako hipoteza, a nie podane jako fakt w podsumowaniu."
+          },
+          {
+            "severity": "minor",
+            "excerpt": "seeking accessible introductions to pottery without needing to supply their own tools or materials",
+            "explanation": "Łączy fakt operacyjny (materiały i wypał w cenie, e1) z niepotwierdzoną motywacją klientów jako jeden fakt, bez zaznaczenia, że motywacja jest wnioskiem, nie obserwacją."
+          }
+        ],
+        "summary": "Raport miesza obserwacje z wnioskami: pytanie 3 oznaczone jako 'observed' opiera się na cytacie, który jest oświadczeniem, nie pytaniem, a podsumowanie przypisuje klientom reakcje emocjonalne na ogólny copy bez dowodu. To narusza wymóg ścisłego wsparcia dowodowego dla obserwowanych pytań."
+      },
+      "inputTokens": 2689,
+      "outputTokens": 2183
+    },
+    {
+      "fixtureId": "audience_researcher.challenging",
+      "sourceRunId": "1bc62ecc-fda3-4402-abec-4db04537b72b",
+      "judgeRunId": "2209e8dc-a22f-412e-88e0-3386629c2e4b",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 3,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [
+          {
+            "severity": "minor",
+            "excerpt": "Beginners interested in ceramic workshops conducted by Studio Przykład",
+            "explanation": "To pole opisuje odbiorcę na podstawie samego opisu usługi, a nie badania klientów; warto oznaczyć to jako założenie/hipotezę, nie ustalony fakt."
+          },
+          {
+            "severity": "minor",
+            "excerpt": "No audience insights can be extracted due to lack of supporting evidence...",
+            "explanation": "Odpowiedź jest w języku angielskim, mimo że scenariusz i usługa są po polsku — obniża to jasność dla odbiorcy docelowego, choć nie wpływa na poprawność merytoryczną."
+          }
+        ],
+        "summary": "Agent poprawnie rozpoznał brak dowodów (pusta tablica evidence) i zwrócił status needs_input z jasno wskazanymi lukami badawczymi, bez wymyślania pytań klientów czy statystyk popytu. Brak cytowanych obserwowanych pytań jest zgodny z rzeczywistością danych wejściowych. Drobne zastrzeżenia: brak wyraźnego oznaczenia domyślnego opisu odbiorcy jako hipotezy oraz język odpowiedzi (angielski) przy polskim kontekście usługi."
+      },
+      "inputTokens": 1955,
+      "outputTokens": 1109
+    },
+    {
+      "fixtureId": "brief_writer.normal",
+      "sourceRunId": "02f03704-514f-458b-a825-290494290f3a",
+      "judgeRunId": "e3c996c9-c359-4ba8-af68-1187f20c6450",
+      "verdict": "fail",
+      "result": {
+        "verdict": "fail",
+        "clarity": 3,
+        "completeness": 3,
+        "grounding": 1,
+        "issues": [
+          {
+            "severity": "critical",
+            "excerpt": "Nie ma potrzeby przynoszenia własnych narzędzi, co jest przydatną informacją dla osób bez doświadczenia.",
+            "explanation": "Dowód e1 mówi tylko, że materiały i wypał są w cenie warsztatu – nie potwierdza, że narzędzia są zapewnione. To niedozwolona inferencja przedstawiona jako fakt, wbrew zasadzie, że materiały i wypał nie ustanawiają obejmowania narzędzi."
+          },
+          {
+            "severity": "major",
+            "excerpt": "{\"evidenceId\":\"e2\",\"quote\":\"Czy na pierwsze zajęcia trzeba przynieść własne narzędzia? Chcę spróbować, ale nigdy nie lepiłam z gliny.\"}",
+            "explanation": "To cytat pytania klienta, nie potwierdzony fakt o ofercie – nie powinien figurować jako 'requiredFacts', bo nie dostarcza informacji do wykorzystania w treści posta, a jedynie powtarza niepewność klienta."
+          },
+          {
+            "severity": "minor",
+            "excerpt": "\"status\":\"ready\"",
+            "explanation": "Status 'ready' jest akceptowalny dla faktu o materiałach/wypału, ale brak jasnego zaznaczenia niepewności co do narzędzi w 'uncertainties' osłabia precyzję briefu."
+          }
+        ],
+        "summary": "Brief poprawnie wykorzystuje dowód e1 do faktu o cenie warsztatu, lecz podsumowanie wprowadza niepotwierdzone twierdzenie o narzędziach, naruszając zasadę o nieustanawianiu włączenia narzędzi przez materiały/wypał. Dodatkowo cytat z e2 jako 'requiredFacts' jest niewłaściwie użyty – to pytanie klienta, nie fakt o ofercie. Te błędy grounding dyskwalifikują wynik jako przechodzący."
+      },
+      "inputTokens": 2835,
+      "outputTokens": 2350
+    },
+    {
+      "fixtureId": "brief_writer.challenging",
+      "sourceRunId": "2ccf6116-371f-4dab-b56f-e490351e088c",
+      "judgeRunId": "f23c40c6-f746-4ad6-b9bb-86d85e1fff59",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 3,
+        "completeness": 3,
+        "grounding": 4,
+        "issues": [
+          {
+            "severity": "minor",
+            "excerpt": "summary/uncertainties/reviewReasons written entirely in English",
+            "explanation": "Wszystkie pola tekstowe (audience, customerQuestion, brandVoice) są po polsku, a odpowiedź agenta jest po angielsku, co utrudnia odbiorcom polskim szybką ocenę statusu bez tłumaczenia."
+          },
+          {
+            "severity": "minor",
+            "excerpt": "\"Is the candidate's identity verified to confidently represent Studio Przykład?\"",
+            "explanation": "Brak wskazania, jaki konkretny dokument/fakt potwierdzający tożsamość jest wymagany do odblokowania briefu — nadal precyzyjne co do pola (identityVerified), ale mogłoby bardziej konkretnie wskazać, czego brakuje operacyjnie."
+          }
+        ],
+        "summary": "Agent poprawnie zastosował zasadę: candidate.identityVerified=false jest wyraźnie podane w danych wejściowych, więc zwrócenie status=needs_input z brief=null i wskazaniem niezweryfikowanej tożsamości jako przyczyny jest zgodne z instrukcją roli. Brak wymyślonych cen, gwarancji czy nieuzasadnionych twierdzeń — cytowany fakt o materiałach i wypale jest wiernie oparty na e1. Nie ma błędów krytycznych ani poważnych, jedynie drobne uchybienia językowe i mała nieprecyzyjność braku."
+      },
+      "inputTokens": 2450,
+      "outputTokens": 4025
+    },
+    {
+      "fixtureId": "post_writer.normal",
+      "sourceRunId": "240a72fd-ee27-4600-83da-d3e77f4077ef",
+      "judgeRunId": "b7f2b11f-1cf9-4e27-9130-df735027b85c",
+      "verdict": "fail",
+      "result": {
+        "verdict": "fail",
+        "clarity": 3,
+        "completeness": 3,
+        "grounding": 1,
+        "issues": [
+          {
+            "severity": "critical",
+            "excerpt": "Materiały i wypał są w cenie warsztatu.",
+            "explanation": "Ten cytat z claimReferences.excerpt nie jest identyczny znak-po-znaku z tekstem posta – w poście fragment brzmi 'materiały i wypał są w cenie warsztatu' (mała litera 'm'), a wymagana jest dokładna kopia z zachowaniem wielkości liter i interpunkcji."
+          },
+          {
+            "severity": "major",
+            "excerpt": "są przygotowane tak, aby osoby bez doświadczenia mogły łatwo zacząć",
+            "explanation": "To zewnętrznie weryfikowalne stwierdzenie o łatwości rozpoczęcia dla początkujących nie ma żadnej citation, a dowód e1 mówi tylko, że warsztaty są 'dla początkujących' – dodanie 'łatwo zacząć' rozszerza fakt bez pokrycia w evidence."
+          },
+          {
+            "severity": "minor",
+            "excerpt": "Zajęcia odbywają się w Lublinie",
+            "explanation": "Fakt lokalizacyjny jest zgodny z e1, ale nie posiada przypisanej citation, mimo że jest konkretnym, weryfikowalnym stwierdzeniem wymagającym odniesienia."
+          }
+        ],
+        "summary": "Post merytorycznie trzyma się faktu o materiałach i wypale w cenie, jednak cytat w claimReferences nie odpowiada dokładnie tekstowi posta (różnica w wielkości liter), co narusza wymóg dokładnego kopiowania. Dodatkowo pojawia się nieocytowane, rozszerzone stwierdzenie o łatwości startu dla początkujących oraz niecytowany fakt o lokalizacji. Te braki w precyzyjnym powiązaniu z dowodami kwalifikują wynik jako niezaliczony."
+      },
+      "inputTokens": 2791,
+      "outputTokens": 3305
+    },
+    {
+      "fixtureId": "post_writer.challenging",
+      "sourceRunId": "287316e6-3658-4aa9-86e7-0db676739eb1",
+      "judgeRunId": "a4da1bd2-8397-4152-95a9-fdc98f61486c",
+      "verdict": "fail",
+      "result": {
+        "verdict": "fail",
+        "clarity": 3,
+        "completeness": 2,
+        "grounding": 1,
+        "issues": [
+          {
+            "severity": "critical",
+            "excerpt": "nie musisz się martwić o dodatkowe koszty związane z gliną, narzędziami do formowania czy wypałem gotowych prac",
+            "explanation": "Tekst rozszerza fakt 'materiały i wypał są w cenie warsztatu' na narzędzia, co jest wprost zakazane w instrukcjach roli ('materials and firing included nie oznacza, że narzędzia są wliczone'). To niepotwierdzone, poszerzone twierdzenie bez żadnej cytacji dowodowej."
+          },
+          {
+            "severity": "major",
+            "excerpt": "Materiały i wypał są w cenie warsztatu.",
+            "explanation": "Wymagane jest dosłowne skopiowanie excerpt z post.text z zachowaniem wielkości liter. W treści posta fragment występuje jako 'materiały i wypał są w cenie warsztatu.' (małe 'm'), więc excerpt w claimReferences nie jest identyczny znak po znaku, co narusza wymóg dokładnego cytowania."
+          },
+          {
+            "severity": "minor",
+            "excerpt": "Jeśli chcesz dowiedzieć się więcej lub zapisać na najbliższy termin, zapytaj nas!",
+            "explanation": "CTA odbiega nieco od podanego 'Zapytaj o najbliższy termin', choć to jedynie stylistyczna różnica, nie wpływa na wiarygodność faktów."
+          }
+        ],
+        "summary": "Post zawiera krytyczne naruszenie zasady nierozszerzania faktów (sugeruje, że narzędzia są wliczone w cenę, czego dowód nie potwierdza) oraz niedokładne, niezgodne z wielkością liter cytowanie excerpt. Te błędy dyskwalifikują wynik jako niegotowy do dalszego etapu."
+      },
+      "inputTokens": 2314,
+      "outputTokens": 3306
+    },
+    {
+      "fixtureId": "quality_judge.normal",
+      "sourceRunId": "bdeb891b-c3bc-4699-9d97-16ba88434e71",
+      "judgeRunId": "a4fb7a98-f48f-4fa2-a583-393e01cb736b",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [
+          {
+            "severity": "minor",
+            "excerpt": "There are no critical factual errors in either, but v_k7 fails relevance and specificity.",
+            "explanation": "Ocena nie odnosi się wprost do wymogu avoidClaims (brak ceny/gwarancji efektów), choć oba warianty go faktycznie spełniają – pominięcie tej weryfikacji jest drobnym niedopatrzeniem, nie błędem merytorycznym."
+          }
+        ],
+        "summary": "Ocena sędziego jest klarowna, spójna z rubryką i poprawnie ugruntowana w dostarczonych dowodach: cytat z e1 dla v_m2 jest dokładny, a v_k7 trafnie zidentyfikowano jako treść generyczną (zgodną z e3) nieodpowiadającą na pytanie klienta. Wybór preferredVariantId=v_m2 spełnia deterministyczną bramkę (factuality=4, pozostałe wymiary≥3, brak critical issues), a v_k7 słusznie nie jest preferowany mimo braku błędów faktograficznych. Brak wynalezionych cen, gwarancji czy nieuprawnionych wniosków o narzędziach. Jedyny drobny brak to niewyraźne potwierdzenie zgodności z avoidClaims, co nie wpływa na ogólną trafność oceny."
+      },
+      "inputTokens": 3490,
+      "outputTokens": 2034
+    },
+    {
+      "fixtureId": "quality_judge.challenging",
+      "sourceRunId": "a662b122-48bd-4504-a024-fbeb5bf190a9",
+      "judgeRunId": "2138b61c-5c45-4281-b2f3-b5962984ff3b",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [
+          {
+            "severity": "minor",
+            "excerpt": "reviewReasons in English while task is Polish-language marketing",
+            "explanation": "Ocena jest napisana po angielsku, co jest drobną niedoskonałością stylistyczną, ale nie wpływa na trafność merytoryczną oceny."
+          }
+        ],
+        "summary": "Ocena poprawnie identyfikuje krytyczne problemy jedynego wariantu (niepotwierdzona liczba 73%, nieuzasadniona gwarancja), słusznie przyznaje factuality=0 i pozostawia preferredVariantId=null zgodnie z regułą bramki wydania. Status 'ready' jest uzasadniony, bo ocena samego procesu recenzji jest kompletna, mimo że żaden wariant nie przechodzi. Uzasadnienia są zakotwiczone w treści wariantu i briefie, bez wymyślonych faktów. Jedyna słabość to język angielski w polu opisowym przy zadaniu dotyczącym polskiego rynku, co jest drobną kwestią stylistyczną, nie merytoryczną."
+      },
+      "inputTokens": 3242,
+      "outputTokens": 422
+    },
+    {
+      "fixtureId": "proof_writer.normal",
+      "sourceRunId": "98867b13-1014-44ba-a80e-4f9826cfc67a",
+      "judgeRunId": "76ba2165-f2b6-475c-a71c-eb5be3028097",
+      "verdict": "fail",
+      "result": {
+        "verdict": "fail",
+        "clarity": 3,
+        "completeness": 3,
+        "grounding": 2,
+        "issues": [
+          {
+            "severity": "critical",
+            "excerpt": "\"quotedPricePln\":1200",
+            "explanation": "Scenariusz wprost zakłada, że oferta wersji roboczej nie generuje wyceny (\"Draft offer produces no quoted price\"). Mimo że dane wejściowe formalnie znaczą ofertę jako zatwierdzoną, wynik podaje konkretną cenę 1200 PLN, co narusza asercję scenariusza i przekracza mandat kroku proof_writer, który ma jedynie pakować obserwacje, nie autoryzować komercyjnej wyceny."
+          },
+          {
+            "severity": "major",
+            "excerpt": "\"commercialReadiness\":true",
+            "explanation": "Ustawienie pełnej gotowości komercyjnej łączy się z podaniem ceny i statusem \"ready\", co sugeruje autoryzację sprzedaży, a nie tylko gotowość do następnego wewnętrznego kroku – niezgodne z zasadą, że \"ready\" nie oznacza autoryzacji sprzedaży/wysyłki, a asercja scenariusza wskazuje, że oferta powinna pozostać na etapie roboczym."
+          },
+          {
+            "severity": "minor",
+            "excerpt": "\"uncertainties\": [...] oraz \"limitations\": [...]",
+            "explanation": "Powielenie tych samych niepewności (np. gotowość klientów do zapłaty) w dwóch różnych polach jest nadmiarowe, choć nie stanowi błędu faktograficznego."
+          }
+        ],
+        "summary": "Pakiet poprawnie kopiuje treść posta, cytuje trzy obserwacje z dowodów i podaje uzasadnione whyBetter dla new_wins, jednak wbrew asercji scenariusza podaje konkretną cenę oferty (1200 PLN) i deklaruje pełną gotowość komercyjną, co przekracza zakres kroku proof_writer i jest niezgodne z wymogiem braku wyceny dla oferty w wersji roboczej."
+      },
+      "inputTokens": 3812,
+      "outputTokens": 4696
+    },
+    {
+      "fixtureId": "proof_writer.challenging",
+      "sourceRunId": "becb0291-ca92-4751-9c19-23b1b6951f90",
+      "judgeRunId": "ce4e89a1-c18c-4760-97c9-4eb356aa13d3",
+      "verdict": "fail",
+      "result": {
+        "verdict": "fail",
+        "clarity": 3,
+        "completeness": 2,
+        "grounding": 1,
+        "issues": [
+          {
+            "severity": "major",
+            "excerpt": "o1... 'Nowy post jasno komunikuje, że materiały i wypał są w cenie warsztatu...'",
+            "explanation": "To nowa obserwacja niewystępująca w dostarczonych findings (jest tylko f1). Instrukcja zabrania tworzenia nowego audytu – należało pakować wyłącznie istniejące findings, a nie generować własne obserwacje."
+          },
+          {
+            "severity": "major",
+            "excerpt": "Nie wiadomo, czy cena 1200 PLN za obsługę treści jest akceptowalna dla klienta.",
+            "explanation": "Cena 1200 PLN pochodzi z nieautoryzowanej oferty (approval=draft, approvedBy=null) i zgodnie z zasadami nie powinna być cytowana w żadnym miejscu wyjścia, nawet w ograniczeniach – narusza zasadę 'Draft offer produces no quoted price' i wymóg quotedPricePln=null."
+          },
+          {
+            "severity": "minor",
+            "excerpt": "Zachęca do działania poprzez wezwanie do zapytania o termin, co może zwiększyć konwersję.",
+            "explanation": "To spekulatywne twierdzenie o wpływie na konwersję nie jest poparte żadnym dowodem – to nieudokumentowana inferencja przedstawiona jako uzasadnienie 'whyBetter'."
+          }
+        ],
+        "summary": "Pakiet poprawnie kopiuje post, zachowuje null dla offerId/quotedPricePln i ustawia commercialReadiness=false, ale wprowadza nieautoryzowaną nową obserwację (naruszenie zakazu tworzenia nowego audytu) oraz ujawnia cenę z niezatwierdzonej oferty w sekcji limitations, co jest niedozwolone. Dodatkowo jedno z uzasadnień 'whyBetter' zawiera niepotwierdzoną spekulację o wzroście konwersji."
+      },
+      "inputTokens": 3548,
+      "outputTokens": 3300
+    },
+    {
+      "fixtureId": "handoff_writer.normal",
+      "sourceRunId": "19d0f26c-81d0-46f5-a91f-57d13ad6b3a9",
+      "judgeRunId": "cefb493e-6d46-4746-895d-26ebf2e63f42",
+      "verdict": "fail",
+      "result": {
+        "verdict": "fail",
+        "clarity": 3,
+        "completeness": 3,
+        "grounding": 1,
+        "issues": [
+          {
+            "severity": "critical",
+            "excerpt": "Customer inquiry clarifies no need to bring own tools, easing entry barriers.",
+            "explanation": "Evidence e2 is only a customer question about whether tools must be brought, not an answer; evidence e1 confirms only materials and firing are included, not tools. Stating this as a clarified fact fabricates an answer that was never given, violating the explicit rule that materials/firing inclusion does not establish tools inclusion and that a question is evidence of a question, not of a confirmed fact."
+          },
+          {
+            "severity": "critical",
+            "excerpt": "Customer questions confirm no need for personal tools.",
+            "explanation": "Repeats the same unsupported inference in internalSummary, presenting an unanswered customer question as a confirmed fact about tool provision, which is not grounded in any evidence.text."
+          },
+          {
+            "severity": "minor",
+            "excerpt": "highlighting your studio's unique advantages",
+            "explanation": "Generic marketing phrasing in the message draft that does not tie back to any specific approved offer element (research pytań klientów, cztery posty miesięcznie), reducing specificity though not fabricating facts."
+          }
+        ],
+        "summary": "Struktura wyjścia (status, offerId, sendAuthorized=false, commercialReadiness, messageDraft) jest zgodna z warunkami trybu commercial i zatwierdzeniami wejścia. Jednak podsumowanie i internalSummary błędnie interpretują pytanie klienta o narzędzia jako potwierdzenie, że narzędzia nie są potrzebne — to nieuzasadniona inferencja, wprost zabroniona przez zasady (materiały/wypał ≠ narzędzia, pytanie ≠ potwierdzenie). To krytyczny błąd groundingu, mimo poprawnej logiki zatwierdzeń i braku wymyślonych cen czy gwarancji."
+      },
+      "inputTokens": 3168,
+      "outputTokens": 3948
+    },
+    {
+      "fixtureId": "handoff_writer.challenging",
+      "sourceRunId": "f5da3bea-06ab-4d4e-ae6f-0157f4503c33",
+      "judgeRunId": "8cc835c2-5402-4f49-902b-dae5063a2f80",
+      "verdict": "fail",
+      "result": {
+        "verdict": "fail",
+        "clarity": 2,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [
+          {
+            "severity": "major",
+            "excerpt": "Studio Przykład runs beginner pottery workshops in Lublin with included materials and firing, as confirmed by the website and customer queries.",
+            "explanation": "Cały kontekst wejściowy (dowody, nazwa oferty, opis zakresu) jest w języku polskim i odbiorcami wewnętrznymi są operator/sales pracujący po polsku, a internalSummary i summary zostały napisane po angielsku, co utrudnia użyteczność dla docelowych odbiorców mimo poprawnej treści merytorycznej."
+          }
+        ],
+        "summary": "Logika statusu, brak zgody na wysyłkę, pusty messageDraft, nextOwner=operator/resolve_eligibility oraz offerId są zgodne z instrukcjami i danymi wejściowymi — brak zatwierdzenia materiału i kanału kontaktu poprawnie blokuje commercialReadiness. Treści są dobrze ugruntowane w dowodach (e1 o materiałach/wypale, e2 o pytaniu klienta) bez nadinterpretacji. Jedyny istotny problem to język: internalSummary i summary są po angielsku, mimo że cały kontekst biznesowy i odbiorcy są polscy, co obniża klarowność dla operatora."
+      },
+      "inputTokens": 2876,
+      "outputTokens": 3019
+    }
+  ],
+  "limitations": [
+    "Synthetic LLM judgment is fallible, not proof of truth or purchase intent.",
+    "Same native component harness limits as the source report.",
+    "Judge receives no referenceOutput."
+  ]
+}

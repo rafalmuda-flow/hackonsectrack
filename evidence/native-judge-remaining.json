@@ -1,0 +1,78 @@
+{
+  "suiteStartedAt": "2026-09-19T04:37:08.355Z",
+  "finishedAt": "2026-09-19T04:39:14.245Z",
+  "packHash": "82a02cbfdd0e763958c641c680499e9c3ac6a8d08056b285f581235502187fb1",
+  "sourceReport": "evidence/native-repair-remaining.json",
+  "sourcePackHash": "fbabc8736fdd320dea5193436b6c5c217d02e223da24a9bd29ca4f16a21d69de",
+  "judgePromptVersion": "3-calibrated-scope",
+  "judgePromptHash": "bf557288ce60a95f2b66e96a5b5889f51a1d6d90098b10a2ad35797cfc29a5c5",
+  "judgeModel": "anthropic/claude-sonnet-5",
+  "frameworkVersion": "0.8.0",
+  "estimatedCostUsd": 0.132338,
+  "total": 3,
+  "passed": 3,
+  "results": [
+    {
+      "judgeInputHash": "973481a1fc7b8ae0691e68169f345a880862d41cb2cf198e2da8bd8eb1d8d68e",
+      "fixtureId": "search_planner.normal",
+      "sourceRunId": "1ed93ae9-5882-4910-82fd-5c46dd4cd20c",
+      "judgeRunId": "dfde7c0f-b2c1-4dd6-83fa-1b71bb38ea00",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [],
+        "summary": "Plan wyszukiwania poprawnie ogranicza się do dozwolonych źródeł (web, agency_portfolio, public_posts), zgodnie z branżą, geografią i limitem kandydatów. Obserwacje z evidence (nieodpowiedziane pytanie klienta, ogólnikowy wpis) są trafnie opisane jako hipotezy wzorca do zweryfikowania per-kandydat, a nie jako fakty ogólnobranżowe czy kryteria wykluczające – zgodnie z zasadami. Portfolio agencji jest jasno oznaczone jako źródło seedowe, nie dowód aktualnej relacji z klientem. Status 'ready' jest uzasadniony, gdyż zakres jest niepusty i zapytania są konkretne, z jasnymi kryteriami inkluzji/ekluzji. Brak fabrykowanych firm, URL-i czy wyników wyszukiwania – model poprawnie unika przedwczesnych twierdzeń o istnieniu konkretnych podmiotów poza przykładem z evidence. Uncertainties trafnie oddzielają obserwację od hipotezy wymagającej weryfikacji."
+      },
+      "inputTokens": 4600,
+      "outputTokens": 463
+    },
+    {
+      "judgeInputHash": "0b110c04cccea647e38f71f7b9dc2e976188af681875d26d2a28a8bb7f030652",
+      "fixtureId": "proof_writer.normal",
+      "sourceRunId": "05057733-034a-4cf4-887e-897f2bb1f94f",
+      "judgeRunId": "8ffa0bc7-4a40-455f-bdfa-1747a4641d7e",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 3,
+        "issues": [
+          {
+            "severity": "minor",
+            "excerpt": "Nowy post zawiera wyraźne wezwanie do działania ('Zapytaj o najbliższy termin'), którego nie było w poprzedniej wersji.",
+            "explanation": "Cytat e3 zawiera zdanie 'Dołącz do nas!', które również stanowi wezwanie do działania, choć mniej konkretne — twierdzenie o całkowitej nieobecności CTA w starej wersji jest nieprecyzyjne względem pełnej treści dowodu e3."
+          }
+        ],
+        "summary": "Pakiet spełnia wymogi roli: samplePost jest wierną kopią wejściowego posta, cena 1200 PLN i offerId są poprawnie dopuszczone (comparisonStatus=new_wins, oferta approved z approverem), improvementClaimAllowed i commercialReadiness są zgodne z regułami, whyBetter zawiera 3 uzasadnienia, a limitations trafnie wskazują niewiadomą gotowość do zapłaty i brak odniesienia do pytania o narzędzia. Jedyny zauważony problem to lekkie przesadzenie w jednym z uzasadnień whyBetter dotyczącym braku CTA w starej wersji, co jest niedokładne względem pełnego cytatu e3, ale nie wpływa istotnie na użyteczność ani zgodność z resztą materiału."
+      },
+      "inputTokens": 4849,
+      "outputTokens": 7051
+    },
+    {
+      "judgeInputHash": "5dc11c2676563992527c37426ada514294989e9aa68fb7f2bdabed948b35015c",
+      "fixtureId": "handoff_writer.normal",
+      "sourceRunId": "66605bcb-e755-476f-b5a1-fe16f5cebbc2",
+      "judgeRunId": "770a7981-c34a-4699-9b64-5eec51c7f9a0",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [],
+        "summary": "Wyjściowy pakiet handoff_writer poprawnie: sendAuthorized=false, wszystkie wymagane zgody (oferta z approverem, materiał, kanał kontaktu) są potwierdzone, więc commercialReadiness=true i messageDraft jest dozwolony i neutralny, bez cen i obiecywania sprzedaży. offerId zgadza się z zatwierdzoną ofertą wejściową. Kwestia narzędzi z e2 jest prawidłowo oznaczona jako nierozstrzygnięta (nie domyślono się odpowiedzi 'nie trzeba'), a twierdzenie o materiałach/wypale oparte jest na polu proofSummary, co jest dopuszczalne jako pole operacyjne. Podsumowanie i niepewności są zgodne z dowodami i rolą kroku."
+      },
+      "inputTokens": 4260,
+      "outputTokens": 2978
+    }
+  ],
+  "limitations": [
+    "Synthetic LLM judgment is fallible, not proof of truth or purchase intent.",
+    "Same native component harness limits as the source report.",
+    "Judge receives no referenceOutput."
+  ]
+}

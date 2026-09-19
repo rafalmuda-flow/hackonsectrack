@@ -1,0 +1,81 @@
+{
+  "suiteStartedAt": "2026-09-19T04:31:08.551Z",
+  "finishedAt": "2026-09-19T04:32:27.944Z",
+  "packHash": "420f22326739e57d7e98ff39e86dd7df3aaa128b9e23369e4949b936cc662418",
+  "sourceReport": "evidence/native-repair-final.json",
+  "sourcePackHash": "420f22326739e57d7e98ff39e86dd7df3aaa128b9e23369e4949b936cc662418",
+  "judgePromptVersion": "3-calibrated-scope",
+  "judgePromptHash": "bf557288ce60a95f2b66e96a5b5889f51a1d6d90098b10a2ad35797cfc29a5c5",
+  "judgeModel": "anthropic/claude-sonnet-5",
+  "frameworkVersion": "0.8.0",
+  "estimatedCostUsd": 0.08152400000000001,
+  "total": 3,
+  "passed": 3,
+  "results": [
+    {
+      "fixtureId": "signal_auditor.normal",
+      "sourceRunId": "d965d8a2-02dc-4a49-8bbb-0d71bd42ca5f",
+      "judgeRunId": "45a85687-305c-48c8-8efe-306c4550bb6e",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [
+          {
+            "severity": "minor",
+            "excerpt": "obecna wersja nie odpowiada na żadne pytanie odbiorcy",
+            "explanation": "To sformułowanie w implikacji f1 nieco duplikuje i uogólnia konkretne pytanie z f2, sugerując istnienie szerszej grupy pytań odbiorców, mimo że dowodem jest tylko jedna recenzja — lepiej byłoby ograniczyć to do wskazanego w f2 przypadku."
+          }
+        ],
+        "summary": "Wyjście poprawnie: (1) uznaje zweryfikowaną tożsamość i kompletną kolekcję za podstawę do statusu ready/content_quality zgodnie z instrukcją; (2) nie wnioskuje o nieaktywności z ograniczonych danych o częstotliwości (postCount=1, seasonalityKnown=false), lecz wprost zaznacza niewystarczalność tych danych; (3) oba findingsy mają dokładne cytaty z evidence, właściwie oznaczoną certainty i implikacje sformułowane jako rekomendacje, nie fakty. Jedyna drobna uwaga dotyczy lekkiego uogólnienia w implikacji f1, które nieznacznie nakłada się na f2, ale nie stanowi błędu krytycznego ani merytorycznego naruszenia zasad."
+      },
+      "inputTokens": 3858,
+      "outputTokens": 3285
+    },
+    {
+      "fixtureId": "brief_writer.normal",
+      "sourceRunId": "5994c213-7858-49a2-9834-b72d59ba1d26",
+      "judgeRunId": "0cb67155-8798-418c-a72f-61805302fb70",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [],
+        "summary": "Brief poprawnie identyfikuje audience, jedno pytanie klienta, kanał i limit znaków zgodne z inputem. Wszystkie requiredFacts dokładnie cytują evidence e1. Angle i objective trzymają się jednego tematu (materiały i wypał w cenie) bez naciągania na narzędzia, co jest zgodne z e2 (pytanie recenzenta, nie potwierdzona odpowiedź) — słusznie umieszczone w avoidClaims/uncertainties, nie w requiredFacts. Brak ceny i wyniku poprawnie wykluczony z avoidClaims. CTA jest umiarkowanym zaproszeniem operacyjnym, nie wymaga cytowania. Status ready jest uzasadniony — istnieje kompletny, w pełni podparty brief mimo pozostałych niepewności co do narzędzi i ceny, które nie blokują odpowiedzi na zadane pytanie."
+      },
+      "inputTokens": 3695,
+      "outputTokens": 384
+    },
+    {
+      "fixtureId": "post_writer.normal",
+      "sourceRunId": "251e1cf6-ff65-46f3-8d08-e003c619ba6c",
+      "judgeRunId": "8d357672-c336-435a-bd98-faaeb644f816",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [
+          {
+            "severity": "minor",
+            "excerpt": "nie musisz ich dokupować",
+            "explanation": "To zdanie jest rozsądną, ale niecytowaną implikacją faktu 'materiały i wypał są w cenie warsztatu'; nie stanowi nowego twierdzenia sprzecznego z dowodami, lecz mogłoby zyskać własne odniesienie do e1 dla pełnej precyzji."
+          }
+        ],
+        "summary": "Post trafnie odpowiada na pytanie z briefu, wyłącznie na podstawie potwierdzonego faktu o materiałach i wypale oraz lokalizacji w Lublinie. Cytaty w claimReferences odpowiadają dokładnym fragmentom tekstu i mają poprawne odniesienia do e1. Pytanie o narzędzia z recenzji zostało słusznie pominięte jako niezwiązane z zadanym pytaniem. Brak wymyślonych cen, gwarancji czy danych liczbowych. Drobna uwaga: fraza o niedokupowaniu materiałów jest logicznym wnioskiem, nie osobno cytowanym faktem, ale nie wprowadza błędnej informacji."
+      },
+      "inputTokens": 3549,
+      "outputTokens": 2263
+    }
+  ],
+  "limitations": [
+    "Synthetic LLM judgment is fallible, not proof of truth or purchase intent.",
+    "Same native component harness limits as the source report.",
+    "Judge receives no referenceOutput."
+  ]
+}

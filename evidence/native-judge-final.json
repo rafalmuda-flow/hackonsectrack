@@ -1,0 +1,91 @@
+{
+  "suiteStartedAt": "2026-09-19T04:28:52.410Z",
+  "finishedAt": "2026-09-19T04:29:54.710Z",
+  "packHash": "420f22326739e57d7e98ff39e86dd7df3aaa128b9e23369e4949b936cc662418",
+  "sourceReport": "evidence/native-final-retest.json",
+  "sourcePackHash": "420f22326739e57d7e98ff39e86dd7df3aaa128b9e23369e4949b936cc662418",
+  "judgePromptVersion": "3-calibrated-scope",
+  "judgePromptHash": "bf557288ce60a95f2b66e96a5b5889f51a1d6d90098b10a2ad35797cfc29a5c5",
+  "judgeModel": "anthropic/claude-sonnet-5",
+  "frameworkVersion": "0.8.0",
+  "estimatedCostUsd": 0.07233600000000001,
+  "total": 4,
+  "passed": 4,
+  "results": [
+    {
+      "fixtureId": "signal_auditor.normal",
+      "sourceRunId": "c83ca963-c292-4412-bc74-340d4e64b706",
+      "judgeRunId": "4c4fd8e4-d4d1-4403-bf4e-da9b0aec562d",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [],
+        "summary": "Wynik poprawnie stosuje status ready/content_quality przy zweryfikowanej tożsamości i realnym defekcie treści (f1), z dokładnym cytatem i etykietą pewności 'observed'. F2 poprawnie odróżnia obserwację (pytanie klientki, brak wzmianki o narzędziach) od zalecenia w implication, nie twierdząc, że popyt jest powszechny. Ograniczenia dot. cadence (1 post, seasonalityKnown=false) opisane jako niewystarczające do oceny regularności, zgodnie z instrukcją braku wnioskowania o przerwie. Brak twierdzeń o autorstwie AI czy szkodzie reputacyjnej. Brak defektów krytycznych/major."
+      },
+      "inputTokens": 3829,
+      "outputTokens": 317
+    },
+    {
+      "fixtureId": "audience_researcher.normal",
+      "sourceRunId": "12e13cc1-5610-4c73-9da2-577ceed48d93",
+      "judgeRunId": "646bd8d9-b57d-4505-923a-e4a93ef4c976",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [],
+        "summary": "Wynik poprawnie rozróżnia pytanie obserwowane (z cytatem z e2) od hipotez wywnioskowanych z ogólnej treści strony (e1), poprawnie oznaczonych jako 'hypothesis'. Cytaty dokładnie odpowiadają evidence.text, nie wymyślono statystyk ani popytu. Sekcja researchGaps trafnie identyfikuje ograniczenia (jedna recenzja, brak danych o cenach/terminach, ogólnikowość e3) bez fabrykowania dodatkowych faktów. Status 'ready' jest uzasadniony, ponieważ istnieje przynajmniej jedno realne pytanie klienta z dowodem, a niepewności są jasno opisane w uncertainties. Brak krytycznych lub większych błędów."
+      },
+      "inputTokens": 3348,
+      "outputTokens": 699
+    },
+    {
+      "fixtureId": "brief_writer.normal",
+      "sourceRunId": "f41423fe-7811-422d-abc0-729623371213",
+      "judgeRunId": "ab798b74-1c16-4d10-b5bb-884948ffbed2",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [],
+        "summary": "Brief poprawnie wykorzystuje potwierdzone fakty z e1, cytaty requiredFacts są dokładnymi dopasowaniami do evidence.text. Kwestia narzędzi z e2 trafnie rozpoznana jako niepotwierdzone pytanie recenzenta, nie fakt, i słusznie pozostawiona poza zakresem posta z odpowiednim zakazem w avoidClaims. Angle i objective odpowiadają na customerQuestion bez wymyślania ceny, gwarancji czy rezultatów. CTA jest umiarkowanym zaproszeniem, niewymagającym cytowania. Status ready jest uzasadniony, a uncertainties trafnie wskazują braki bez wpływu na treść briefu."
+      },
+      "inputTokens": 3637,
+      "outputTokens": 318
+    },
+    {
+      "fixtureId": "post_writer.normal",
+      "sourceRunId": "6f459bc0-9212-4ad4-9760-594f05d1aa31",
+      "judgeRunId": "1179bb3f-41c3-4dbe-a4f0-e5ff01530697",
+      "verdict": "pass",
+      "result": {
+        "verdict": "pass",
+        "clarity": 4,
+        "completeness": 4,
+        "grounding": 4,
+        "issues": [
+          {
+            "severity": "minor",
+            "excerpt": "w spokojnej atmosferze, krok po kroku",
+            "explanation": "To stylistyczny opis atmosfery, niepotwierdzony w materiale źródłowym, ale nie stanowi konkretnego twierdzenia weryfikowalnego zewnętrznie (raczej ton głosu), więc nie wymaga cytowania – wskazane jedynie jako drobna uwaga stylistyczna."
+          }
+        ],
+        "summary": "Post trafnie odpowiada na pytanie brief.question, wykorzystując wyłącznie potwierdzony fakt (materiały i wypał w cenie) oraz lokalizację, obie cytowane dokładnie z evidence e1. Kwestia narzędzi z recenzji (e2) została świadomie pominięta jako niezwiązana z zadanym pytaniem, a niepewności umieszczono poza treścią posta. Cytaty w claimReferences odpowiadają dokładnie fragmentom tekstu i evidence.text, bez wymyślonych liczb, cen czy gwarancji. Status 'ready' jest uzasadniony, ponieważ dostępne dane wystarczają do udzielenia odpowiedzi na zadane pytanie."
+      },
+      "inputTokens": 3439,
+      "outputTokens": 3049
+    }
+  ],
+  "limitations": [
+    "Synthetic LLM judgment is fallible, not proof of truth or purchase intent.",
+    "Same native component harness limits as the source report.",
+    "Judge receives no referenceOutput."
+  ]
+}

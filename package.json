@@ -1,0 +1,34 @@
+{
+  "name": "flow-acquisition",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Open Mercato acquisition module: implementation specification, native agent pack and Cezar work queue",
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "scripts": {
+    "test": "node --import tsx --test tests/*.test.ts tests/*.test.mjs",
+    "test:domain": "node --import tsx --test tests/domain.test.ts",
+    "test:agents": "node --import tsx --test tests/agents*.test.ts",
+    "docs:build": "node scripts/build-docs.mjs",
+    "spec:check": "node scripts/check-spec.mjs",
+    "verify": "npm run spec:check && npm run typecheck && npm test",
+    "cezar:ready": "node scripts/cezar-ready.mjs",
+    "cezar:preflight": "node scripts/cezar-preflight.mjs",
+    "cezar:launch": "node scripts/cezar-launch.mjs",
+    "om:prepare": "node scripts/prepare-om.mjs",
+    "om:doctor": "node scripts/doctor.mjs",
+    "typecheck": "tsc --noEmit --strict --skipLibCheck --target es2022 --module esnext --moduleResolution bundler modules/acquisition/contracts/domain.ts modules/acquisition/contracts/agents.ts modules/acquisition/contracts/agent-host-adapter.ts modules/acquisition/lib/domain.ts modules/acquisition/agents/catalog.ts"
+  },
+  "dependencies": {
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "tsx": "4.21.0",
+    "typescript": "5.9.3",
+    "@types/node": "24.10.1",
+    "marked": "17.0.1",
+    "yaml": "2.8.2"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "openMercato": {
+    "repository": "https://github.com/open-mercato/open-mercato",
+    "commit": "ab23d45ffc3aeca5e7d994eb57d5526c5b0a4712",
+    "packageVersion": "0.8.0",
+    "modulePath": "apps/mercato/src/modules/acquisition",
+    "nodeMajor": 24,
+    "packageManager": "yarn@4.17.1",
+    "enterpriseUse": "developer evaluation; production requires separate license verification"
+  },
+  "cezar": {
+    "repository": "https://github.com/open-mercato/cezar",
+    "packageVersion": "0.11.1",
+    "commit": "4763447f36b05e0c3934c77798335827f4398de4",
+    "skillsCommit": "7c81ffe68d99a9263143110c150e903d910f7526"
+  },
+  "reviewedAt": "2026-09-19"
+}

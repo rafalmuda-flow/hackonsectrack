@@ -1,0 +1,442 @@
+TAP version 13
+# Subtest: synthetic contract: search_planner.normal
+ok 1 - synthetic contract: search_planner.normal
+  ---
+  duration_ms: 23.818316
+  type: 'test'
+  ...
+# Subtest: synthetic contract: search_planner.challenging
+ok 2 - synthetic contract: search_planner.challenging
+  ---
+  duration_ms: 1.885395
+  type: 'test'
+  ...
+# Subtest: synthetic contract: signal_auditor.normal
+ok 3 - synthetic contract: signal_auditor.normal
+  ---
+  duration_ms: 7.681764
+  type: 'test'
+  ...
+# Subtest: synthetic contract: signal_auditor.challenging
+ok 4 - synthetic contract: signal_auditor.challenging
+  ---
+  duration_ms: 1.210801
+  type: 'test'
+  ...
+# Subtest: synthetic contract: fit_reviewer.normal
+ok 5 - synthetic contract: fit_reviewer.normal
+  ---
+  duration_ms: 6.801012
+  type: 'test'
+  ...
+# Subtest: synthetic contract: fit_reviewer.challenging
+ok 6 - synthetic contract: fit_reviewer.challenging
+  ---
+  duration_ms: 2.587542
+  type: 'test'
+  ...
+# Subtest: synthetic contract: audience_researcher.normal
+ok 7 - synthetic contract: audience_researcher.normal
+  ---
+  duration_ms: 5.430016
+  type: 'test'
+  ...
+# Subtest: synthetic contract: audience_researcher.challenging
+ok 8 - synthetic contract: audience_researcher.challenging
+  ---
+  duration_ms: 0.646246
+  type: 'test'
+  ...
+# Subtest: synthetic contract: brief_writer.normal
+ok 9 - synthetic contract: brief_writer.normal
+  ---
+  duration_ms: 7.077686
+  type: 'test'
+  ...
+# Subtest: synthetic contract: brief_writer.challenging
+ok 10 - synthetic contract: brief_writer.challenging
+  ---
+  duration_ms: 1.511998
+  type: 'test'
+  ...
+# Subtest: synthetic contract: post_writer.normal
+ok 11 - synthetic contract: post_writer.normal
+  ---
+  duration_ms: 3.736705
+  type: 'test'
+  ...
+# Subtest: synthetic contract: post_writer.challenging
+ok 12 - synthetic contract: post_writer.challenging
+  ---
+  duration_ms: 1.961323
+  type: 'test'
+  ...
+# Subtest: synthetic contract: quality_judge.normal
+ok 13 - synthetic contract: quality_judge.normal
+  ---
+  duration_ms: 6.20181
+  type: 'test'
+  ...
+# Subtest: synthetic contract: quality_judge.challenging
+ok 14 - synthetic contract: quality_judge.challenging
+  ---
+  duration_ms: 1.343116
+  type: 'test'
+  ...
+# Subtest: synthetic contract: proof_writer.normal
+ok 15 - synthetic contract: proof_writer.normal
+  ---
+  duration_ms: 11.735745
+  type: 'test'
+  ...
+# Subtest: synthetic contract: proof_writer.challenging
+ok 16 - synthetic contract: proof_writer.challenging
+  ---
+  duration_ms: 0.620127
+  type: 'test'
+  ...
+# Subtest: synthetic contract: handoff_writer.normal
+ok 17 - synthetic contract: handoff_writer.normal
+  ---
+  duration_ms: 1.794275
+  type: 'test'
+  ...
+# Subtest: synthetic contract: handoff_writer.challenging
+ok 18 - synthetic contract: handoff_writer.challenging
+  ---
+  duration_ms: 0.374384
+  type: 'test'
+  ...
+# Subtest: complete role coverage with normal and challenging evidence
+ok 19 - complete role coverage with normal and challenging evidence
+  ---
+  duration_ms: 1.059128
+  type: 'test'
+  ...
+# Subtest: model cannot forge tenant or workflow scope in strict output
+ok 20 - model cannot forge tenant or workflow scope in strict output
+  ---
+  duration_ms: 1.808228
+  type: 'test'
+  ...
+# Subtest: fabricated citation and invented quote both fail
+ok 21 - fabricated citation and invented quote both fail
+  ---
+  duration_ms: 2.644797
+  type: 'test'
+  ...
+# Subtest: failed collection cannot be interpreted as a dormant profile
+ok 22 - failed collection cannot be interpreted as a dormant profile
+  ---
+  duration_ms: 0.40912
+  type: 'test'
+  ...
+# Subtest: partial timeline cannot substantiate observed inactivity
+ok 23 - partial timeline cannot substantiate observed inactivity
+  ---
+  duration_ms: 0.487453
+  type: 'test'
+  ...
+# Subtest: observed need cannot omit its evidence
+ok 24 - observed need cannot omit its evidence
+  ---
+  duration_ms: 0.486859
+  type: 'test'
+  ...
+# Subtest: unapproved offer and exceeded preparation budget independently block fit
+ok 25 - unapproved offer and exceeded preparation budget independently block fit
+  ---
+  duration_ms: 2.118792
+  type: 'test'
+  ...
+# Subtest: identity ambiguity requires a human instead of ready brief
+ok 26 - identity ambiguity requires a human instead of ready brief
+  ---
+  duration_ms: 1.186544
+  type: 'test'
+  ...
+# Subtest: post constraints enforce max length and claim linkage
+ok 27 - post constraints enforce max length and claim linkage
+  ---
+  duration_ms: 1.497762
+  type: 'test'
+  ...
+# Subtest: same hard quality gate rejects factual invention despite high style scores
+ok 28 - same hard quality gate rejects factual invention despite high style scores
+  ---
+  duration_ms: 0.879232
+  type: 'test'
+  ...
+# Subtest: judge must assess all blinded variants exactly once with genuine excerpts
+ok 29 - judge must assess all blinded variants exactly once with genuine excerpts
+  ---
+  duration_ms: 1.919955
+  type: 'test'
+  ...
+# Subtest: proof may neither replace approved sample nor invent offer price
+ok 30 - proof may neither replace approved sample nor invent offer price
+  ---
+  duration_ms: 2.407093
+  type: 'test'
+  ...
+# Subtest: handoff draft cannot bypass material or contact approval and never authorizes send
+ok 31 - handoff draft cannot bypass material or contact approval and never authorizes send
+  ---
+  duration_ms: 2.157766
+  type: 'test'
+  ...
+# Subtest: fixture origin cannot be presented as live evidence
+ok 32 - fixture origin cannot be presented as live evidence
+  ---
+  duration_ms: 1.107333
+  type: 'test'
+  ...
+# Subtest: human escalation has an actionable reason
+ok 33 - human escalation has an actionable reason
+  ---
+  duration_ms: 1.305561
+  type: 'test'
+  ...
+# Subtest: internal demo can prepare a sample against a draft offer without pretending commercial approval
+ok 34 - internal demo can prepare a sample against a draft offer without pretending commercial approval
+  ---
+  duration_ms: 1.507842
+  type: 'test'
+  ...
+# Subtest: tie, original winner or absent original allows internal report but prohibits commercial claims
+ok 35 - tie, original winner or absent original allows internal report but prohibits commercial claims
+  ---
+  duration_ms: 7.748718
+  type: 'test'
+  ...
+# Subtest: internal handoff can be ready without external-message authorization
+ok 36 - internal handoff can be ready without external-message authorization
+  ---
+  duration_ms: 1.717649
+  type: 'test'
+  ...
+# Subtest: brief cannot silently switch channel or expand its size
+ok 37 - brief cannot silently switch channel or expand its size
+  ---
+  duration_ms: 1.676341
+  type: 'test'
+  ...
+# Subtest: host preflight catches missing required source before invoking a model
+ok 38 - host preflight catches missing required source before invoking a model
+  ---
+  duration_ms: 2.179255
+  type: 'test'
+  ...
+# Subtest: handoff cannot bypass approved offer and improvement by setting readiness false
+ok 39 - handoff cannot bypass approved offer and improvement by setting readiness false
+  ---
+  duration_ms: 2.052072
+  type: 'test'
+  ...
+# Subtest: proof cannot quote even an approved price when the new post did not win
+ok 40 - proof cannot quote even an approved price when the new post did not win
+  ---
+  duration_ms: 1.338467
+  type: 'test'
+  ...
+# Subtest: host offer mapping retains pinned version outside model and removes draft price
+ok 41 - host offer mapping retains pinned version outside model and removes draft price
+  ---
+  duration_ms: 4.409296
+  type: 'test'
+  ...
+# Subtest: fit decision cannot fabricate operational feasibility or customer budget
+ok 42 - fit decision cannot fabricate operational feasibility or customer budget
+  ---
+  duration_ms: 5.639778
+  type: 'test'
+  ...
+# Subtest: P11 host assembly copies reviewed findings and sample exactly and pins the snapshot
+ok 43 - P11 host assembly copies reviewed findings and sample exactly and pins the snapshot
+  ---
+  duration_ms: 3.024346
+  type: 'test'
+  ...
+# Subtest: P11 host assembly suppresses price for draft offer, tie, old winner and no original
+ok 44 - P11 host assembly suppresses price for draft offer, tie, old winner and no original
+  ---
+  duration_ms: 5.590655
+  type: 'test'
+  ...
+# Subtest: P11 failed quality yields a diagnostic report, not an approvable proof pack
+ok 45 - P11 failed quality yields a diagnostic report, not an approvable proof pack
+  ---
+  duration_ms: 1.843566
+  type: 'test'
+  ...
+# Subtest: preparation verified never unlocks a dependency without integrator acceptance
+ok 46 - preparation verified never unlocks a dependency without integrator acceptance
+  ---
+  duration_ms: 307.689646
+  type: 'test'
+  ...
+# Subtest: accepted merged commit unlocks next task; changed card invalidates acceptance
+ok 47 - accepted merged commit unlocks next task; changed card invalidates acceptance
+  ---
+  duration_ms: 395.911549
+  type: 'test'
+  ...
+# Subtest: accepted commit on an unmerged branch does not satisfy dependencies
+ok 48 - accepted commit on an unmerged branch does not satisfy dependencies
+  ---
+  duration_ms: 409.811647
+  type: 'test'
+  ...
+# Subtest: manual acceptance cannot bind a changed uncommitted card to an older commit
+ok 49 - manual acceptance cannot bind a changed uncommitted card to an older commit
+  ---
+  duration_ms: 276.187207
+  type: 'test'
+  ...
+# Subtest: a stale upstream acceptance also blocks downstream of a previously accepted dependent
+ok 50 - a stale upstream acceptance also blocks downstream of a previously accepted dependent
+  ---
+  duration_ms: 593.820391
+  type: 'test'
+  ...
+# Subtest: manifest rejects dependency cycles and generic global verification
+ok 51 - manifest rejects dependency cycles and generic global verification
+  ---
+  duration_ms: 189.501468
+  type: 'test'
+  ...
+# Subtest: repository paths cannot escape through traversal or a symlink
+ok 52 - repository paths cannot escape through traversal or a symlink
+  ---
+  duration_ms: 183.70123
+  type: 'test'
+  ...
+# Subtest: launch plan does not start agents or create completion state
+ok 53 - launch plan does not start agents or create completion state
+  ---
+  duration_ms: 260.894179
+  type: 'test'
+  ...
+# Subtest: parallel launch plans submit to one scoped cockpit after validating repo and version
+ok 54 - parallel launch plans submit to one scoped cockpit after validating repo and version
+  ---
+  duration_ms: 204.094424
+  type: 'test'
+  ...
+# Subtest: wrong cockpit version or repository cannot receive a task
+ok 55 - wrong cockpit version or repository cannot receive a task
+  ---
+  duration_ms: 194.071343
+  type: 'test'
+  ...
+# Subtest: active task ownership blocks overlapping work but permits disjoint tasks
+ok 56 - active task ownership blocks overlapping work but permits disjoint tasks
+  ---
+  duration_ms: 206.043464
+  type: 'test'
+  ...
+# Subtest: missing future test harness fails instead of reporting a successful task
+ok 57 - missing future test harness fails instead of reporting a successful task
+  ---
+  duration_ms: 343.262841
+  type: 'test'
+  ...
+# Subtest: real failing task test fails the gate even when self-report and reviewer say pass
+ok 58 - real failing task test fails the gate even when self-report and reviewer say pass
+  ---
+  duration_ms: 925.003042
+  type: 'test'
+  ...
+# Subtest: passing specific test writes execution evidence without accepting dependencies
+ok 59 - passing specific test writes execution evidence without accepting dependencies
+  ---
+  duration_ms: 918.566863
+  type: 'test'
+  ...
+# Subtest: a declared directory with a trailing slash owns files created inside it
+ok 60 - a declared directory with a trailing slash owns files created inside it
+  ---
+  duration_ms: 993.483481
+  type: 'test'
+  ...
+# Subtest: review rejection and code outside the task scope both fail the gate
+ok 61 - review rejection and code outside the task scope both fail the gate
+  ---
+  duration_ms: 528.803053
+  type: 'test'
+  ...
+# Subtest: cadence uses historical dates, sorting and excludes pinned order as evidence
+ok 62 - cadence uses historical dates, sorting and excludes pinned order as evidence
+  ---
+  duration_ms: 17.311923
+  type: 'test'
+  ...
+# Subtest: empty/partial/stale results abstain instead of declaring stopped marketing
+ok 63 - empty/partial/stale results abstain instead of declaring stopped marketing
+  ---
+  duration_ms: 2.300854
+  type: 'test'
+  ...
+# Subtest: regular low cadence and future timestamps do not become abandonment
+ok 64 - regular low cadence and future timestamps do not become abandonment
+  ---
+  duration_ms: 2.27257
+  type: 'test'
+  ...
+# Subtest: public URL guard rejects local, IP, credentials and normalizes identity within tenant
+ok 65 - public URL guard rejects local, IP, credentials and normalizes identity within tenant
+  ---
+  duration_ms: 27.565222
+  type: 'test'
+  ...
+# Subtest: unknown purchase intent stays unknown but does not veto a valid PoC
+ok 66 - unknown purchase intent stays unknown but does not veto a valid PoC
+  ---
+  duration_ms: 0.727635
+  type: 'test'
+  ...
+# Subtest: evidence quotation must exist in source, not just carry a source id
+ok 67 - evidence quotation must exist in source, not just carry a source id
+  ---
+  duration_ms: 0.77088
+  type: 'test'
+  ...
+# Subtest: review binds scope, revision, quality and content hash
+ok 68 - review binds scope, revision, quality and content hash
+  ---
+  duration_ms: 5.149082
+  type: 'test'
+  ...
+# Subtest: export and commercial handoff do not imply an approved offer or a connected recipient
+ok 69 - export and commercial handoff do not imply an approved offer or a connected recipient
+  ---
+  duration_ms: 2.80078
+  type: 'test'
+  ...
+# Subtest: budget includes outstanding reservations and rejects invalid values
+ok 70 - budget includes outstanding reservations and rejects invalid values
+  ---
+  duration_ms: 0.662784
+  type: 'test'
+  ...
+# Subtest: cadence abstains when the newest post cannot be verified or baseline falls outside the window
+ok 71 - cadence abstains when the newest post cannot be verified or baseline falls outside the window
+  ---
+  duration_ms: 1.077419
+  type: 'test'
+  ...
+# Subtest: review requires reasons for non-approval and a specific revision entry point
+ok 72 - review requires reasons for non-approval and a specific revision entry point
+  ---
+  duration_ms: 2.243525
+  type: 'test'
+  ...
+1..72
+# tests 72
+# suites 0
+# pass 72
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7861.472832
