@@ -1,0 +1,9 @@
+{
+  "skillsRepos": [
+    { "repo": "open-mercato/skills", "ref": "7c81ffe68d99a9263143110c150e903d910f7526" }
+  ],
+  "baseBranch": "main",
+  "defaultRunner": "codex",
+  "worktreeRetention": 10,
+  "liveTitleUpdates": false
+}

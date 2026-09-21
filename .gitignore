@@ -1,0 +1,12 @@
+node_modules
+.env
+.env.*
+!.env.example
+.local/
+.runtime/
+.ai/cezar/runs/
+.ai/cezar/worktrees/
+coverage/
+*.log
+*.tsbuildinfo
+.DS_Store

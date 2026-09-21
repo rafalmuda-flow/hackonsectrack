@@ -1,0 +1,17 @@
+name: flow-implement-task
+description: Jedna karta backlogu FLOW, osobny przegląd i jej rzeczywiste testy.
+steps:
+  - id: implement
+    name: Zaimplementuj jedną kartę
+    skill: flow-implement-task
+    prompt: "{{task}}"
+  - id: review
+    name: Oceń kod i wszystkie kryteria odbioru
+    skill: flow-review-task
+    prompt: "Sprawdź wynik poprzedniego kroku dla zadania: {{task}}"
+  - id: verify
+    name: Uruchom testy tej karty i sprawdź dowody
+    command: "node scripts/cezar-verify.mjs"
+    onFail:
+      retry: implement
+      max: 2
